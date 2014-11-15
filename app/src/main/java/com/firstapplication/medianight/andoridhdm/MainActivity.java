@@ -36,7 +36,4 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-    // some test
-    ///helllo dude could you check this out?
-    //and a a test again
 }
