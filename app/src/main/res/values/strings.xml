@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Plain Planr</string>
+    <string name="app_name">AndoridHdM</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="welcome_message">Klick auf die Münze</string>
-    <string name="balance_text_title">Bilanz</string>
-    <string name="balance_value">0</string>
-    <string name="currentdate_text">16.12.2014</string>
-    <string name="text_title_balance_green">Einnahmen</string>
-    <string name="text_title_balance_red">Ausgaben</string>
-    <string name="text_balance_result">Saldo:</string>
+    <string name="revenue_and_expenditure">Revenue and Expenditure</string>
+    <string name="RevExp_Name">Name</string>
+    <string name="RevExp_Amount">Amount in €</string>
+    <string name="IncomeButton">Income</string>
+    <string name="ExpenditureButton">Expenditure</string>
+    <string name="Save">Save</string>
 
 </resources>
