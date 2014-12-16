@@ -3,9 +3,83 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:orientation="vertical"
+    >
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <TextView android:text="@string/welcome_message" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/CoinButton"
+        android:layout_marginTop="190dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center|top"
+        android:background="@drawable/dollar178" />
+
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/main_expenditure"
+        android:layout_gravity="center|top"
+        android:background="@drawable/basic16"
+        android:layout_alignTop="@+id/main_income"
+        android:layout_toRightOf="@+id/main_income"
+        android:layout_toEndOf="@+id/main_income"
+        android:layout_marginLeft="25dp" />
+
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/main_income"
+        android:layout_marginTop="29dp"
+        android:layout_gravity="center|top"
+        android:background="@drawable/basic16"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@+id/CoinButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/main_credit"
+        android:layout_gravity="center|top"
+        android:background="@drawable/basic16"
+        android:layout_alignTop="@+id/CoinButton"
+        android:layout_toLeftOf="@+id/CoinButton"
+        android:layout_toStartOf="@+id/CoinButton" />
+
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/main_debts"
+        android:layout_gravity="center"
+        android:background="@drawable/basic16"
+        android:layout_alignTop="@+id/CoinButton"
+        android:layout_toRightOf="@+id/CoinButton"
+        android:layout_toEndOf="@+id/CoinButton" />
+
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/main_saving"
+        android:layout_gravity="center"
+        android:background="@drawable/basic16"
+        android:layout_below="@+id/textView"
+        android:layout_alignLeft="@+id/CoinButton"
+        android:layout_alignStart="@+id/CoinButton"
+        android:layout_marginTop="27dp" />
+
+
 
 </RelativeLayout>
