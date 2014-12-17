@@ -16,69 +16,66 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <ImageButton
+    <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:id="@+id/CoinButton"
+        android:id="@+id/Coin_Main"
         android:layout_marginTop="190dp"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center|top"
         android:background="@drawable/dollar178" />
 
-    <ImageButton
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:id="@+id/main_expenditure"
         android:layout_gravity="center|top"
         android:background="@drawable/basic16"
+        android:layout_toEndOf="@+id/main_saving"
         android:layout_alignTop="@+id/main_income"
-        android:layout_toRightOf="@+id/main_income"
-        android:layout_toEndOf="@+id/main_income"
-        android:layout_marginLeft="25dp" />
+        android:layout_toRightOf="@+id/main_saving" />
 
-    <ImageButton
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:id="@+id/main_income"
-        android:layout_marginTop="29dp"
         android:layout_gravity="center|top"
         android:background="@drawable/basic16"
-        android:layout_marginLeft="30dp"
-        android:layout_below="@+id/CoinButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="34dp"
+        android:layout_below="@+id/Coin_Main"
+        android:layout_toLeftOf="@+id/main_saving"
+        android:layout_toStartOf="@+id/main_saving" />
 
-    <ImageButton
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/main_credit"
         android:layout_gravity="center|top"
         android:background="@drawable/basic16"
-        android:layout_alignTop="@+id/CoinButton"
-        android:layout_toLeftOf="@+id/CoinButton"
-        android:layout_toStartOf="@+id/CoinButton" />
+        android:layout_toStartOf="@+id/Coin_Main"
+        android:layout_alignTop="@+id/main_debts"
+        android:layout_toLeftOf="@+id/Coin_Main" />
 
-    <ImageButton
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/main_debts"
         android:layout_gravity="center"
         android:background="@drawable/basic16"
-        android:layout_alignTop="@+id/CoinButton"
-        android:layout_toRightOf="@+id/CoinButton"
-        android:layout_toEndOf="@+id/CoinButton" />
+        android:layout_toEndOf="@+id/textView"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/textView" />
 
-    <ImageButton
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/main_saving"
         android:layout_gravity="center"
         android:background="@drawable/basic16"
-        android:layout_below="@+id/textView"
-        android:layout_alignLeft="@+id/CoinButton"
-        android:layout_alignStart="@+id/CoinButton"
-        android:layout_marginTop="27dp" />
+        android:layout_marginBottom="37dp"
+        android:layout_above="@+id/main_credit"
+        android:layout_centerHorizontal="true" />
 
 
 
