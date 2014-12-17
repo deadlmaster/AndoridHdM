@@ -79,7 +79,7 @@
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/balance_value"
-        android:layout_toEndOf="@+id/text_title_1"
+
         android:layout_alignTop="@+id/text_balance_value_name"
         android:layout_toLeftOf="@+id/text_date"
         android:layout_toStartOf="@+id/text_date" />
