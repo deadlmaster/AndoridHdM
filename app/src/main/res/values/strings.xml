@@ -17,5 +17,10 @@
     <string name="text_title_balance_green">Einnahmen</string>
     <string name="text_title_balance_red">Ausgaben</string>
     <string name="text_balance_result">Saldo:</string>
+    <string name="Popup_income_button">Submit</string>
+    <string name="popup_income_date">Date:</string>
+    <string name="popup_income_amount">Amount:</string>
+    <string name="popup_income_name">Name:</string>
+    <string name="popup_income_title">Your Position:</string>
 
 </resources>
