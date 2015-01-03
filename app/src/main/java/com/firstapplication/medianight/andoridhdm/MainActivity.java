@@ -1,49 +1,378 @@
 package com.firstapplication.medianight.andoridhdm;
 
 import android.app.Activity;
-import android.content.ClipData;
-//import android.content.Context;
+import android.app.DatePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
-import android.view.DragEvent;
-//import android.view.LayoutInflater;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
-//import android.widget.PopupWindow;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.PopupWindow;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 
 public class MainActivity extends Activity {
 
-
+    private PopupWindow popupWin;
+    private Calendar myCalender = Calendar.getInstance();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ImageView coinbutton, main_saving, main_expenditure, main_income, main_credit, main_debts;
+        ImageButton openbuttonexpend = (ImageButton)findViewById(R.id.main_expenditure);
+        openbuttonexpend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initiatePopupWindowExpend();
+            }
 
+        });
+        ImageButton openbuttonincome = (ImageButton)findViewById(R.id.main_income);
+        openbuttonincome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initiatePopupWindowIncome();
+            }
 
-        // dragable item
+        });
+        ImageButton openbuttondebts = (ImageButton)findViewById(R.id.main_debts);
+        openbuttondebts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initiatePopupWindowDebts();
+            }
 
-        coinbutton = (ImageView)findViewById(R.id.Coin_Main);
-        coinbutton.setOnTouchListener(new ChoiceTouchListener());
+        });
+        ImageButton openbuttoncredit = (ImageButton)findViewById(R.id.main_credit);
+        openbuttoncredit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initiatePopupWindowCredit();
+            }
 
-        // dropable options
-        main_saving = (ImageView)findViewById(R.id.main_saving);
-        main_expenditure = (ImageView)findViewById(R.id.main_expenditure);
-        main_income = (ImageView)findViewById(R.id.main_income);
-        main_credit = (ImageView)findViewById(R.id.main_credit);
-        main_debts = (ImageView)findViewById(R.id.main_debts);
+        });
+        ImageButton openbuttonsaving = (ImageButton)findViewById(R.id.main_saving);
+        openbuttonsaving.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initiatePopupWindowSaving();
+            }
 
-        main_saving.setOnDragListener(new ChoiceDragListener());
-        main_expenditure.setOnDragListener(new ChoiceDragListener());
-        main_income.setOnDragListener(new ChoiceDragListener());
-        main_credit.setOnDragListener(new ChoiceDragListener());
-        main_debts.setOnDragListener(new ChoiceDragListener());
+        });
+
     }
+
+
+    private void initiatePopupWindowExpend(){
+
+        try{
+            LayoutInflater inflater = (LayoutInflater)MainActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View layout = inflater.inflate(R.layout.popupwindow_layout_expend, null );
+            popupWin = new PopupWindow(layout, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+            popupWin.showAtLocation(layout, Gravity.CENTER,0,0);
+
+            final EditText ExpendName = (EditText)layout.findViewById(R.id.editText_popup_name_expend);
+            final EditText ExpendAmount = (EditText)layout.findViewById(R.id.editText_popup_expend_amount);
+            final EditText ExpendDate = (EditText)layout.findViewById(R.id.editText_popup_expend_date);
+
+            final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    myCalender.set(Calendar.YEAR, year);
+                    myCalender.set(Calendar.MONTH, monthOfYear);
+                    myCalender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    String myFormat = "dd.MM.yy";
+                    SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
+                    ExpendDate.setText(dateForm.format(myCalender.getTime()));
+
+                }
+            };
+
+            ExpendDate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new DatePickerDialog(MainActivity.this, date, myCalender.get(Calendar.YEAR), myCalender.get(Calendar.MONTH), myCalender.DAY_OF_MONTH).show();
+
+
+
+                }
+            });
+
+            Button submitButton = (Button) layout.findViewById(R.id.popup_expend_submit);
+            submitButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String ExpendNameString = ExpendName.getText().toString();
+                    String ExpendAmountString = ExpendAmount.getText().toString();
+                    String ExpendDateString = ExpendDate.getText().toString();
+                    Log.d("Test", ExpendNameString);
+                    Log.d("Test", ExpendAmountString);
+                    Log.d("Test", ExpendDateString);
+
+                    popupWin.dismiss();
+
+                }
+            });
+
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+    private void initiatePopupWindowIncome(){
+
+        try{
+            LayoutInflater inflater = (LayoutInflater)MainActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View layout = inflater.inflate(R.layout.popupwindow_layout_income, null );
+            popupWin = new PopupWindow(layout, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+            popupWin.showAtLocation(layout, Gravity.CENTER,0,0);
+
+            final EditText IncomeName = (EditText)layout.findViewById(R.id.editText_popup_name_income);
+            final EditText IncomeAmount = (EditText)layout.findViewById(R.id.editText_popup_income_amount);
+            final EditText IncomeDate = (EditText)layout.findViewById(R.id.editText_popup_income_date);
+
+            final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    myCalender.set(Calendar.YEAR, year);
+                    myCalender.set(Calendar.MONTH, monthOfYear);
+                    myCalender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    String myFormat = "dd.MM.yy";
+                    SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
+                    IncomeDate.setText(dateForm.format(myCalender.getTime()));
+
+                }
+            };
+
+            IncomeDate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new DatePickerDialog(MainActivity.this, date, myCalender.get(Calendar.YEAR), myCalender.get(Calendar.MONTH), myCalender.DAY_OF_MONTH).show();
+                    String myFormat = "dd.MM.yy";
+                    SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
+                    IncomeDate.setText(dateForm.format(myCalender.getTime()));
+
+
+                }
+            });
+
+
+            Button submitButton = (Button) layout.findViewById(R.id.popup_income_submit);
+            submitButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String IncomeNameString = IncomeName.getText().toString();
+                    String IncomeAmountString = IncomeAmount.getText().toString();
+                    String IncomeDateString = IncomeDate.getText().toString();
+                    popupWin.dismiss();
+                }
+            });
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    private void initiatePopupWindowDebts(){
+
+        try{
+            LayoutInflater inflater = (LayoutInflater)MainActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View layout = inflater.inflate(R.layout.popupwindow_layout_debts, null );
+            popupWin = new PopupWindow(layout, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+            popupWin.showAtLocation(layout, Gravity.CENTER,0,0);
+
+            final EditText DebtsName = (EditText)layout.findViewById(R.id.editText_popup_name_debts);
+            final EditText DebtsAmount = (EditText)layout.findViewById(R.id.editText_popup_debts_amount);
+            final EditText DebtsDate = (EditText)layout.findViewById(R.id.editText_popup_debts_date);
+
+            final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    myCalender.set(Calendar.YEAR, year);
+                    myCalender.set(Calendar.MONTH, monthOfYear);
+                    myCalender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    String myFormat = "dd.MM.yy";
+                    SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
+                    DebtsDate.setText(dateForm.format(myCalender.getTime()));
+
+                }
+            };
+
+            DebtsDate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new DatePickerDialog(MainActivity.this, date, myCalender.get(Calendar.YEAR), myCalender.get(Calendar.MONTH), myCalender.DAY_OF_MONTH).show();
+                    String myFormat = "dd.MM.yy";
+                    SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
+                    DebtsDate.setText(dateForm.format(myCalender.getTime()));
+
+
+                }
+            });
+
+
+            Button submitButton = (Button) layout.findViewById(R.id.popup_debts_submit);
+            submitButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String DebtsNameString = DebtsName.getText().toString();
+                    String DebtsAmountString = DebtsAmount.getText().toString();
+                    String DebtsDateString = DebtsDate.getText().toString();
+                    popupWin.dismiss();
+                }
+            });
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+    private void initiatePopupWindowCredit(){
+
+        try{
+            LayoutInflater inflater = (LayoutInflater)MainActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View layout = inflater.inflate(R.layout.popupwindow_layout_credit, null );
+            popupWin = new PopupWindow(layout, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+            popupWin.showAtLocation(layout, Gravity.CENTER,0,0);
+
+            final EditText CreditsName = (EditText)layout.findViewById(R.id.editText_popup_name_credits);
+            final EditText CreditsAmount = (EditText)layout.findViewById(R.id.editText_popup_credits_amount);
+            final EditText CreditsDate = (EditText)layout.findViewById(R.id.editText_popup_expend_date);
+
+            final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    myCalender.set(Calendar.YEAR, year);
+                    myCalender.set(Calendar.MONTH, monthOfYear);
+                    myCalender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    String myFormat = "dd.MM.yy";
+                    SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
+                    CreditsDate.setText(dateForm.format(myCalender.getTime()));
+
+                }
+            };
+
+           CreditsDate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new DatePickerDialog(MainActivity.this, date, myCalender.get(Calendar.YEAR), myCalender.get(Calendar.MONTH), myCalender.DAY_OF_MONTH).show();
+                    String myFormat = "dd.MM.yy";
+                    SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
+                    CreditsDate.setText(dateForm.format(myCalender.getTime()));
+
+
+                }
+            });
+
+
+            Button submitButton = (Button) layout.findViewById(R.id.popup_credits_submit);
+            submitButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String CreditsNameString = CreditsName.getText().toString();
+                    String CreditsAmountString = CreditsAmount.getText().toString();
+                    String CreditsDateString = CreditsDate.getText().toString();
+                    popupWin.dismiss();
+                }
+            });
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private View.OnClickListener submitButton_Credit_Listener = new View.OnClickListener() {
+        public void onClick(View v) {
+            popupWin.dismiss();
+        }
+    };
+
+    private void initiatePopupWindowSaving(){
+
+        try{
+            LayoutInflater inflater = (LayoutInflater)MainActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View layout = inflater.inflate(R.layout.popupwindow_layout_saving, null );
+            popupWin = new PopupWindow(layout, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+            popupWin.showAtLocation(layout, Gravity.CENTER,0,0);
+
+            final EditText SavingName = (EditText)layout.findViewById(R.id.editText_popup_name_saving);
+            final EditText SavingAmount = (EditText)layout.findViewById(R.id.editText_popup_saving_amount);
+            final EditText SavingDate = (EditText)layout.findViewById(R.id.editText_popup_saving_date);
+
+            final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    myCalender.set(Calendar.YEAR, year);
+                    myCalender.set(Calendar.MONTH, monthOfYear);
+                    myCalender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    String myFormat = "dd.MM.yy";
+                    SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
+                    SavingDate.setText(dateForm.format(myCalender.getTime()));
+
+                }
+            };
+
+            SavingDate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new DatePickerDialog(MainActivity.this, date, myCalender.get(Calendar.YEAR), myCalender.get(Calendar.MONTH), myCalender.DAY_OF_MONTH).show();
+                    String myFormat = "dd.MM.yy";
+                    SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
+                    SavingDate.setText(dateForm.format(myCalender.getTime()));
+
+
+                }
+            });
+
+
+            Button submitButton = (Button) layout.findViewById(R.id.popup_saving_submit);
+            submitButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String SavingNameString = SavingName.getText().toString();
+                    String SavingAmountString = SavingAmount.getText().toString();
+                    String SavingDateString = SavingDate.getText().toString();
+                    popupWin.dismiss();
+                }
+            });
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 
     @Override
@@ -67,63 +396,5 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
-    private final class ChoiceTouchListener implements View.OnTouchListener {
-
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-
-                ClipData clipdata = ClipData.newPlainText("","");
-                View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
-                v.startDrag(clipdata,shadowBuilder,v,0);
-
-                return true;
-
-        } else {
-                    return  false;
-            }
-        }
-    }
-
-    private class ChoiceDragListener implements View.OnDragListener{
-
-        @Override
-        public boolean onDrag(View v, DragEvent dragevent) {
-
-            switch (dragevent.getAction()) {
-                case DragEvent.ACTION_DRAG_STARTED:
-                    break;
-                case DragEvent.ACTION_DRAG_ENTERED:
-                    break;
-                case DragEvent.ACTION_DRAG_EXITED:
-                    break;
-                case DragEvent.ACTION_DROP:
-
-                    break;
-                case DragEvent.ACTION_DRAG_ENDED:
-                    break;
-
-                default:
-                    break;
-            }
-        return true;
-        }
-    }
-
-/*
-
-    private void initiatePopupWindow() {
-
-            LayoutInflater inflater = (LayoutInflater) MainActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View popuplayout = inflater.inflate(R.layout.popupwindow_layout, null);
-            PopupWindow popupWindow = new PopupWindow(popuplayout, 350, 400, true);
-
-
-    }
-
-*/
 
 }

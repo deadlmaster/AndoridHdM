@@ -26,7 +26,7 @@
         android:layout_gravity="center|top"
         android:background="@drawable/dollar178" />
 
-    <ImageView
+    <ImageButton
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:id="@+id/main_expenditure"
@@ -34,9 +34,10 @@
         android:background="@drawable/basic16"
         android:layout_toEndOf="@+id/main_saving"
         android:layout_alignTop="@+id/main_income"
-        android:layout_toRightOf="@+id/main_saving" />
+        android:layout_toRightOf="@+id/main_saving"
+       />
 
-    <ImageView
+    <ImageButton
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:id="@+id/main_income"
@@ -47,7 +48,7 @@
         android:layout_toLeftOf="@+id/main_saving"
         android:layout_toStartOf="@+id/main_saving" />
 
-    <ImageView
+    <ImageButton
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@+id/main_credit"
@@ -57,7 +58,7 @@
         android:layout_alignTop="@+id/main_debts"
         android:layout_toLeftOf="@+id/Coin_Main" />
 
-    <ImageView
+    <ImageButton
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@+id/main_debts"
@@ -67,7 +68,7 @@
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/textView" />
 
-    <ImageView
+    <ImageButton
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@+id/main_saving"
