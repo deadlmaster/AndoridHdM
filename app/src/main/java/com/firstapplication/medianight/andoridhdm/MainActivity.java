@@ -168,10 +168,6 @@ public class MainActivity extends Activity {
                 @Override
                 public void onClick(View v) {
                     new DatePickerDialog(MainActivity.this, date, myCalender.get(Calendar.YEAR), myCalender.get(Calendar.MONTH), myCalender.DAY_OF_MONTH).show();
-                    String myFormat = "dd.MM.yy";
-                    SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
-                    IncomeDate.setText(dateForm.format(myCalender.getTime()));
-
 
                 }
             });
@@ -226,10 +222,6 @@ public class MainActivity extends Activity {
                 @Override
                 public void onClick(View v) {
                     new DatePickerDialog(MainActivity.this, date, myCalender.get(Calendar.YEAR), myCalender.get(Calendar.MONTH), myCalender.DAY_OF_MONTH).show();
-                    String myFormat = "dd.MM.yy";
-                    SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
-                    DebtsDate.setText(dateForm.format(myCalender.getTime()));
-
 
                 }
             });
@@ -265,7 +257,7 @@ public class MainActivity extends Activity {
 
             final EditText CreditsName = (EditText)layout.findViewById(R.id.editText_popup_name_credits);
             final EditText CreditsAmount = (EditText)layout.findViewById(R.id.editText_popup_credits_amount);
-            final EditText CreditsDate = (EditText)layout.findViewById(R.id.editText_popup_expend_date);
+            final EditText CreditsDate = (EditText)layout.findViewById(R.id.editText_popup_credits_date);
 
             final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
                 @Override
@@ -280,14 +272,10 @@ public class MainActivity extends Activity {
                 }
             };
 
-           CreditsDate.setOnClickListener(new View.OnClickListener() {
+            CreditsDate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     new DatePickerDialog(MainActivity.this, date, myCalender.get(Calendar.YEAR), myCalender.get(Calendar.MONTH), myCalender.DAY_OF_MONTH).show();
-                    String myFormat = "dd.MM.yy";
-                    SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
-                    CreditsDate.setText(dateForm.format(myCalender.getTime()));
-
 
                 }
             });
@@ -305,20 +293,13 @@ public class MainActivity extends Activity {
             });
 
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
-    private View.OnClickListener submitButton_Credit_Listener = new View.OnClickListener() {
-        public void onClick(View v) {
-            popupWin.dismiss();
-        }
-    };
-
-    private void initiatePopupWindowSaving(){
+      private void initiatePopupWindowSaving(){
 
         try{
             LayoutInflater inflater = (LayoutInflater)MainActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -347,10 +328,6 @@ public class MainActivity extends Activity {
                 @Override
                 public void onClick(View v) {
                     new DatePickerDialog(MainActivity.this, date, myCalender.get(Calendar.YEAR), myCalender.get(Calendar.MONTH), myCalender.DAY_OF_MONTH).show();
-                    String myFormat = "dd.MM.yy";
-                    SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
-                    SavingDate.setText(dateForm.format(myCalender.getTime()));
-
 
                 }
             });
