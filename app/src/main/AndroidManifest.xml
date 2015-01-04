@@ -20,6 +20,23 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="com.firstapplication.medianight.andoridhdm.BalanceActivity"
+            android:label="@string/screenBalance" />
+
+        <activity
+            android:name="com.firstapplication.medianight.andoridhdm.DebtsCreditsActivity"
+            android:label="@string/screenDebtsCredits" />
+
+        <activity
+            android:name="com.firstapplication.medianight.andoridhdm.DreamlistActivity"
+            android:label="@string/screenDreamlist" />
+
+        <activity
+            android:name="com.firstapplication.medianight.andoridhdm.IncomeExpendAcitvity"
+            android:label="@string/screenIncomeExpend" />
+
+
     </application>
 
 </manifest>

@@ -42,5 +42,18 @@
     <string name="popup_credits_amount">Betrag</string>
     <string name="popup_credits_name">Person</string>
     <string name="popup_credits_title">Gutschrift</string>
+    <string name="action_main">Hauptmenü</string>
+    <string name="action_exit">Exit</string>
+    <string name="action_balance">Bilanz</string>
+    <string name="action_dreamlist">Wunschziele</string>
+    <string name="action_debtscredits">Schulden und Gutschrift</string>
+    <string name="action_help">Hilfe</string>
+    <string name="screenBalance">BalanceScreen</string>
+    <string name="action_incomeexpend">Monatliche Ein und Ausgänge</string>
+    <string name="screenDebtsCredits">SchuldenundGutschrift</string>
+    <string name="screenDreamlist">Wunschziele</string>
+    <string name="screenIncomeExpend">EinnahmenundAusgaben</string>
+    <string name="dreamgoal_text_title">Wunschliste</string>
+    <string name="text_dreamgoal_list_amount">Gesamtsumme:</string>
 
 </resources>
