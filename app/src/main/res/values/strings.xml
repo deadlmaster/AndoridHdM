@@ -4,8 +4,8 @@
     <string name="revenue_and_expenditure">Revenue and Expenditure</string>
     <string name="RevExp_Name">Name</string>
     <string name="RevExp_Amount">Amount in €</string>
-    <string name="IncomeButton">Income</string>
-    <string name="ExpenditureButton">Expenditure</string>
+    <string name="radioEarning">Income</string>
+    <string name="radioSpending">Expenditure</string>
     <string name="Save">Save</string>
     <string name="app_name">Plain Planr</string>
     <string name="hello_world">Hello world!</string>
