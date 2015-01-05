@@ -299,7 +299,7 @@ public class MainActivity extends Activity {
 
     }
 
-      private void initiatePopupWindowSaving(){
+    private void initiatePopupWindowSaving(){
 
         try{
             LayoutInflater inflater = (LayoutInflater)MainActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

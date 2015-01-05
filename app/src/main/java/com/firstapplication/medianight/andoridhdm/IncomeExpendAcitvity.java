@@ -13,7 +13,7 @@ public class IncomeExpendAcitvity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eua);
+        setContentView(R.layout.activity_eas);
     }
 
     @Override
