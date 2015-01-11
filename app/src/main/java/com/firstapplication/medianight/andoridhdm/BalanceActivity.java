@@ -24,10 +24,10 @@ import java.util.Locale;
 
 public class BalanceActivity extends Activity {
 
-  private ExpendDataSource exds;
-  private List<ExpendModel> expds = new ArrayList<ExpendModel>();
-  ArrayAdapter<ExpendModel> adapter;
-  ListView listView;
+    private ExpendDataSource exds;
+    private List<ExpendModel> expds = new ArrayList<ExpendModel>();
+    ArrayAdapter<ExpendModel> adapter;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

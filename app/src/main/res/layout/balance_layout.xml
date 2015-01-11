@@ -72,7 +72,7 @@
         android:ems="10"
         android:id="@+id/balance_value"
 
-        android:layout_toStartOf="@+id/text_date"
+
         android:layout_alignTop="@+id/text_balance_value_name"
         android:layout_toRightOf="@+id/text_balance_value_name"
         android:layout_toEndOf="@+id/text_balance_value_name"

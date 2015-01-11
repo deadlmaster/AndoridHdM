@@ -45,7 +45,7 @@ public class ExpendDataSource {
         cursor.close();
         return cursorToExpendModel(cursor);
 
-   }
+    }
 
     public List<ExpendModel> getAllExpends() {
         List<ExpendModel> expends = new ArrayList<ExpendModel>();
@@ -64,7 +64,7 @@ public class ExpendDataSource {
         return expends;
     }
 
-   private ExpendModel cursorToExpendModel(Cursor cursor) {
+    private ExpendModel cursorToExpendModel(Cursor cursor) {
         ExpendModel ExpendModel = new ExpendModel();
         ExpendModel.setExpID(cursor.getLong(0));
         ExpendModel.setExpendNameString(cursor.getString(1));
