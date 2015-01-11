@@ -71,7 +71,6 @@
                     android:hint="60000,50€"
                     android:layout_marginLeft="5dp"
                     android:inputType="number"
-                    android:focusable="false"
                     android:singleLine="true"
                     />
 

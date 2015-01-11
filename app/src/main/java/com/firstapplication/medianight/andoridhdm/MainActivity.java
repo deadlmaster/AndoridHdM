@@ -37,6 +37,8 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+      /*
         ImageButton openbuttonexpend = (ImageButton)findViewById(R.id.main_expenditure);
         openbuttonexpend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,10 +79,12 @@ public class MainActivity extends Activity {
             }
 
         });
-
+*/
     }
 
 
+
+/*
     private void initiatePopupWindowExpend(){
 
         try{
@@ -146,6 +150,7 @@ public class MainActivity extends Activity {
         }
 
     }
+
 
 
 
@@ -360,7 +365,7 @@ public class MainActivity extends Activity {
         }
 
     }
-
+*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
