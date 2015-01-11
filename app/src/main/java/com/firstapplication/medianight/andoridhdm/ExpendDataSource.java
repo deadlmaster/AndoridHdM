@@ -1,88 +1,55 @@
 package com.firstapplication.medianight.andoridhdm;
 
-/**
- * Created by Cpt Cranberry on 04/01/2015.
- */
-import java.util.ArrayList;
-import java.util.List;
-import com.firstapplication.medianight.andoridhdm.SQLiteHelper;
-import com.firstapplication.medianight.andoridhdm.EntryDB;
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.DropBoxManager;
+import android.database.sqlite.SQLiteOpenHelper;
 
-
+/**
+ * Created by Cpt Cranberry on 11/01/2015.
+ */
 public class ExpendDataSource {
 
 
-    private SQLiteDatabase database;
-    private SQLiteHelper dbHelper;
-    private String[] allColumns = { "ID", "ExpendName",
-            "ExpendAmount", "ExpendDate"};
 
+    SQLiteOpenHelper dbHelper;
+    SQLiteDatabase database;
 
+    public final String[] expColumns = {
+            SQLiteHelper.COLUMN_EXPENDS_NAME,
+            SQLiteHelper.COLUMN_EXPENDS_AMOUNT,
+            SQLiteHelper.COLUMN_EXPENDS_DATE,
+    };
 
-    public ExpendDataSource(Context context) {
-        dbHelper = new SQLiteHelper(context);
-    }
-
-    public void open() throws SQLException {
+    public void open(){
         database = dbHelper.getWritableDatabase();
     }
 
-    public void close() {
+    public void close(){
         dbHelper.close();
     }
 
-    public EntryDB createEntry(String ExpendNameString, String ExpendAmountString, String ExpendDateString) {
+    public ExpendModel createExpendmodel(String ExpendNameString, String ExpendAmountString, String ExpendDateString) {
         ContentValues values = new ContentValues();
-        values.put("ExpendName", ExpendNameString);
-        values.put("ExpendAmount", ExpendAmountString);
-        values.put("ExpendDate", ExpendDateString);
+        values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, ExpendNameString);
+        values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, ExpendAmountString);
+        values.put(SQLiteHelper.COLUMN_EXPENDS_DATE, ExpendDateString);
 
-        long insertId = database.insert("EXPENDS", null,
-                values);
-
-
-        Cursor cursor = database.query("EXPEND",allColumns, "ID = " + insertId, null, null, null, null);
+        long insertId = database.insert(SQLiteHelper.TABLE_EXPENDS, null, values);
+        Cursor cursor = database.query("expends",expColumns, "ID = " + insertId, null, null, null, null);
         cursor.moveToFirst();
-
-        return cursorToEntry(cursor);
-    }
-
-    protected List<EntryDB> getAllEntries() {
-        List<EntryDB> EntriesList = new ArrayList<EntryDB>();
-        EntriesList = new ArrayList<EntryDB>();
-
-        Cursor cursor = database.query("EXPEND", allColumns, null, null, null, null, null);
-        cursor.moveToFirst();
-
-        if(cursor.getCount() == 0) return EntriesList;
-
-
-        while (cursor.isAfterLast() == false) {
-            EntryDB entry = cursorToEntry(cursor);
-            EntriesList.add(entry);
-            cursor.moveToNext();
-        }
-
+        //ExpendModel newExpendModel = cursorToExpendModel(cursor);
         cursor.close();
+        return cursorToExpendModel(cursor);
 
-        return EntriesList;
-    }
+   }
 
-
-    private EntryDB cursorToEntry(Cursor cursor) {
-        EntryDB entry = new EntryDB();
-        entry.setId(cursor.getLong(0));
-        entry.setExpendNameString(cursor.getString(1));
-        entry.setExpendAmountString(cursor.getString(2));
-        entry.setExpendDateString(cursor.getString(3));
-
-        return entry;
-    }
-
+   /** private ExpendModel cursorToExpendModel(Cursor cursor) {
+        ExpendModel ExpendModel = new ExpendModel();
+        ExpendModel.setExpID(cursor.getLong(0));
+        ExpendModel.setExpendNameString(cursor.getString(1));
+        ExpendModel.setExpendAmountString(cursor.getString(2));
+        ExpendModel.setExpendDateString(cursor.getString(3));
+        return ExpendModel;
+    }*/
 }

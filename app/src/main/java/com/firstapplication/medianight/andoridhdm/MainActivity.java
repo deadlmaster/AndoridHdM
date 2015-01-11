@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -27,6 +29,8 @@ public class MainActivity extends Activity {
 
     private PopupWindow popupWin;
     private Calendar myCalender = Calendar.getInstance();
+    private ExpendDataSource expSource;
+
 
 
     @Override
@@ -119,9 +123,15 @@ public class MainActivity extends Activity {
                     String ExpendNameString = ExpendName.getText().toString();
                     String ExpendAmountString = ExpendAmount.getText().toString();
                     String ExpendDateString = ExpendDate.getText().toString();
-                    Log.d("Test", ExpendNameString);
-                    Log.d("Test", ExpendAmountString);
-                    Log.d("Test", ExpendDateString);
+                    //Log.d("Test", ExpendNameString);
+                    //Log.d("Test", ExpendAmountString);
+                    //Log.d("Test", ExpendDateString);
+
+                    //db open
+                    expSource.open();
+                    expSource.createExpendmodel(ExpendNameString, ExpendAmountString, ExpendDateString);
+                    expSource.close();
+
 
                     popupWin.dismiss();
 

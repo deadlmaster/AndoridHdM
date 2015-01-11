@@ -8,7 +8,8 @@
     <TextView
         android:text="@string/revenue_and_expenditure"
         android:id="@+id/textView2"
-        style="@style/EaS1" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <EditText
         android:layout_width="match_parent"
