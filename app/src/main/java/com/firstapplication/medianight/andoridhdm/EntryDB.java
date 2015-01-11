@@ -1,5 +1,4 @@
 package com.firstapplication.medianight.andoridhdm;
-import com.firstapplication.medianight.andoridhdm.MainActivity;
 
 /**
  * Created by Cpt Cranberry on 04/01/2015.
@@ -10,7 +9,6 @@ public class EntryDB {
     private String ExpendNameString;
     private String ExpendDateString;
     private String ExpendAmountString;
-
 
 
     public long getId() {
@@ -48,6 +46,8 @@ public class EntryDB {
     public String toString (){
         return String.format(" - %s € für %s am %s", ExpendAmountString, ExpendNameString, ExpendDateString);
     }
+
+
 
 
 

@@ -3,6 +3,7 @@ package com.firstapplication.medianight.andoridhdm;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -24,7 +25,6 @@ public class BalanceActivity extends Activity {
         TextView ScreenDate = (TextView)findViewById(R.id.text_date_balance);
         ScreenDate.setText(currentDate);
     }
-
 
     private Calendar myCalender = Calendar.getInstance();
     String myFormat = "dd.MM.yy";
