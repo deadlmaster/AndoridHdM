@@ -14,7 +14,7 @@ public class ExpendModel {
         return expID;
     }
 
-    public void setExpID(){
+    public void setExpID(long ExpID){
         this.expID = expID;
     }
 
@@ -30,15 +30,17 @@ public class ExpendModel {
         return ExpendAmountString;
     }
 
-   /** public void setExpendNameString(ExpendNameString){
-        this.ExpendNameString=ExpendNameString;
+    public void setExpendNameString(String ExpendNameString){
+        this.ExpendNameString = ExpendNameString;
     }
 
-    public void setExpendAmountString(ExpendAmountString){
+    public void setExpendAmountString(String ExpendAmountString){
         this.ExpendAmountString = ExpendAmountString;
     }
 
-    public void setExpendDateString(ExpendDateString){
+    public void setExpendDateString(String ExpendDateString){
         this.ExpendDateString = ExpendDateString;
-    }*/
+    }
+
+
 }

@@ -174,9 +174,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     }
 
 
-
-
-
     public SQLiteHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
     }

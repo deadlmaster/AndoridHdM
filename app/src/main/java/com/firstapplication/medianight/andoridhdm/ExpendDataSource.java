@@ -5,6 +5,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Cpt Cranberry on 11/01/2015.
  */
@@ -38,18 +41,35 @@ public class ExpendDataSource {
         long insertId = database.insert(SQLiteHelper.TABLE_EXPENDS, null, values);
         Cursor cursor = database.query("expends",expColumns, "ID = " + insertId, null, null, null, null);
         cursor.moveToFirst();
-        //ExpendModel newExpendModel = cursorToExpendModel(cursor);
+        ExpendModel newExpendModel = cursorToExpendModel(cursor);
         cursor.close();
         return cursorToExpendModel(cursor);
 
    }
 
-   /** private ExpendModel cursorToExpendModel(Cursor cursor) {
+    public List<ExpendModel> getAllExpends() {
+        List<ExpendModel> expends = new ArrayList<ExpendModel>();
+
+        Cursor cursor = database.query(SQLiteHelper.TABLE_EXPENDS,
+                expColumns, null, null, null, null, null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            ExpendModel expendmodel = cursorToExpendModel(cursor);
+            expends.add(expendmodel);
+            cursor.moveToNext();
+        }
+        // make sure to close the cursor
+        cursor.close();
+        return expends;
+    }
+
+   private ExpendModel cursorToExpendModel(Cursor cursor) {
         ExpendModel ExpendModel = new ExpendModel();
         ExpendModel.setExpID(cursor.getLong(0));
         ExpendModel.setExpendNameString(cursor.getString(1));
         ExpendModel.setExpendAmountString(cursor.getString(2));
         ExpendModel.setExpendDateString(cursor.getString(3));
         return ExpendModel;
-    }*/
+    }
 }
