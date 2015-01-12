@@ -6,7 +6,6 @@ package com.firstapplication.medianight.andoridhdm;
 public class PExpendModel {
 
     private String pExpendNameString;
-    private String pExpendDateString;
     private String pExpendAmountString;
     private long pExpID;
 
@@ -22,9 +21,6 @@ public class PExpendModel {
         return pExpendNameString;
     }
 
-    public String getPExpendDateString(){
-        return pExpendDateString;
-    }
 
     public String getPExpendAmountString(){
         return pExpendAmountString;
@@ -38,11 +34,8 @@ public class PExpendModel {
         this.pExpendAmountString = pExpendAmountString;
     }
 
-    public void setPExpendDateString(String pExpendDateString){
-        this.pExpendDateString = pExpendDateString;
-    }
 
     public String toString() {
-        return pExpendNameString + " " + pExpendAmountString +" "+ pExpendDateString;
+        return pExpendNameString + " " + pExpendAmountString;
     }
 }
