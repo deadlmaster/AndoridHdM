@@ -146,9 +146,18 @@ public class ExpendDataSource {
                  expendslist.add(expendModel);
 
              }
+        } else {
+            Log.d("DatabaseList", "No Data");
         }
         Log.d("DatabaseList", expendslist.toString());
         return expendslist;
+    }
+
+    public Cursor getExpend(){
+
+        Cursor cursor = dbHelper.getReadableDatabase().rawQuery("SELECT * FROM TABLE_EXPENDS", null);
+
+        return cursor;
     }
 
 

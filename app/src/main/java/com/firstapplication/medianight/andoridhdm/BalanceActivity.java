@@ -3,13 +3,16 @@ package com.firstapplication.medianight.andoridhdm;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 import java.sql.SQLException;
@@ -35,7 +38,15 @@ public class BalanceActivity extends Activity {
         setContentView(R.layout.balance_layout);
         TextView ScreenDate = (TextView)findViewById(R.id.text_date_balance);
         ScreenDate.setText(currentDate);
+        dataSource = new ExpendDataSource(BalanceActivity.this);
+        dataSource.open();
+        ListView test = (ListView)findViewById(R.id.expendList);
+
     }
+
+    ExpendDataSource dataSource;
+
+
 
 
     private Calendar myCalender = Calendar.getInstance();
