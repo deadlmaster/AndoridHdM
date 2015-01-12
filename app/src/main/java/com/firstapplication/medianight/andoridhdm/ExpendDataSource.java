@@ -60,8 +60,8 @@ public class ExpendDataSource {
         Log.d("Database", creditsmodel.toString());
         ContentValues values = new ContentValues();
         values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, creditsmodel.getCreditsNameString());
-        values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, creditsmodel.getCreditsDateString());
-        values.put(SQLiteHelper.COLUMN_EXPENDS_DATE, creditsmodel.getCreditsAmountString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, creditsmodel.getCreditsAmountString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_DATE, creditsmodel.getCreditsDateString());
 
         long insertId = database.insert(SQLiteHelper.TABLE_EXPENDS, null, values);
         creditsmodel.setCreditID(insertId);
@@ -73,8 +73,8 @@ public class ExpendDataSource {
         Log.d("Databse", debtsmodel.toString());
         ContentValues values = new ContentValues();
         values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, debtsmodel.getDebtsNameString());
-        values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, debtsmodel.getDebtsDateString());
-        values.put(SQLiteHelper.COLUMN_EXPENDS_DATE, debtsmodel.getDebtsAmountString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, debtsmodel.getDebtsAmountString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_DATE, debtsmodel.getDebtsDateString());
 
         long insertId = database.insert(SQLiteHelper.TABLE_EXPENDS, null, values);
         debtsmodel.setDebtID(insertId);
@@ -85,8 +85,8 @@ public class ExpendDataSource {
         Log.d("Databse", incomedmodel.toString());
         ContentValues values = new ContentValues();
         values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, incomedmodel.getIncomeNameString());
-        values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, incomedmodel.getIncomeDateString());
-        values.put(SQLiteHelper.COLUMN_EXPENDS_DATE, incomedmodel.getIncomeAmountString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, incomedmodel.getIncomeAmountString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_DATE, incomedmodel.getIncomeDateString());
 
         long insertId = database.insert(SQLiteHelper.TABLE_EXPENDS, null, values);
         incomedmodel.setIncID(insertId);
@@ -97,12 +97,38 @@ public class ExpendDataSource {
         Log.d("Databse", savingmodel.toString());
         ContentValues values = new ContentValues();
         values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, savingmodel.getSaveNameString());
-        values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, savingmodel.getSaveDateString());
-        values.put(SQLiteHelper.COLUMN_EXPENDS_DATE, savingmodel.getSaveAmountString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, savingmodel.getSaveAmountString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_DATE, savingmodel.getSaveDateString());
 
         long insertId = database.insert(SQLiteHelper.TABLE_EXPENDS, null, values);
         savingmodel.setSaveID(insertId);
         return savingmodel;
+
+    }
+
+    public PExpendModel createPExpend (PExpendModel pexpendgmodel) {
+        Log.d("Databse", pexpendgmodel.toString());
+        ContentValues values = new ContentValues();
+        values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, pexpendgmodel.getPExpendNameString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, pexpendgmodel.getPExpendAmountString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_DATE, pexpendgmodel.getPExpendDateString());
+
+        long insertId = database.insert(SQLiteHelper.TABLE_EXPENDS, null, values);
+        pexpendgmodel.setPExpID(insertId);
+        return pexpendgmodel;
+
+    }
+
+    public PIncomeModel createPIncome (PIncomeModel pincomegmodel) {
+        Log.d("Databse", pincomegmodel.toString());
+        ContentValues values = new ContentValues();
+        values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, pincomegmodel.getPIncomeNameString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, pincomegmodel.getPIncomeAmountString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_DATE, pincomegmodel.getPIncomeDateString());
+
+        long insertId = database.insert(SQLiteHelper.TABLE_EXPENDS, null, values);
+        pincomegmodel.setPIncID(insertId);
+        return pincomegmodel;
 
     }
 

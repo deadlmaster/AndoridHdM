@@ -14,7 +14,7 @@ public class ExpendModel {
         return expID;
     }
 
-    public void setExpID(long ExpID){
+    public void setExpID(long expID){
         this.expID = expID;
     }
 
