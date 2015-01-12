@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -19,7 +17,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
+import android.widget.Toast;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -29,7 +29,10 @@ public class MainActivity extends Activity {
 
     private PopupWindow popupWin;
     private Calendar myCalender = Calendar.getInstance();
-    private ExpendDataSource expSource;
+    ExpendDataSource dataSource;
+
+
+
 
 
 
@@ -38,7 +41,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-      /*
+
+
         ImageButton openbuttonexpend = (ImageButton)findViewById(R.id.main_expenditure);
         openbuttonexpend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,12 +83,17 @@ public class MainActivity extends Activity {
             }
 
         });
-*/
+        dataSource = new ExpendDataSource(MainActivity.this);
+        dataSource.open();
+
+
+    }
+
+    public void ToastDatabase(){
+        Toast.makeText(getApplicationContext(), "Daten in Datenbank geschrieben", Toast.LENGTH_SHORT).show();
     }
 
 
-
-/*
     private void initiatePopupWindowExpend(){
 
         try{
@@ -107,6 +116,7 @@ public class MainActivity extends Activity {
                     SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
                     ExpendDate.setText(dateForm.format(myCalender.getTime()));
 
+
                 }
             };
 
@@ -120,6 +130,16 @@ public class MainActivity extends Activity {
                 }
             });
 
+            final Button dimissButton = (Button) layout.findViewById(R.id.popup_expend_dimiss);
+            dimissButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                   popupWin.dismiss();
+
+                }
+            });
+
+
             Button submitButton = (Button) layout.findViewById(R.id.popup_expend_submit);
             submitButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -127,17 +147,20 @@ public class MainActivity extends Activity {
                     String ExpendNameString = ExpendName.getText().toString();
                     String ExpendAmountString = ExpendAmount.getText().toString();
                     String ExpendDateString = ExpendDate.getText().toString();
-                    //Log.d("Test", ExpendNameString);
-                    //Log.d("Test", ExpendAmountString);
-                    //Log.d("Test", ExpendDateString);
 
-                    //db open
-                    expSource.open();
-                    expSource.createExpendmodel(ExpendNameString, ExpendAmountString, ExpendDateString);
-                    expSource.close();
+                    Log.d("Test", ExpendNameString);
+                    Log.d("Test", ExpendAmountString);
+                    Log.d("Test", ExpendDateString);
 
+                    ExpendModel expendModel = new ExpendModel();
+                    expendModel.setExpendNameString(ExpendNameString);
+                    expendModel.setExpendAmountString(ExpendAmountString);
+                    expendModel.setExpendDateString(ExpendDateString);
 
+                    dataSource.createExpend(expendModel);
                     popupWin.dismiss();
+                    ToastDatabase();
+
 
                 }
             });
@@ -150,7 +173,6 @@ public class MainActivity extends Activity {
         }
 
     }
-
 
 
 
@@ -187,6 +209,14 @@ public class MainActivity extends Activity {
                 }
             });
 
+            Button dimissButton = (Button) layout.findViewById(R.id.popup_income_dimiss);
+            dimissButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    popupWin.dismiss();
+                }
+            });
+
 
             Button submitButton = (Button) layout.findViewById(R.id.popup_income_submit);
             submitButton.setOnClickListener(new View.OnClickListener() {
@@ -195,7 +225,17 @@ public class MainActivity extends Activity {
                     String IncomeNameString = IncomeName.getText().toString();
                     String IncomeAmountString = IncomeAmount.getText().toString();
                     String IncomeDateString = IncomeDate.getText().toString();
+
+                    ExpendModel expendModel = new ExpendModel();
+                    expendModel.setExpendNameString(IncomeNameString);
+                    expendModel.setExpendAmountString(IncomeAmountString);
+                    expendModel.setExpendDateString(IncomeDateString);
+
+
+                    dataSource.createExpend(expendModel);
+
                     popupWin.dismiss();
+                    ToastDatabase();
                 }
             });
 
@@ -241,6 +281,14 @@ public class MainActivity extends Activity {
                 }
             });
 
+            Button dimissButton = (Button) layout.findViewById(R.id.popup_debts_dimiss);
+            dimissButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    popupWin.dismiss();
+                }
+            });
+
 
             Button submitButton = (Button) layout.findViewById(R.id.popup_debts_submit);
             submitButton.setOnClickListener(new View.OnClickListener() {
@@ -250,6 +298,7 @@ public class MainActivity extends Activity {
                     String DebtsAmountString = DebtsAmount.getText().toString();
                     String DebtsDateString = DebtsDate.getText().toString();
                     popupWin.dismiss();
+                    ToastDatabase();
                 }
             });
 
@@ -295,6 +344,14 @@ public class MainActivity extends Activity {
                 }
             });
 
+            Button dimissButton = (Button) layout.findViewById(R.id.popup_credits_dimiss);
+            dimissButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    popupWin.dismiss();
+                }
+            });
+
 
             Button submitButton = (Button) layout.findViewById(R.id.popup_credits_submit);
             submitButton.setOnClickListener(new View.OnClickListener() {
@@ -304,6 +361,7 @@ public class MainActivity extends Activity {
                     String CreditsAmountString = CreditsAmount.getText().toString();
                     String CreditsDateString = CreditsDate.getText().toString();
                     popupWin.dismiss();
+                    ToastDatabase();
                 }
             });
 
@@ -347,6 +405,14 @@ public class MainActivity extends Activity {
                 }
             });
 
+            Button dimissButton = (Button) layout.findViewById(R.id.popup_saving_dimiss);
+            dimissButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    popupWin.dismiss();
+                }
+            });
+
 
             Button submitButton = (Button) layout.findViewById(R.id.popup_saving_submit);
             submitButton.setOnClickListener(new View.OnClickListener() {
@@ -356,6 +422,7 @@ public class MainActivity extends Activity {
                     String SavingAmountString = SavingAmount.getText().toString();
                     String SavingDateString = SavingDate.getText().toString();
                     popupWin.dismiss();
+                    ToastDatabase();
                 }
             });
 
@@ -365,7 +432,7 @@ public class MainActivity extends Activity {
         }
 
     }
-*/
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
