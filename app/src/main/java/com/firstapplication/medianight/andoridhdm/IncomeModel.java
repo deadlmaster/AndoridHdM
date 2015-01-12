@@ -26,7 +26,7 @@ public class IncomeModel{
         return incomeDateString;
     }
 
-    public String getExpendAmountString(){
+    public String getIncomeAmountString(){
         return incomeAmountString;
     }
 

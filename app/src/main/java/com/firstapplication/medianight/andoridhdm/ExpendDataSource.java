@@ -42,6 +42,7 @@ public class ExpendDataSource {
         dbHelper.close();
     }
 
+
     public ExpendModel createExpend (ExpendModel expendmodel) {
         Log.d("Databse", expendmodel.toString());
         ContentValues values = new ContentValues();
@@ -52,6 +53,56 @@ public class ExpendDataSource {
         long insertId = database.insert(SQLiteHelper.TABLE_EXPENDS, null, values);
         expendmodel.setExpID(insertId);
         return expendmodel;
+
+    }
+
+    public CreditsModel createCredit (CreditsModel creditsmodel) {
+        Log.d("Database", creditsmodel.toString());
+        ContentValues values = new ContentValues();
+        values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, creditsmodel.getCreditsNameString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, creditsmodel.getCreditsDateString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_DATE, creditsmodel.getCreditsAmountString());
+
+        long insertId = database.insert(SQLiteHelper.TABLE_EXPENDS, null, values);
+        creditsmodel.setCreditID(insertId);
+        return creditsmodel;
+
+    }
+
+    public DebtsModel createDebt (DebtsModel debtsmodel) {
+        Log.d("Databse", debtsmodel.toString());
+        ContentValues values = new ContentValues();
+        values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, debtsmodel.getDebtsNameString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, debtsmodel.getDebtsDateString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_DATE, debtsmodel.getDebtsAmountString());
+
+        long insertId = database.insert(SQLiteHelper.TABLE_EXPENDS, null, values);
+        debtsmodel.setDebtID(insertId);
+        return debtsmodel;
+
+    }
+    public IncomeModel createIncome (IncomeModel incomedmodel) {
+        Log.d("Databse", incomedmodel.toString());
+        ContentValues values = new ContentValues();
+        values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, incomedmodel.getIncomeNameString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, incomedmodel.getIncomeDateString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_DATE, incomedmodel.getIncomeAmountString());
+
+        long insertId = database.insert(SQLiteHelper.TABLE_EXPENDS, null, values);
+        incomedmodel.setIncID(insertId);
+        return incomedmodel;
+
+    }
+    public SavingModel createSaving (SavingModel savingmodel) {
+        Log.d("Databse", savingmodel.toString());
+        ContentValues values = new ContentValues();
+        values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, savingmodel.getSaveNameString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, savingmodel.getSaveDateString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_DATE, savingmodel.getSaveAmountString());
+
+        long insertId = database.insert(SQLiteHelper.TABLE_EXPENDS, null, values);
+        savingmodel.setSaveID(insertId);
+        return savingmodel;
 
     }
 
