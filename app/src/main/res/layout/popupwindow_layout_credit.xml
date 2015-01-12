@@ -101,12 +101,28 @@
 
 
         </LinearLayout>
-        <Button
+
+        <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Popup_credits_button"
-            android:id="@+id/popup_credits_submit"
-            />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="@string/Popup_credits_button"
+                android:id="@+id/popup_credits_submit"
+                />
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="@string/Popup_credits_button_dimiss"
+                android:id="@+id/popup_credits_dimiss"
+                />
+
+            ></LinearLayout>
+
+
 
     </LinearLayout>
 </LinearLayout>

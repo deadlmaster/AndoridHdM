@@ -58,5 +58,10 @@
     <string name="alert_namehint_credit">Name</string>
     <string name="alert_amounthint_credit">Betrag</string>
     <string name="alert_datehint_credit">Datum</string>
+    <string name="Popup_expend_button_dimiss">Dimiss</string>
+    <string name="Popup_saving_button_dimiss">Dimiss</string>
+    <string name="Popup_income_button_dimiss">Dimiss</string>
+    <string name="Popup_debts_button_dimiss">Dimiss</string>
+    <string name="Popup_credits_button_dimiss">Dimiss</string>
 
 </resources>

@@ -35,6 +35,7 @@ public class MainActivity extends Activity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,6 +125,15 @@ public class MainActivity extends Activity {
                 }
             });
 
+            Button dimissButton = (Button) layout.findViewById(R.id.popup_expend_dimiss);
+            dimissButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    popupWin.dismiss();
+                }
+            });
+
+
             Button submitButton = (Button) layout.findViewById(R.id.popup_expend_submit);
             submitButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -193,6 +203,14 @@ public class MainActivity extends Activity {
                 }
             });
 
+            Button dimissButton = (Button) layout.findViewById(R.id.popup_income_dimiss);
+            dimissButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    popupWin.dismiss();
+                }
+            });
+
 
             Button submitButton = (Button) layout.findViewById(R.id.popup_income_submit);
             submitButton.setOnClickListener(new View.OnClickListener() {
@@ -255,6 +273,14 @@ public class MainActivity extends Activity {
                 }
             });
 
+            Button dimissButton = (Button) layout.findViewById(R.id.popup_debts_dimiss);
+            dimissButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    popupWin.dismiss();
+                }
+            });
+
 
             Button submitButton = (Button) layout.findViewById(R.id.popup_debts_submit);
             submitButton.setOnClickListener(new View.OnClickListener() {
@@ -309,6 +335,14 @@ public class MainActivity extends Activity {
                 }
             });
 
+            Button dimissButton = (Button) layout.findViewById(R.id.popup_credits_dimiss);
+            dimissButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    popupWin.dismiss();
+                }
+            });
+
 
             Button submitButton = (Button) layout.findViewById(R.id.popup_credits_submit);
             submitButton.setOnClickListener(new View.OnClickListener() {
@@ -358,6 +392,14 @@ public class MainActivity extends Activity {
                 public void onClick(View v) {
                     new DatePickerDialog(MainActivity.this, date, myCalender.get(Calendar.YEAR), myCalender.get(Calendar.MONTH), myCalender.DAY_OF_MONTH).show();
 
+                }
+            });
+
+            Button dimissButton = (Button) layout.findViewById(R.id.popup_saving_dimiss);
+            dimissButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    popupWin.dismiss();
                 }
             });
 
