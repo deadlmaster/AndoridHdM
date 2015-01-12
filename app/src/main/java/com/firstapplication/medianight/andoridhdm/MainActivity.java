@@ -86,6 +86,11 @@ public class MainActivity extends Activity {
         dataSource = new ExpendDataSource(MainActivity.this);
         dataSource.open();
 
+
+    }
+
+    public void ToastDatabase(){
+        Toast.makeText(getApplicationContext(), "Daten in Datenbank geschrieben", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -125,11 +130,12 @@ public class MainActivity extends Activity {
                 }
             });
 
-            Button dimissButton = (Button) layout.findViewById(R.id.popup_expend_dimiss);
+            final Button dimissButton = (Button) layout.findViewById(R.id.popup_expend_dimiss);
             dimissButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    popupWin.dismiss();
+                   popupWin.dismiss();
+
                 }
             });
 
@@ -153,6 +159,7 @@ public class MainActivity extends Activity {
 
                     dataSource.createExpend(expendModel);
                     popupWin.dismiss();
+                    ToastDatabase();
 
 
                 }
@@ -166,7 +173,6 @@ public class MainActivity extends Activity {
         }
 
     }
-
 
 
 
@@ -225,9 +231,11 @@ public class MainActivity extends Activity {
                     expendModel.setExpendAmountString(IncomeAmountString);
                     expendModel.setExpendDateString(IncomeDateString);
 
+
                     dataSource.createExpend(expendModel);
 
                     popupWin.dismiss();
+                    ToastDatabase();
                 }
             });
 
@@ -290,6 +298,7 @@ public class MainActivity extends Activity {
                     String DebtsAmountString = DebtsAmount.getText().toString();
                     String DebtsDateString = DebtsDate.getText().toString();
                     popupWin.dismiss();
+                    ToastDatabase();
                 }
             });
 
@@ -352,6 +361,7 @@ public class MainActivity extends Activity {
                     String CreditsAmountString = CreditsAmount.getText().toString();
                     String CreditsDateString = CreditsDate.getText().toString();
                     popupWin.dismiss();
+                    ToastDatabase();
                 }
             });
 
@@ -412,6 +422,7 @@ public class MainActivity extends Activity {
                     String SavingAmountString = SavingAmount.getText().toString();
                     String SavingDateString = SavingDate.getText().toString();
                     popupWin.dismiss();
+                    ToastDatabase();
                 }
             });
 
