@@ -42,5 +42,7 @@ public class ExpendModel {
         this.ExpendDateString = ExpendDateString;
     }
 
-
+    public String toString() {
+        return ExpendNameString + " " + ExpendAmountString +" "+ ExpendDateString;
+    }
 }

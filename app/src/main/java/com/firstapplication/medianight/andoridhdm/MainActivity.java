@@ -17,7 +17,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
+import android.widget.Toast;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -27,6 +29,10 @@ public class MainActivity extends Activity {
 
     private PopupWindow popupWin;
     private Calendar myCalender = Calendar.getInstance();
+    ExpendDataSource dataSource;
+
+
+
 
 
     @Override
@@ -34,7 +40,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-      /*
+
+
         ImageButton openbuttonexpend = (ImageButton)findViewById(R.id.main_expenditure);
         openbuttonexpend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,12 +82,12 @@ public class MainActivity extends Activity {
             }
 
         });
-*/
+        dataSource = new ExpendDataSource(MainActivity.this);
+        dataSource.open();
+
     }
 
 
-
-/*
     private void initiatePopupWindowExpend(){
 
         try{
@@ -103,6 +110,7 @@ public class MainActivity extends Activity {
                     SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
                     ExpendDate.setText(dateForm.format(myCalender.getTime()));
 
+
                 }
             };
 
@@ -123,11 +131,19 @@ public class MainActivity extends Activity {
                     String ExpendNameString = ExpendName.getText().toString();
                     String ExpendAmountString = ExpendAmount.getText().toString();
                     String ExpendDateString = ExpendDate.getText().toString();
+
                     Log.d("Test", ExpendNameString);
                     Log.d("Test", ExpendAmountString);
                     Log.d("Test", ExpendDateString);
 
+                    ExpendModel expendModel = new ExpendModel();
+                    expendModel.setExpendNameString(ExpendNameString);
+                    expendModel.setExpendAmountString(ExpendAmountString);
+                    expendModel.setExpendDateString(ExpendDateString);
+
+                    dataSource.createExpend(expendModel);
                     popupWin.dismiss();
+
 
                 }
             });
@@ -185,6 +201,14 @@ public class MainActivity extends Activity {
                     String IncomeNameString = IncomeName.getText().toString();
                     String IncomeAmountString = IncomeAmount.getText().toString();
                     String IncomeDateString = IncomeDate.getText().toString();
+
+                    ExpendModel expendModel = new ExpendModel();
+                    expendModel.setExpendNameString(IncomeNameString);
+                    expendModel.setExpendAmountString(IncomeAmountString);
+                    expendModel.setExpendDateString(IncomeDateString);
+
+                    dataSource.createExpend(expendModel);
+
                     popupWin.dismiss();
                 }
             });
@@ -355,7 +379,7 @@ public class MainActivity extends Activity {
         }
 
     }
-*/
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

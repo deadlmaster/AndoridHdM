@@ -1,10 +1,13 @@
 package com.firstapplication.medianight.andoridhdm;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,16 +18,22 @@ public class ExpendDataSource {
 
 
 
-    SQLiteOpenHelper dbHelper;
-    SQLiteDatabase database;
+    private SQLiteOpenHelper dbHelper;
+    private SQLiteDatabase database;
 
     public final String[] expColumns = {
+            SQLiteHelper.COLUMN_EXPENDS_ID,
             SQLiteHelper.COLUMN_EXPENDS_NAME,
             SQLiteHelper.COLUMN_EXPENDS_AMOUNT,
             SQLiteHelper.COLUMN_EXPENDS_DATE,
     };
 
-    public void open(){
+    public ExpendDataSource(Context context) {
+
+        dbHelper = new SQLiteHelper(context);
+    }
+
+    public void open() {
         database = dbHelper.getWritableDatabase();
     }
 
@@ -32,44 +41,39 @@ public class ExpendDataSource {
         dbHelper.close();
     }
 
-    public ExpendModel createExpendmodel(String ExpendNameString, String ExpendAmountString, String ExpendDateString) {
+    public ExpendModel createExpend (ExpendModel expendmodel) {
+        Log.d("Databse", expendmodel.toString());
         ContentValues values = new ContentValues();
-        values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, ExpendNameString);
-        values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, ExpendAmountString);
-        values.put(SQLiteHelper.COLUMN_EXPENDS_DATE, ExpendDateString);
+        values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, expendmodel.getExpendNameString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, expendmodel.getExpendAmountString());
+        values.put(SQLiteHelper.COLUMN_EXPENDS_DATE, expendmodel.getExpendDateString());
 
         long insertId = database.insert(SQLiteHelper.TABLE_EXPENDS, null, values);
-        Cursor cursor = database.query("expends",expColumns, "ID = " + insertId, null, null, null, null);
-        cursor.moveToFirst();
-        ExpendModel newExpendModel = cursorToExpendModel(cursor);
-        cursor.close();
-        return cursorToExpendModel(cursor);
+        expendmodel.setExpID(insertId);
+        return expendmodel;
 
     }
 
     public List<ExpendModel> getAllExpends() {
-        List<ExpendModel> expends = new ArrayList<ExpendModel>();
+        List<ExpendModel> expendslist = new ArrayList<ExpendModel>();
 
         Cursor cursor = database.query(SQLiteHelper.TABLE_EXPENDS,
-                expColumns, null, null, null, null, null);
+                expColumns, null, null, null, null, SQLiteHelper.COLUMN_EXPENDS_DATE);
 
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            ExpendModel expendmodel = cursorToExpendModel(cursor);
-            expends.add(expendmodel);
-            cursor.moveToNext();
+        if (cursor.getCount() > 0) {
+             while (!cursor.isAfterLast()) {
+                 ExpendModel expendModel = new ExpendModel();
+                 expendModel.setExpID(cursor.getLong(cursor.getColumnIndex(SQLiteHelper.COLUMN_EXPENDS_ID)));
+                 expendModel.setExpendNameString(cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_EXPENDS_NAME)));
+                 expendModel.setExpendAmountString(cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_EXPENDS_AMOUNT)));
+                 expendModel.setExpendDateString(cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_EXPENDS_DATE)));
+                 expendslist.add(expendModel);
+
+             }
         }
-        // make sure to close the cursor
-        cursor.close();
-        return expends;
+        Log.d("DatabaseList", expendslist.toString());
+        return expendslist;
     }
 
-    private ExpendModel cursorToExpendModel(Cursor cursor) {
-        ExpendModel ExpendModel = new ExpendModel();
-        ExpendModel.setExpID(cursor.getLong(0));
-        ExpendModel.setExpendNameString(cursor.getString(1));
-        ExpendModel.setExpendAmountString(cursor.getString(2));
-        ExpendModel.setExpendDateString(cursor.getString(3));
-        return ExpendModel;
-    }
+
 }

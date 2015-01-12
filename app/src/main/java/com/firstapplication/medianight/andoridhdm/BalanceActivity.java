@@ -1,6 +1,7 @@
 package com.firstapplication.medianight.andoridhdm;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -24,10 +26,8 @@ import java.util.Locale;
 
 public class BalanceActivity extends Activity {
 
-    private ExpendDataSource exds;
-    private List<ExpendModel> expds = new ArrayList<ExpendModel>();
-    ArrayAdapter<ExpendModel> adapter;
-    ListView listView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,36 +35,8 @@ public class BalanceActivity extends Activity {
         setContentView(R.layout.balance_layout);
         TextView ScreenDate = (TextView)findViewById(R.id.text_date_balance);
         ScreenDate.setText(currentDate);
-        exds = new ExpendDataSource(); //fehlt this
-        exds.open();
-        initializeViews();
-        expds = exds.getAllExpends();
     }
 
-    public void initializeViews(){
-
-        listView = (ListView)findViewById(R.id.expendList);
-        listView.setLongClickable(true);
-
-    }
-
-    public void refreshDisplay(){
-        adapter = new ArrayAdapter<ExpendModel>(getApplicationContext(), android.R.layout.simple_list_item_1, expds);
-        listView.setAdapter(adapter);
-    }
-
-
-
-    private class MyTask extends AsyncTask<String, String, String>{
-        protected String doInBackground(String... strings){
-            expds = exds.getAllExpends();
-            return null;
-        }
-
-        protected void onPostExecute(String result){
-            refreshDisplay();
-        }
-    }
 
     private Calendar myCalender = Calendar.getInstance();
     String myFormat = "dd.MM.yy";
