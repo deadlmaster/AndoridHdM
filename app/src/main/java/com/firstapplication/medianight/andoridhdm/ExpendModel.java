@@ -5,9 +5,9 @@ package com.firstapplication.medianight.andoridhdm;
  */
 public class ExpendModel {
 
-    private String ExpendNameString;
-    private String ExpendDateString;
-    private String ExpendAmountString;
+    private String expendNameString;
+    private String expendDateString;
+    private String expendAmountString;
     private long expID;
 
     public long getExpID(){
@@ -19,30 +19,30 @@ public class ExpendModel {
     }
 
     public String getExpendNameString(){
-        return ExpendNameString;
+        return expendNameString;
     }
 
     public String getExpendDateString(){
-        return ExpendDateString;
+        return expendDateString;
     }
 
     public String getExpendAmountString(){
-        return ExpendAmountString;
+        return expendAmountString;
     }
 
     public void setExpendNameString(String ExpendNameString){
-        this.ExpendNameString = ExpendNameString;
+        this.expendNameString = ExpendNameString;
     }
 
     public void setExpendAmountString(String ExpendAmountString){
-        this.ExpendAmountString = ExpendAmountString;
+        this.expendAmountString = ExpendAmountString;
     }
 
     public void setExpendDateString(String ExpendDateString){
-        this.ExpendDateString = ExpendDateString;
+        this.expendDateString = ExpendDateString;
     }
 
     public String toString() {
-        return ExpendNameString + " " + ExpendAmountString +" "+ ExpendDateString;
+        return expendNameString + " " + expendAmountString +" "+ expendDateString;
     }
 }
