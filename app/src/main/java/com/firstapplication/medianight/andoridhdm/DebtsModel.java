@@ -11,11 +11,11 @@ public class DebtsModel {
     private String debtsAmountString;
     private long debtID;
 
-    public long debtExpID(){
+    public long debtID(){
         return debtID;
     }
 
-    public void setDebtID(long ExpID){
+    public void setDebtID(long debtID){
         this.debtID = debtID;
     }
 

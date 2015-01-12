@@ -11,11 +11,11 @@ public class CreditsModel {
     private String creditsAmountString;
     private long creditID;
 
-    public long creditExpID(){
+    public long creditID(){
         return creditID;
     }
 
-    public void setCreditID(long ExpID){
+    public void setCreditID(long creditID){
         this.creditID = creditID;
     }
 
