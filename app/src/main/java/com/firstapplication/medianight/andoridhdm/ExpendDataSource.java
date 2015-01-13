@@ -45,6 +45,7 @@ public class ExpendDataSource {
 
     public ExpendModel createExpend (ExpendModel expendmodel) {
         Log.d("DatabaseExp", expendmodel.toString());
+
         ContentValues values = new ContentValues();
         values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, expendmodel.getExpendNameString());
         values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, expendmodel.getExpendAmountString());
@@ -133,32 +134,35 @@ public class ExpendDataSource {
     public List<ExpendModel> getAllExpends() {
         List<ExpendModel> expendslist = new ArrayList<ExpendModel>();
 
-        Cursor cursor = database.query(SQLiteHelper.TABLE_EXPENDS,
-                expColumns, null, null, null, null, SQLiteHelper.COLUMN_EXPENDS_DATE);
+        String query = "SELECT  * FROM " + SQLiteHelper.TABLE_EXPENDS;
 
-        if (cursor.getCount() > 0) {
-             while (!cursor.isAfterLast()) {
-                 ExpendModel expendModel = new ExpendModel();
-                 expendModel.setExpID(cursor.getLong(cursor.getColumnIndex(SQLiteHelper.COLUMN_EXPENDS_ID)));
-                 expendModel.setExpendNameString(cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_EXPENDS_NAME)));
-                 expendModel.setExpendAmountString(cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_EXPENDS_AMOUNT)));
-                 expendModel.setExpendDateString(cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_EXPENDS_DATE)));
-                 expendslist.add(expendModel);
+        Cursor cursor = database.rawQuery(query, null);
 
-             }
-        } else {
-            Log.d("DatabaseList", "No Data");
+        // 3. go over each row, build book and add it to list
+        ExpendModel expend = null;
+        if (cursor.moveToFirst()) {
+            do {
+                expend = new ExpendModel();
+                expend.setExpID(Integer.parseInt(cursor.getString(0)));
+                expend.setExpendNameString(cursor.getString(1));
+                expend.setExpendAmountString(cursor.getString(2));
+                expend.setExpendDateString(cursor.getString(3));
+
+                // Add book to books
+                expendslist.add(expend);
+            } while (cursor.moveToNext());
         }
-        Log.d("DatabaseList", expendslist.toString());
+
+        Log.d("getAllBooks()", expend.toString());
+
+
         return expendslist;
     }
 
-    public Cursor getExpend(){
 
-        Cursor cursor = dbHelper.getReadableDatabase().rawQuery("SELECT * FROM TABLE_EXPENDS", null);
 
-        return cursor;
+    public boolean deleteExpend(long rowId){
+        String where = SQLiteHelper.COLUMN_EXPENDS_ID + "=" + rowId;
+        return database.delete(SQLiteHelper.TABLE_EXPENDS, where, null) !=0;
     }
-
-
 }

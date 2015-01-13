@@ -1,25 +1,76 @@
 package com.firstapplication.medianight.andoridhdm;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.List;
 
 /**
  * Created by Peter Tan on 04.01.2015.
  */
-public class DebtsCreditsActivity extends Activity {
+public class DebtsCreditsActivity extends ListActivity  {
+
+    private ExpendDataSource datasource;
+    ListView listView;
+    ArrayAdapter<ExpendModel> adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.debtscredits_layout);
-
+        datasource = new ExpendDataSource(this);
+        datasource.open();
+        populateExp();
     }
-    ExpendDataSource dataSource;
+
+
+    public void populateExp (){
+
+        listView = (ListView)findViewById(android.R.id.list);
+        listView.setLongClickable(true);
+
+        List<ExpendModel> values = datasource.getAllExpends();
+
+        ArrayAdapter<ExpendModel> adapter = new ArrayAdapter<ExpendModel>(this, android.R.layout.simple_list_item_1, values);
+
+
+        setListAdapter(adapter);
+    }
+
+    public void listViewItemLongClick(){
+        ListView listView = (ListView) findViewById(R.id.listView);
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                datasource.deleteExpend(id);
+
+
+
+                return false;
+            }
+        });
+    }
+
+    /**listView.OnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        @Override
+        public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+            String ExpendNameString = ((TextView) view.findViewById(android.R.id.text1)).getText().toString();
+            datasource.deleteExpend(ExpendNameString);
+            new MyTask().execute();
+            return true;
+        }
+    }*/
 
 
     @Override

@@ -42,7 +42,8 @@ public class ExpendModel {
         this.expendDateString = ExpendDateString;
     }
 
+    @Override
     public String toString() {
-        return expendNameString + " " + expendAmountString +" "+ expendDateString;
+        return expendNameString + " " + expendAmountString +" "+ expendDateString + " //" + expID;
     }
 }
