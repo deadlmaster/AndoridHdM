@@ -15,7 +15,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     // columns of the expends table
 
     public static final String TABLE_EXPENDS = "expends";
-    public static final String COLUMN_EXPENDS_ID = "expendId";
+    public static final String COLUMN_EXPENDS_ID = "_id";
     public static final String COLUMN_EXPENDS_NAME = "expendName";
     public static final String COLUMN_EXPENDS_AMOUNT = "expendsAmount";
     public static final String COLUMN_EXPENDS_DATE = "expendsDate";
