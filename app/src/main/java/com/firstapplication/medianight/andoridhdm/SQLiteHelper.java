@@ -15,7 +15,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     // columns of the expends table
 
     public static final String TABLE_EXPENDS = "expends";
-    public static final String COLUMN_EXPENDS_ID = "expendId";
+    public static final String COLUMN_EXPENDS_ID = "_id";
     public static final String COLUMN_EXPENDS_NAME = "expendName";
     public static final String COLUMN_EXPENDS_AMOUNT = "expendsAmount";
     public static final String COLUMN_EXPENDS_DATE = "expendsDate";
@@ -42,7 +42,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_PEXPENDS_ID = "_id";
     public static final String COLUMN_PEXPENDS_NAME = "pexpends_name";
     public static final String COLUMN_PEXPENDS_AMOUNT = "pexpends_amount";
-    public static final String COLUMN_PEXPENDS_DATE = "pexpends_date";
 
     // columns of the periodical income table
 
@@ -50,7 +49,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_PINCOME_ID = "_id";
     public static final String COLUMN_PINCOME_NAME = "pincome_name";
     public static final String COLUMN_PINCOME_AMOUNT = "pincome_amount";
-    public static final String COLUMN_PINCOME_DATE = "pincome_date";
 
     // columns of the debts table
 
@@ -105,8 +103,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             "CREATE TABLE if not exists" + TABLE_PINCOME + " ("
             + COLUMN_PINCOME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_PINCOME_NAME + " TEXT, "
-            + COLUMN_PINCOME_AMOUNT + " TEXT, "
-            + COLUMN_PINCOME_DATE + " TEXT) ";
+            + COLUMN_PINCOME_AMOUNT + " TEXT) ";
 
 
     // SQL statement of the pexpend table creation
@@ -115,8 +112,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             "CREATE TABLE if not exists" + TABLE_PEXPENDS + " ("
             + COLUMN_PEXPENDS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_PEXPENDS_NAME + " TEXT, "
-            + COLUMN_PEXPENDS_AMOUNT + " TEXT, "
-            + COLUMN_PEXPENDS_DATE + " TEXT) ";
+            + COLUMN_PEXPENDS_AMOUNT + " TEXT) ";
 
 
     // SQL statement of the debts table creation
@@ -127,7 +123,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_DEBTS_NAME + " TEXT, "
             + COLUMN_DEBTS_AMOUNT + " TEXT, "
             + COLUMN_DEBTS_DATE + " TEXT) ";
-
 
     // SQL statement of the credits table creation
 

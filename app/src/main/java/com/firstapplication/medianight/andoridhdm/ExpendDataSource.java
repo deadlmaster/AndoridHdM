@@ -44,7 +44,7 @@ public class ExpendDataSource {
 
 
     public ExpendModel createExpend (ExpendModel expendmodel) {
-        Log.d("Databse", expendmodel.toString());
+        Log.d("DatabaseExp", expendmodel.toString());
         ContentValues values = new ContentValues();
         values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, expendmodel.getExpendNameString());
         values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, expendmodel.getExpendAmountString());
@@ -57,7 +57,7 @@ public class ExpendDataSource {
     }
 
     public CreditsModel createCredit (CreditsModel creditsmodel) {
-        Log.d("Database", creditsmodel.toString());
+        Log.d("DatabaseCredit", creditsmodel.toString());
         ContentValues values = new ContentValues();
         values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, creditsmodel.getCreditsNameString());
         values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, creditsmodel.getCreditsAmountString());
@@ -70,7 +70,7 @@ public class ExpendDataSource {
     }
 
     public DebtsModel createDebt (DebtsModel debtsmodel) {
-        Log.d("Databse", debtsmodel.toString());
+        Log.d("DatabaseDevt", debtsmodel.toString());
         ContentValues values = new ContentValues();
         values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, debtsmodel.getDebtsNameString());
         values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, debtsmodel.getDebtsAmountString());
@@ -82,7 +82,7 @@ public class ExpendDataSource {
 
     }
     public IncomeModel createIncome (IncomeModel incomedmodel) {
-        Log.d("Databse", incomedmodel.toString());
+        Log.d("DatabaseInc", incomedmodel.toString());
         ContentValues values = new ContentValues();
         values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, incomedmodel.getIncomeNameString());
         values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, incomedmodel.getIncomeAmountString());
@@ -94,7 +94,7 @@ public class ExpendDataSource {
 
     }
     public SavingModel createSaving (SavingModel savingmodel) {
-        Log.d("Databse", savingmodel.toString());
+        Log.d("DatabaseSave", savingmodel.toString());
         ContentValues values = new ContentValues();
         values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, savingmodel.getSaveNameString());
         values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, savingmodel.getSaveAmountString());
@@ -107,11 +107,10 @@ public class ExpendDataSource {
     }
 
     public PExpendModel createPExpend (PExpendModel pexpendgmodel) {
-        Log.d("Databse", pexpendgmodel.toString());
+        Log.d("DatabasePExp", pexpendgmodel.toString());
         ContentValues values = new ContentValues();
         values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, pexpendgmodel.getPExpendNameString());
         values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, pexpendgmodel.getPExpendAmountString());
-        values.put(SQLiteHelper.COLUMN_EXPENDS_DATE, pexpendgmodel.getPExpendDateString());
 
         long insertId = database.insert(SQLiteHelper.TABLE_EXPENDS, null, values);
         pexpendgmodel.setPExpID(insertId);
@@ -120,11 +119,10 @@ public class ExpendDataSource {
     }
 
     public PIncomeModel createPIncome (PIncomeModel pincomegmodel) {
-        Log.d("Databse", pincomegmodel.toString());
+        Log.d("DatabasePInc", pincomegmodel.toString());
         ContentValues values = new ContentValues();
         values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, pincomegmodel.getPIncomeNameString());
         values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, pincomegmodel.getPIncomeAmountString());
-        values.put(SQLiteHelper.COLUMN_EXPENDS_DATE, pincomegmodel.getPIncomeDateString());
 
         long insertId = database.insert(SQLiteHelper.TABLE_EXPENDS, null, values);
         pincomegmodel.setPIncID(insertId);
@@ -148,9 +146,18 @@ public class ExpendDataSource {
                  expendslist.add(expendModel);
 
              }
+        } else {
+            Log.d("DatabaseList", "No Data");
         }
         Log.d("DatabaseList", expendslist.toString());
         return expendslist;
+    }
+
+    public Cursor getExpend(){
+
+        Cursor cursor = dbHelper.getReadableDatabase().rawQuery("SELECT * FROM TABLE_EXPENDS", null);
+
+        return cursor;
     }
 
 

@@ -6,7 +6,6 @@ package com.firstapplication.medianight.andoridhdm;
 public class PIncomeModel {
 
     private String pIncomeNameString;
-    private String pIncomeDateString;
     private String pIncomeAmountString;
     private long pIncID;
 
@@ -22,10 +21,6 @@ public class PIncomeModel {
         return pIncomeNameString;
     }
 
-    public String getPIncomeDateString(){
-        return pIncomeDateString;
-    }
-
     public String getPIncomeAmountString(){
         return pIncomeAmountString;
     }
@@ -38,11 +33,8 @@ public class PIncomeModel {
         this.pIncomeAmountString = pincomeAmountString;
     }
 
-    public void setPIncomeDateString(String pincomeDateString){
-        this.pIncomeDateString = pincomeDateString;
-    }
 
     public String toString() {
-        return pIncomeNameString + " " + pIncomeAmountString +" "+ pIncomeDateString;
+        return pIncomeNameString + " " + pIncomeAmountString;
     }
 }
