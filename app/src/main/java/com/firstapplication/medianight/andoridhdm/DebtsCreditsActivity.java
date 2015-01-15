@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -32,6 +33,22 @@ public class DebtsCreditsActivity extends ListActivity  {
         datasource = new ExpendDataSource(this);
         datasource.open();
         populateExp();
+
+        listView.setOnItemLongClickListener(new OnItemLongClickListener() {
+            // setting onItemLongClickListener and passing the position to the function
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                           int position, long arg3) {
+
+                String expDel = ((TextView) arg1.findViewById(android.R.id.text1)).getText().toString();
+                String expLike = expDel.substring(0,5);
+                datasource.deleteExpend(expLike);
+
+                //datasource.testdeleteexpend(arg3);
+                populateExp();
+                return true;
+            }
+        });
     }
 
 
@@ -48,19 +65,10 @@ public class DebtsCreditsActivity extends ListActivity  {
         setListAdapter(adapter);
     }
 
-    public void listViewItemLongClick(){
-        ListView listView = (ListView) findViewById(R.id.listView);
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                datasource.deleteExpend(id);
 
 
 
-                return false;
-            }
-        });
-    }
+
 
     /**listView.OnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
         @Override

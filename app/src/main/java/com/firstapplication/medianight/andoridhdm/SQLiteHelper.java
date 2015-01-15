@@ -9,7 +9,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
 
     private static final String DATABASE_NAME = "plainplaner.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 4;
 
 
     // columns of the expends table
@@ -100,7 +100,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     // SQL statement of the pincome table creation
 
     private static final String SQL_CREATE_TABLE_PINCOME =
-            "CREATE TABLE if not exists" + TABLE_PINCOME + " ("
+            "CREATE TABLE if not exists " + TABLE_PINCOME + " ("
             + COLUMN_PINCOME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_PINCOME_NAME + " TEXT, "
             + COLUMN_PINCOME_AMOUNT + " TEXT) ";
@@ -109,7 +109,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     // SQL statement of the pexpend table creation
 
     private static final String SQL_CREATE_TABLE_PEXPENDS =
-            "CREATE TABLE if not exists" + TABLE_PEXPENDS + " ("
+            "CREATE TABLE if not exists " + TABLE_PEXPENDS + " ("
             + COLUMN_PEXPENDS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_PEXPENDS_NAME + " TEXT, "
             + COLUMN_PEXPENDS_AMOUNT + " TEXT) ";
@@ -118,7 +118,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     // SQL statement of the debts table creation
 
     private static final String SQL_CREATE_TABLE_DEBTS =
-            "CREATE TABLE if not exists" + TABLE_DEBTS + " ("
+            "CREATE TABLE if not exists " + TABLE_DEBTS + " ("
             + COLUMN_DEBTS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_DEBTS_NAME + " TEXT, "
             + COLUMN_DEBTS_AMOUNT + " TEXT, "
@@ -127,7 +127,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     // SQL statement of the credits table creation
 
     private static final String SQL_CREATE_TABLE_CREDITS =
-            "CREATE TABLE if not exists" + TABLE_CREDITS + " ("
+            "CREATE TABLE if not exists " + TABLE_CREDITS + " ("
             + COLUMN_CREDITS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_CREDITS_NAME + " TEXT, "
             + COLUMN_CREDITS_AMOUNT + " TEXT, "
@@ -163,6 +163,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_DREAMGOAL);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CREDITS);
 
+      this.onCreate(db);
     }
 
 

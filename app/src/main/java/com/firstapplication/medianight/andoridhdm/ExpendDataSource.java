@@ -160,9 +160,14 @@ public class ExpendDataSource {
     }
 
 
+   /** public boolean testdeleteexpend (long expDel){
+        String where = SQLiteHelper.COLUMN_EXPENDS_ID + "=" + expDel;
+        return database.delete(SQLiteHelper.TABLE_EXPENDS, where, null) !=0;
+    }*/
 
-    public boolean deleteExpend(long rowId){
-        String where = SQLiteHelper.COLUMN_EXPENDS_ID + "=" + rowId;
+    public boolean deleteExpend(String expLike){
+        Log.d("String", expLike.toString());
+        String where = SQLiteHelper.COLUMN_EXPENDS_NAME + " LIKE " + "'" + expLike + "%'";
         return database.delete(SQLiteHelper.TABLE_EXPENDS, where, null) !=0;
     }
 }
