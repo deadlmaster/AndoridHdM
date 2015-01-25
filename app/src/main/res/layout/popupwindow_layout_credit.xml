@@ -68,7 +68,7 @@
                     android:id="@+id/editText_popup_credits_amount"
                     android:hint="200,50€"
                     android:layout_marginLeft="5dp"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:singleLine="true"
                     />
 
