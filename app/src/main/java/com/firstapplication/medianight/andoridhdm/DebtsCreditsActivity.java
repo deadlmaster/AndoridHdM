@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,7 +33,10 @@ public class DebtsCreditsActivity extends ListActivity  {
         setContentView(R.layout.debtscredits_layout);
         datasource = new ExpendDataSource(this);
         datasource.open();
-        populateExp();
+
+
+        try { populateExp(); } catch (Exception e) {
+            e.printStackTrace(); }
 
         listView.setOnItemLongClickListener(new OnItemLongClickListener() {
             // setting onItemLongClickListener and passing the position to the function
@@ -41,11 +45,15 @@ public class DebtsCreditsActivity extends ListActivity  {
                                            int position, long arg3) {
 
                 String expDel = ((TextView) arg1.findViewById(android.R.id.text1)).getText().toString();
-                String expLike = expDel.substring(0,5);
-                datasource.deleteExpend(expLike);
+                Log.d("StringTest1", expDel);
+                String expLike = expDel.substring(3,5);
+                Log.d("StringTest", expLike);
 
+                datasource.deleteExpend(expLike);
+                Intent intent = getIntent();
                 //datasource.testdeleteexpend(arg3);
-                populateExp();
+                try {populateExp();} catch (Exception e) {finish();
+                startActivity(intent);}
                 return true;
             }
         });

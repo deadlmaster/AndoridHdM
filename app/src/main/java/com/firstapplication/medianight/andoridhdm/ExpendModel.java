@@ -44,6 +44,6 @@ public class ExpendModel {
 
     @Override
     public String toString() {
-        return expendNameString + " " + expendAmountString +" "+ expendDateString + " //" + expID;
+        return "Nr." + expID + "    "+ expendNameString + "   |   " + expendAmountString +"€   |   "+ expendDateString;
     }
 }

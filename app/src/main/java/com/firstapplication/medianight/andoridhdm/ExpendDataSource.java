@@ -167,7 +167,7 @@ public class ExpendDataSource {
 
     public boolean deleteExpend(String expLike){
         Log.d("String", expLike.toString());
-        String where = SQLiteHelper.COLUMN_EXPENDS_NAME + " LIKE " + "'" + expLike + "%'";
+        String where = SQLiteHelper.COLUMN_EXPENDS_ID + "=" + expLike;
         return database.delete(SQLiteHelper.TABLE_EXPENDS, where, null) !=0;
     }
 }
