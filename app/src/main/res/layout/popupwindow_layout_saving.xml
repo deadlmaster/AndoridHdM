@@ -41,6 +41,8 @@
                     android:text="@string/popup_saving_name"
                     android:textSize="20dp"/>
 
+
+
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"

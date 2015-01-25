@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp" >
+    android:paddingRight="16dp"
+    android:background="@drawable/ppbackground2"
+    >
 
 
     <TextView
@@ -49,7 +51,13 @@
         android:textSize="18sp"
         android:layout_marginTop="20dp" />
 
-    <EditText
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
+        <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:focusable="false"
@@ -73,6 +81,12 @@
             android:id="@+id/text_report_perincome"
             android:textSize="18sp"
             android:layout_marginTop="20dp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
 
         <EditText
             android:layout_width="wrap_content"
@@ -101,6 +115,12 @@
             android:textSize="18sp"
             android:layout_marginTop="20dp" />
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -126,25 +146,33 @@
             android:textSize="18sp"
             android:layout_marginTop="20dp" />
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:focusable="false"
             android:ems="10"
-            android:id="@+id/edittext_report_income_value" />
+            android:id="@+id/edittext_report_income_value"
+
+            />
 
 
     </LinearLayout>
 
     <View
         android:layout_width="fill_parent"
-        android:layout_height="3dp"
+        android:layout_height="2dp"
         android:background="@android:color/darker_gray"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="30dp"/>
 
     <View
         android:layout_width="fill_parent"
-        android:layout_height="3dp"
+        android:layout_height="2dp"
         android:background="@android:color/darker_gray"
         android:layout_marginTop="10dp"/>
 
@@ -166,6 +194,12 @@
             android:id="@+id/text_report_result"
             android:textSize="25sp"
             android:layout_marginTop="20dp"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             />
 
         <EditText
@@ -195,6 +229,12 @@
             android:layout_marginTop="20dp"
             />
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -220,6 +260,12 @@
             android:id="@+id/text_report_dreamgoal_months"
             android:textSize="20sp"
             android:layout_marginTop="20dp"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             />
 
         <EditText

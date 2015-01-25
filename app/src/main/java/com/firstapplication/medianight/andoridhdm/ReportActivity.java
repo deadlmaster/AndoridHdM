@@ -27,8 +27,6 @@ public class ReportActivity extends Activity {
         setContentView(R.layout.report_layout);
         TextView ScreenDate = (TextView)findViewById(R.id.text_date_report);
         ScreenDate.setText(currentDate);
-        ExpendDataSource dataSource = new ExpendDataSource(ReportActivity.this);
-        dataSource.getAllExpends();
 
     }
 

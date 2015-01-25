@@ -81,7 +81,7 @@ public class MainActivity extends Activity {
 
         });
         dataSource = new ExpendDataSource(MainActivity.this);
-        List<ExpendModel> values = dataSource.getAllExpends();
+     //   List<ExpendModel> values = dataSource.getAllExpends();
 
 
     }
