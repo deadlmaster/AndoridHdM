@@ -5,79 +5,40 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Toast;
+import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 
 /**
  * Created by Peter Tan on 04.01.2015.
  */
-public class IncomeExpendAcitvity extends Activity {
+
+public class ReportActivity extends Activity {
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eas);
-        Button submitButton = (Button)findViewById(R.id.buttonIncomeExpenditure);
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendInputToDatabase();
-            }
-        });
-        dataSource = new ExpendDataSource(IncomeExpendAcitvity.this);
-        dataSource.open();
-
+        setContentView(R.layout.report_layout);
+        TextView ScreenDate = (TextView)findViewById(R.id.text_date_report);
+        ScreenDate.setText(currentDate);
+        ExpendDataSource dataSource = new ExpendDataSource(ReportActivity.this);
+        dataSource.getAllExpends();
 
     }
 
-    ExpendDataSource dataSource;
 
 
-    public void sendInputToDatabase() {
+    private Calendar myCalender = Calendar.getInstance();
+    String myFormat = "dd.MM.yy";
+    SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
+    String currentDate = dateForm.format(myCalender.getTime());
 
-        EditText name = (EditText) findViewById(R.id.easName);
-        EditText amount = (EditText) findViewById(R.id.easAmount);
-        RadioButton radioIncome = (RadioButton) findViewById(R.id.radioEarning);
-        RadioButton radioExpend = (RadioButton) findViewById(R.id.radioSpending);
-
-
-        if (radioIncome.isChecked()) {
-
-            String nameString = name.getText().toString();
-            String nameAmount = amount.getText().toString();
-
-
-            PIncomeModel pincomeModel = new PIncomeModel();
-            pincomeModel.setPIncomeNameString(nameString);
-            pincomeModel.setPIncomeAmountString(nameAmount);
-            dataSource.createPIncome(pincomeModel);
-
-
-            Toast.makeText(this, "In Datenbank geschrieben", Toast.LENGTH_SHORT).show();
-            name.getText().clear();
-            amount.getText().clear();
-
-
-        } else if (radioExpend.isChecked()) {
-
-            String nameString = name.getText().toString();
-            String nameAmount = amount.getText().toString();
-
-            PExpendModel pexpendModel = new PExpendModel();
-            pexpendModel.setPExpendNameString(nameString);
-            pexpendModel.setPExpendAmountString(nameAmount);
-            dataSource.createPExpend(pexpendModel);
-
-            Toast.makeText(this, "In Datenbank geschrieben", Toast.LENGTH_SHORT).show();
-            name.getText().clear();
-            amount.getText().clear();
-
-        } else {
-            Toast.makeText(this, "Bitte einen Button auswählen", Toast.LENGTH_SHORT).show();
-        }
-    }
 
 
     @Override
@@ -86,8 +47,6 @@ public class IncomeExpendAcitvity extends Activity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
-
 
 
 
@@ -162,5 +121,7 @@ public class IncomeExpendAcitvity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 
 }

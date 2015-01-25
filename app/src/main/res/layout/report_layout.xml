@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/report_text_title"
+        android:id="@+id/text_report"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:paddingTop="12dp"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/currentdate_text"
+        android:id="@+id/text_date_report"
+        android:textStyle="bold"
+        android:layout_alignParentRight="true"
+        android:paddingTop="12dp"/>
+
+
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="60dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_report_perexpense"
+        android:id="@+id/text_report_perexpense"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:ems="10"
+        android:id="@+id/edittext_report_preexpense_value"/>
+
+     </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_report_perincome"
+            android:id="@+id/text_report_perincome"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:ems="10"
+            android:id="@+id/edittext_report_perincome_value" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="horizontal"
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_report_expense"
+            android:id="@+id/text_report_expense"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:ems="10"
+            android:id="@+id/edittext_report_expense_value" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_report_income"
+            android:id="@+id/text_report_income"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:ems="10"
+            android:id="@+id/edittext_report_income_value" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginTop="10dp"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginTop="10dp"/>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_report_result"
+            android:id="@+id/text_report_result"
+            android:textSize="25sp"
+            android:layout_marginTop="20dp"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:ems="10"
+            android:id="@+id/edittext_report_result_value" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_report_dreamgoal"
+            android:id="@+id/text_report_dreamgoal"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:ems="10"
+            android:id="@+id/edittext_report_result_dreamgoal" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_report_dreamgoal_months"
+            android:id="@+id/text_report_dreamgoal_months"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:ems="10"
+            android:id="@+id/edittext_report_result_dreamgoal_months" />
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
+
+
+
+</RelativeLayout>

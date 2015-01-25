@@ -1,83 +1,89 @@
 package com.firstapplication.medianight.andoridhdm;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Toast;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.List;
 
 /**
  * Created by Peter Tan on 04.01.2015.
  */
-public class IncomeExpendAcitvity extends Activity {
+public class ExpendsActivity extends ListActivity  {
+
+    private ExpendDataSource datasource;
+    ListView listView;
+    ArrayAdapter<ExpendModel> adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eas);
-        Button submitButton = (Button)findViewById(R.id.buttonIncomeExpenditure);
-        submitButton.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.expends_layout);
+        datasource = new ExpendDataSource(this);
+        datasource.open();
+
+
+        try { populateExp(); } catch (Exception e) {
+            e.printStackTrace(); }
+
+        listView.setOnItemLongClickListener(new OnItemLongClickListener() {
+            // setting onItemLongClickListener and passing the position to the function
             @Override
-            public void onClick(View v) {
-                sendInputToDatabase();
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                           int position, long arg3) {
+
+                String expDel = ((TextView) arg1.findViewById(android.R.id.text1)).getText().toString();
+                Log.d("StringTest1", expDel);
+                String expLike = expDel.substring(3,5);
+                Log.d("StringTest", expLike);
+
+                datasource.deleteExpend(expLike);
+                Intent intent = getIntent();
+                //datasource.testdeleteexpend(arg3);
+                try {populateExp();} catch (Exception e) {finish();
+                startActivity(intent);}
+                return true;
             }
         });
-        dataSource = new ExpendDataSource(IncomeExpendAcitvity.this);
-        dataSource.open();
-
-
     }
 
-    ExpendDataSource dataSource;
+
+    public void populateExp (){
+
+        listView = (ListView)findViewById(android.R.id.list);
+        listView.setLongClickable(true);
+
+        List<ExpendModel> values = datasource.getAllExpends();
+
+        ArrayAdapter<ExpendModel> adapter = new ArrayAdapter<ExpendModel>(this, android.R.layout.simple_list_item_1, values);
 
 
-    public void sendInputToDatabase() {
-
-        EditText name = (EditText) findViewById(R.id.easName);
-        EditText amount = (EditText) findViewById(R.id.easAmount);
-        RadioButton radioIncome = (RadioButton) findViewById(R.id.radioEarning);
-        RadioButton radioExpend = (RadioButton) findViewById(R.id.radioSpending);
+        setListAdapter(adapter);
+    }
 
 
-        if (radioIncome.isChecked()) {
-
-            String nameString = name.getText().toString();
-            String nameAmount = amount.getText().toString();
 
 
-            PIncomeModel pincomeModel = new PIncomeModel();
-            pincomeModel.setPIncomeNameString(nameString);
-            pincomeModel.setPIncomeAmountString(nameAmount);
-            dataSource.createPIncome(pincomeModel);
 
 
-            Toast.makeText(this, "In Datenbank geschrieben", Toast.LENGTH_SHORT).show();
-            name.getText().clear();
-            amount.getText().clear();
-
-
-        } else if (radioExpend.isChecked()) {
-
-            String nameString = name.getText().toString();
-            String nameAmount = amount.getText().toString();
-
-            PExpendModel pexpendModel = new PExpendModel();
-            pexpendModel.setPExpendNameString(nameString);
-            pexpendModel.setPExpendAmountString(nameAmount);
-            dataSource.createPExpend(pexpendModel);
-
-            Toast.makeText(this, "In Datenbank geschrieben", Toast.LENGTH_SHORT).show();
-            name.getText().clear();
-            amount.getText().clear();
-
-        } else {
-            Toast.makeText(this, "Bitte einen Button auswählen", Toast.LENGTH_SHORT).show();
+    /**listView.OnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        @Override
+        public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+            String ExpendNameString = ((TextView) view.findViewById(android.R.id.text1)).getText().toString();
+            datasource.deleteExpend(ExpendNameString);
+            new MyTask().execute();
+            return true;
         }
-    }
+    }*/
 
 
     @Override
@@ -86,8 +92,6 @@ public class IncomeExpendAcitvity extends Activity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
-
 
 
 
@@ -162,5 +166,4 @@ public class IncomeExpendAcitvity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

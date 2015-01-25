@@ -1,6 +1,5 @@
 package com.firstapplication.medianight.andoridhdm;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,17 +10,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
 /**
  * Created by Peter Tan on 04.01.2015.
  */
-public class DebtsCreditsActivity extends ListActivity  {
+public class CreditsActivity extends ListActivity  {
 
     private ExpendDataSource datasource;
     ListView listView;
@@ -30,7 +27,7 @@ public class DebtsCreditsActivity extends ListActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.debtscredits_layout);
+        setContentView(R.layout.credits_layout);
         datasource = new ExpendDataSource(this);
         datasource.open();
 
@@ -53,7 +50,7 @@ public class DebtsCreditsActivity extends ListActivity  {
                 Intent intent = getIntent();
                 //datasource.testdeleteexpend(arg3);
                 try {populateExp();} catch (Exception e) {finish();
-                startActivity(intent);}
+                    startActivity(intent);}
                 return true;
             }
         });
@@ -79,13 +76,13 @@ public class DebtsCreditsActivity extends ListActivity  {
 
 
     /**listView.OnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-        @Override
-        public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-            String ExpendNameString = ((TextView) view.findViewById(android.R.id.text1)).getText().toString();
-            datasource.deleteExpend(ExpendNameString);
-            new MyTask().execute();
-            return true;
-        }
+    @Override
+    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+    String ExpendNameString = ((TextView) view.findViewById(android.R.id.text1)).getText().toString();
+    datasource.deleteExpend(ExpendNameString);
+    new MyTask().execute();
+    return true;
+    }
     }*/
 
 
@@ -96,6 +93,7 @@ public class DebtsCreditsActivity extends ListActivity  {
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -104,25 +102,17 @@ public class DebtsCreditsActivity extends ListActivity  {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        } else if (id == R.id.action_main) {
+        if (id == R.id.action_main) {
             Intent MainScreenIntent = new Intent(this, MainActivity.class);
             final int result = 1;
             startActivity(MainScreenIntent);
             return true;
 
-        } else if (id == R.id.action_balance) {
+        } else if (id == R.id.action_report) {
 
-            Intent BalanceScreenIntent = new Intent(this, BalanceActivity.class);
+            Intent ReportScreenIntent = new Intent(this, ReportActivity.class);
             final int result = 1;
-            startActivity(BalanceScreenIntent);
-            return true;
-
-        } else if (id == R.id.action_debtscredits) {
-            Intent DebtsCreditsScreenIntent = new Intent(this, DebtsCreditsActivity.class);
-            final int result = 1;
-            startActivity(DebtsCreditsScreenIntent);
+            startActivity(ReportScreenIntent);
             return true;
 
         } else if (id == R.id.action_incomeexpend) {
@@ -131,20 +121,48 @@ public class DebtsCreditsActivity extends ListActivity  {
             startActivity(IncomeExpendScreenIntent);
             return true;
 
+        } else if (id == R.id.action_debts) {
+            Intent DebtsScreenIntent = new Intent(this, DebtsActivity.class);
+            final int result = 1;
+            startActivity(DebtsScreenIntent);
+            return true;
+
+        } else if (id == R.id.action_credits) {
+            Intent CreditsScreenIntent = new Intent(this, CreditsActivity.class);
+            final int result = 1;
+            startActivity(CreditsScreenIntent);
+            return true;
+
+        } else if (id == R.id.action_income) {
+            Intent IncomeScreenIntent = new Intent(this, IncomeActivity.class);
+            final int result = 1;
+            startActivity(IncomeScreenIntent);
+            return true;
+
+        } else if (id == R.id.action_expends) {
+            Intent ExpendsScreenIntent = new Intent(this, ExpendsActivity.class);
+            final int result = 1;
+            startActivity(ExpendsScreenIntent);
+            return true;
+
+        } else if (id == R.id.action_pexpends) {
+            Intent PExpendsScreenIntent = new Intent(this, PExpendActivity.class);
+            final int result = 1;
+            startActivity(PExpendsScreenIntent);
+            return true;
+
+        } else if (id == R.id.action_pincome) {
+            Intent PIncomeScreenIntent = new Intent(this, PIncomeActivity.class);
+            final int result = 1;
+            startActivity(PIncomeScreenIntent);
+            return true;
+
         } else if (id == R.id.action_dreamlist) {
             Intent DreamlistScreenIntent = new Intent(this, DreamlistActivity.class);
             final int result = 1;
             startActivity(DreamlistScreenIntent);
             return true;
-
-        } else if (id == R.id.action_help) {
-
-        } else if ( id == R.id.action_exit) {
-            finish();
-            return true;
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 }

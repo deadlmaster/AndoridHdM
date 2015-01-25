@@ -1,11 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
 
-    <item
-        android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:orderInCategory="101"
-        android:showAsAction="never" />
 
     <item
         android:id="@+id/action_main"
@@ -13,34 +8,51 @@
         android:orderInCategory="102" />
 
     <item
-        android:id="@+id/action_balance"
-        android:title="@string/action_balance"
+        android:id="@+id/action_report"
+        android:title="@string/action_report"
         android:orderInCategory="103" />
-
-    <item
-        android:id="@+id/action_debtscredits"
-        android:title="@string/action_debtscredits"
-        android:orderInCategory="104" />
 
     <item
         android:id="@+id/action_incomeexpend"
         android:title="@string/action_incomeexpend"
+        android:orderInCategory="104" />
+
+    <item
+        android:id="@+id/action_debts"
+        android:title="@string/action_debts"
         android:orderInCategory="105" />
+
+    <item
+        android:id="@+id/action_credits"
+        android:title="@string/action_credits"
+        android:orderInCategory="106" />
+
+    <item
+        android:id="@+id/action_income"
+        android:title="@string/action_income"
+        android:orderInCategory="107" />
+
+    <item
+        android:id="@+id/action_expends"
+        android:title="@string/action_expends"
+        android:orderInCategory="107" />
+
+    <item
+        android:id="@+id/action_pincome"
+        android:title="@string/action_pincome"
+        android:orderInCategory="107" />
+
+    <item
+        android:id="@+id/action_pexpends"
+        android:title="@string/action_pexpends"
+        android:orderInCategory="108" />
+
 
     <item
         android:id="@+id/action_dreamlist"
         android:title="@string/action_dreamlist"
-        android:orderInCategory="106" />
-
-    <item
-        android:id="@+id/action_help"
-        android:title="@string/action_help"
-        android:orderInCategory="107" />
+        android:orderInCategory="109" />
 
 
-    <item
-        android:id="@+id/action_exit"
-        android:title="@string/action_exit"
-        android:orderInCategory="108" />
 
 </menu>

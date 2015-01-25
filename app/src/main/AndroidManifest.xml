@@ -21,12 +21,32 @@
         </activity>
 
         <activity
-            android:name="com.firstapplication.medianight.andoridhdm.BalanceActivity"
+            android:name=".ReportActivity"
             android:label="@string/screenBalance" />
 
         <activity
-            android:name="com.firstapplication.medianight.andoridhdm.DebtsCreditsActivity"
-            android:label="@string/screenDebtsCredits" />
+            android:name=".ExpendsActivity"
+            android:label="@string/screenExpends" />
+
+        <activity
+            android:name=".IncomeActivity"
+            android:label="@string/screenIncome" />
+
+        <activity
+            android:name=".CreditsActivity"
+            android:label="@string/screenCredits" />
+
+        <activity
+            android:name=".DebtsActivity"
+            android:label="@string/screenDebts" />
+
+        <activity
+            android:name=".PExpendActivity"
+            android:label="@string/screenPExpends" />
+
+        <activity
+            android:name=".PIncomeActivity"
+            android:label="@string/screenPIncome" />
 
         <activity
             android:name="com.firstapplication.medianight.andoridhdm.DreamlistActivity"
@@ -35,6 +55,7 @@
         <activity
             android:name="com.firstapplication.medianight.andoridhdm.IncomeExpendAcitvity"
             android:label="@string/screenIncomeExpend" />
+
 
 
     </application>

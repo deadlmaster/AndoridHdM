@@ -19,9 +19,9 @@ import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 
@@ -81,7 +81,7 @@ public class MainActivity extends Activity {
 
         });
         dataSource = new ExpendDataSource(MainActivity.this);
-        dataSource.open();
+        List<ExpendModel> values = dataSource.getAllExpends();
 
 
     }
@@ -153,7 +153,7 @@ public class MainActivity extends Activity {
                     expendModel.setExpendNameString(ExpendNameString);
                     expendModel.setExpendAmountString(ExpendAmountString);
                     expendModel.setExpendDateString(ExpendDateString);
-
+                    dataSource.open();
                     dataSource.createExpend(expendModel);
                     popupWin.dismiss();
                     ToastDatabase();
@@ -438,6 +438,7 @@ public class MainActivity extends Activity {
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -446,25 +447,17 @@ public class MainActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        } else if (id == R.id.action_main) {
+        if (id == R.id.action_main) {
             Intent MainScreenIntent = new Intent(this, MainActivity.class);
             final int result = 1;
             startActivity(MainScreenIntent);
             return true;
 
-        } else if (id == R.id.action_balance) {
+        } else if (id == R.id.action_report) {
 
-            Intent BalanceScreenIntent = new Intent(this, BalanceActivity.class);
+            Intent ReportScreenIntent = new Intent(this, ReportActivity.class);
             final int result = 1;
-            startActivity(BalanceScreenIntent);
-            return true;
-
-        } else if (id == R.id.action_debtscredits) {
-            Intent DebtsCreditsScreenIntent = new Intent(this, DebtsCreditsActivity.class);
-            final int result = 1;
-            startActivity(DebtsCreditsScreenIntent);
+            startActivity(ReportScreenIntent);
             return true;
 
         } else if (id == R.id.action_incomeexpend) {
@@ -473,20 +466,48 @@ public class MainActivity extends Activity {
             startActivity(IncomeExpendScreenIntent);
             return true;
 
+        } else if (id == R.id.action_debts) {
+            Intent DebtsScreenIntent = new Intent(this, DebtsActivity.class);
+            final int result = 1;
+            startActivity(DebtsScreenIntent);
+            return true;
+
+        } else if (id == R.id.action_credits) {
+            Intent CreditsScreenIntent = new Intent(this, CreditsActivity.class);
+            final int result = 1;
+            startActivity(CreditsScreenIntent);
+            return true;
+
+        } else if (id == R.id.action_income) {
+            Intent IncomeScreenIntent = new Intent(this, IncomeActivity.class);
+            final int result = 1;
+            startActivity(IncomeScreenIntent);
+            return true;
+
+        } else if (id == R.id.action_expends) {
+            Intent ExpendsScreenIntent = new Intent(this, ExpendsActivity.class);
+            final int result = 1;
+            startActivity(ExpendsScreenIntent);
+            return true;
+
+        } else if (id == R.id.action_pexpends) {
+            Intent PExpendsScreenIntent = new Intent(this, PExpendActivity.class);
+            final int result = 1;
+            startActivity(PExpendsScreenIntent);
+            return true;
+
+        } else if (id == R.id.action_pincome) {
+            Intent PIncomeScreenIntent = new Intent(this, PIncomeActivity.class);
+            final int result = 1;
+            startActivity(PIncomeScreenIntent);
+            return true;
+
         } else if (id == R.id.action_dreamlist) {
             Intent DreamlistScreenIntent = new Intent(this, DreamlistActivity.class);
             final int result = 1;
             startActivity(DreamlistScreenIntent);
             return true;
-
-        } else if (id == R.id.action_help) {
-
-        } else if ( id == R.id.action_exit) {
-            finish();
-            return true;
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 
