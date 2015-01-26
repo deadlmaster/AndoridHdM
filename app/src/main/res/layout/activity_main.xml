@@ -21,7 +21,7 @@
 
 
     <ImageButton
-        android:layout_width="150dp"
+        android:layout_width="1500dp"
         android:layout_height="150dp"
         android:id="@+id/main_expenditure"
         android:layout_gravity="center|top"
