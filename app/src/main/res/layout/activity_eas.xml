@@ -51,7 +51,8 @@
             android:text="@string/radioEarning"
             android:id="@+id/radioEarning"
             android:layout_gravity="left|center_horizontal"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginTop="30dp"
+            android:textColor="#ff23be00"/>
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -59,7 +60,8 @@
             android:text="@string/radioSpending"
             android:id="@+id/radioSpending"
             android:layout_gravity="left|center_horizontal"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="15dp"
+            android:textColor="#ffba1d18"/>
 
     </RadioGroup>
 
