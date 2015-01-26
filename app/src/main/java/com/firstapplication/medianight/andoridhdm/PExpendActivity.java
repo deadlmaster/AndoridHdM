@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class PExpendActivity extends ListActivity  {
 
-    private ExpendDataSource datasource;
+    private DataSource datasource;
     ListView listView;
     ArrayAdapter<ExpendModel> adapter;
 
@@ -28,7 +28,7 @@ public class PExpendActivity extends ListActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pexpends_layout);
-        datasource = new ExpendDataSource(this);
+        datasource = new DataSource(this);
         datasource.open();
 
 

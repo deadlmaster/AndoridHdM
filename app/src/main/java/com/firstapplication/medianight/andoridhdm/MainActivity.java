@@ -21,7 +21,6 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
 
 
@@ -29,7 +28,7 @@ public class MainActivity extends Activity {
 
     private PopupWindow popupWin;
     private Calendar myCalender = Calendar.getInstance();
-    ExpendDataSource dataSource;
+    DataSource dataSource;
 
 
 //test
@@ -80,7 +79,7 @@ public class MainActivity extends Activity {
             }
 
         });
-        dataSource = new ExpendDataSource(MainActivity.this);
+        dataSource = new DataSource(MainActivity.this);
      //   List<ExpendModel> values = dataSource.getAllExpends();
 
 
@@ -157,7 +156,7 @@ public class MainActivity extends Activity {
                     dataSource.createExpend(expendModel);
                     popupWin.dismiss();
                     ToastDatabase();
-
+                    dataSource.close();
 
                 }
             });
@@ -223,16 +222,16 @@ public class MainActivity extends Activity {
                     String IncomeAmountString = IncomeAmount.getText().toString();
                     String IncomeDateString = IncomeDate.getText().toString();
 
-                    ExpendModel expendModel = new ExpendModel();
-                    expendModel.setExpendNameString(IncomeNameString);
-                    expendModel.setExpendAmountString(IncomeAmountString);
-                    expendModel.setExpendDateString(IncomeDateString);
+                    IncomeModel incomeModel = new IncomeModel();
+                    incomeModel.setIncomeNameString(IncomeNameString);
+                    incomeModel.setIncomeAmountString(IncomeAmountString);
+                    incomeModel.setIncomeDateString(IncomeDateString);
 
-
-                    dataSource.createExpend(expendModel);
-
+                    dataSource.open();
+                    dataSource.createIncome(incomeModel);
                     popupWin.dismiss();
                     ToastDatabase();
+                    dataSource.close();
                 }
             });
 

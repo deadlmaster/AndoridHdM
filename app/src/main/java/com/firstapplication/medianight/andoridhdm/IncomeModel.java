@@ -42,8 +42,9 @@ public class IncomeModel{
         this.incomeDateString = incomeDateString;
     }
 
+    @Override
     public String toString() {
-        return incomeNameString + " " + incomeAmountString +" "+ incomeDateString;
+        return "Nr." + incID + "    "+ incomeNameString + "   |   " + incomeAmountString +"€   |   "+ incomeDateString;
     }
 
 }

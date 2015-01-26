@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class IncomeActivity extends ListActivity  {
 
-    private ExpendDataSource datasource;
+    private DataSource datasource;
     ListView listView;
     ArrayAdapter<ExpendModel> adapter;
 
@@ -28,7 +28,7 @@ public class IncomeActivity extends ListActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.income_layout);
-        datasource = new ExpendDataSource(this);
+        datasource = new DataSource(this);
         datasource.open();
 
 
@@ -41,12 +41,12 @@ public class IncomeActivity extends ListActivity  {
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
                                            int position, long arg3) {
 
-                String expDel = ((TextView) arg1.findViewById(android.R.id.text1)).getText().toString();
-                Log.d("StringTest1", expDel);
-                String expLike = expDel.substring(3,5);
-                Log.d("StringTest", expLike);
+                String incDel = ((TextView) arg1.findViewById(android.R.id.text1)).getText().toString();
+                Log.d("StringTest1", incDel);
+                String incLike = incDel.substring(3,5);
+                Log.d("StringTest", incLike);
 
-                datasource.deleteExpend(expLike);
+                datasource.deleteIncome(incLike);
                 Intent intent = getIntent();
                 //datasource.testdeleteexpend(arg3);
                 try {populateExp();} catch (Exception e) {finish();
@@ -57,14 +57,14 @@ public class IncomeActivity extends ListActivity  {
     }
 
 
-    public void populateExp (){
+    private void populateExp (){
 
         listView = (ListView)findViewById(android.R.id.list);
         listView.setLongClickable(true);
 
-        List<ExpendModel> values = datasource.getAllExpends();
+        List<IncomeModel> values = datasource.getAllIncome();
 
-        ArrayAdapter<ExpendModel> adapter = new ArrayAdapter<ExpendModel>(this, android.R.layout.simple_list_item_1, values);
+        ArrayAdapter<IncomeModel> adapter = new ArrayAdapter<IncomeModel>(this, android.R.layout.simple_list_item_1, values);
 
 
         setListAdapter(adapter);
