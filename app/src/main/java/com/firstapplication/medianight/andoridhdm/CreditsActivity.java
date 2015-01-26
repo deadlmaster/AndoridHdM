@@ -72,9 +72,6 @@ public class CreditsActivity extends ListActivity  {
 
 
 
-
-
-
     /**listView.OnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
     @Override
     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {

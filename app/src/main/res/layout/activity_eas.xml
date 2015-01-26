@@ -13,6 +13,8 @@
         android:id="@+id/textView2"
         android:layout_gravity="center"
         android:textSize="30sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
         />
 
     <EditText
@@ -68,6 +70,7 @@
         android:id="@+id/buttonIncomeExpenditure"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
-        android:onClick="ButtonClick"/>
+        android:onClick="ButtonClick"
+        android:background="@drawable/custombutton1"/>
 
 </LinearLayout>

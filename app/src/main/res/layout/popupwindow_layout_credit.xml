@@ -24,8 +24,9 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/popup_credits_title"
-                android:textSize="30dp"
+                android:textSize="40dp"
                 android:layout_marginTop="20dp"
+                android:textColor="#ff4477e8"
                 />
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -37,7 +38,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/popup_credits_name"
-                    android:textSize="20dp"/>
+                    android:textSize="25dp"
+                    android:textColor="#ff000000"/>
 
                 <EditText
                     android:layout_width="fill_parent"
@@ -60,14 +62,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/popup_credits_amount"
-                    android:textSize="20dp"/>
+                    android:textSize="25dp"
+                    android:textColor="#ff000000"/>
 
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/editText_popup_credits_amount"
                     android:hint="200,50€"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="10dp"
                     android:inputType="numberDecimal"
                     android:singleLine="true"
                     />
@@ -84,14 +87,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/popup_credits_date"
-                    android:textSize="20dp"/>
+                    android:textSize="25dp"
+                    android:textColor="#ff000000"/>
 
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/editText_popup_credits_date"
                     android:hint="20.11.14"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="10dp"
                     android:focusable="false"
                     android:singleLine="true"
                     />
@@ -111,6 +115,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/Popup_credits_button"
                 android:id="@+id/popup_credits_submit"
+                android:background="@drawable/custombutton1"
                 />
 
             <Button
@@ -118,6 +123,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/Popup_credits_button_dimiss"
                 android:id="@+id/popup_credits_dimiss"
+                android:background="@drawable/custombutton2"
                 />
 
             ></LinearLayout>
