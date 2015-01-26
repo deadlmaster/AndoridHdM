@@ -72,7 +72,7 @@
                     android:id="@+id/editText_popup_saving_amount"
                     android:hint="60000,50€"
                     android:layout_marginLeft="5dp"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:singleLine="true"
                     />
 
