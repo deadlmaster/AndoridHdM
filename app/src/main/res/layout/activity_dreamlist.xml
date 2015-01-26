@@ -40,7 +40,8 @@
         android:textSize="20sp"
         android:layout_below="@+id/text_dreamgoal"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#ffe78914" />
 
 
 

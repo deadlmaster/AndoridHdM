@@ -13,7 +13,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Peter Tan on 04.01.2015. blabla
@@ -28,6 +31,8 @@ public class ExpendsActivity extends ListActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.expends_layout);
+        TextView ScreenDate = (TextView)findViewById(R.id.text_date_expense);
+        ScreenDate.setText(currentDate);
         datasource = new ExpendDataSource(this);
         datasource.open();
 
@@ -55,6 +60,11 @@ public class ExpendsActivity extends ListActivity  {
             }
         });
     }
+
+    private Calendar myCalender = Calendar.getInstance();
+    String myFormat = "dd.MM.yy";
+    SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
+    String currentDate = dateForm.format(myCalender.getTime());
 
 
     public void populateExp (){
