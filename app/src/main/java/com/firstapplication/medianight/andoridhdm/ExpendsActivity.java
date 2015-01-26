@@ -16,7 +16,7 @@ import android.widget.TextView;
 import java.util.List;
 
 /**
- * Created by Peter Tan on 04.01.2015.
+ * Created by Peter Tan on 04.01.2015. blabla
  */
 public class ExpendsActivity extends ListActivity  {
 
