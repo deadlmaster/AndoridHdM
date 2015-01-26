@@ -12,7 +12,7 @@
         android:text="@string/revenue_and_expenditure"
         android:id="@+id/textView2"
         android:layout_gravity="center"
-        android:textSize="30sp"
+        android:textSize="35sp"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
         />
