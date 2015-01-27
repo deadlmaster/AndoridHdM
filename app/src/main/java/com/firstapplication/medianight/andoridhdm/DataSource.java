@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by Cpt Cranberry on 11/01/2015.
  */
-public class ExpendDataSource {
+public class DataSource {
 
 
 
@@ -29,7 +29,7 @@ public class ExpendDataSource {
             SQLiteHelper.COLUMN_EXPENDS_DATE,
     };
 
-    public ExpendDataSource(Context context) {
+    public DataSource(Context context) {
 
         dbHelper = new SQLiteHelper(context);
     }
@@ -85,11 +85,11 @@ public class ExpendDataSource {
     public IncomeModel createIncome (IncomeModel incomedmodel) {
         Log.d("DatabaseInc", incomedmodel.toString());
         ContentValues values = new ContentValues();
-        values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, incomedmodel.getIncomeNameString());
-        values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, incomedmodel.getIncomeAmountString());
-        values.put(SQLiteHelper.COLUMN_EXPENDS_DATE, incomedmodel.getIncomeDateString());
+        values.put(SQLiteHelper.COLUMN_INCOME_NAME, incomedmodel.getIncomeNameString());
+        values.put(SQLiteHelper.COLUMN_INCOME_AMOUNT, incomedmodel.getIncomeAmountString());
+        values.put(SQLiteHelper.COLUMN_INCOME_DATE, incomedmodel.getIncomeDateString());
 
-        long insertId = database.insert(SQLiteHelper.TABLE_EXPENDS, null, values);
+        long insertId = database.insert(SQLiteHelper.TABLE_INCOME, null, values);
         incomedmodel.setIncID(insertId);
         return incomedmodel;
 
@@ -159,6 +159,41 @@ public class ExpendDataSource {
         return expendslist;
     }
 
+    public List<IncomeModel> getAllIncome() {
+        List<IncomeModel> incomelist = new ArrayList<IncomeModel>();
+        String query = "SELECT  * FROM " + SQLiteHelper.TABLE_INCOME;
+        Cursor cursor = database.rawQuery(query, null);
+        // 3. go over each row, build book and add it to list
+        IncomeModel income = null;
+        if (cursor.moveToFirst()) {
+            do {
+                income = new IncomeModel();
+                income.setIncID(Integer.parseInt(cursor.getString(0)));
+                income.setIncomeNameString(cursor.getString(1));
+                income.setIncomeAmountString(cursor.getString(2));
+                income.setIncomeDateString(cursor.getString(3));
+                // Add book to books
+                incomelist.add(income);
+            } while (cursor.moveToNext());
+
+        }
+
+        Log.d("getAllBooks()", income.toString());
+        return incomelist;
+    }
+
+    public boolean deleteIncome(String expLike){
+        Log.d("String", expLike.toString());
+        String where = SQLiteHelper.COLUMN_INCOME_ID + "=" + expLike;
+        return database.delete(SQLiteHelper.TABLE_INCOME, where, null) !=0;
+    }
+    /**public Cursor getSumExpend(){
+     *  Cursor cursorexp = database.rawQuery(
+     *  "SELECT SUM(expendsAmount) FROM expends", null);
+     *  if(cursorexp.moveToFirst()) {
+     *  return cursorexp;
+     *  }
+     */
 
    /** public boolean testdeleteexpend (long expDel){
         String where = SQLiteHelper.COLUMN_EXPENDS_ID + "=" + expDel;

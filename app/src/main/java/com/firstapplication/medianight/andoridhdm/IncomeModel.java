@@ -43,7 +43,7 @@ public class IncomeModel{
     }
 
     public String toString() {
-        return incomeNameString + " " + incomeAmountString +" "+ incomeDateString;
+        return "Nr." + incID + "    "+ incomeNameString + "   |   " + incomeAmountString +"€   |   "+ incomeDateString;
     }
 
 }

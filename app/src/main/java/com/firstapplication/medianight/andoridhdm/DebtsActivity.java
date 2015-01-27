@@ -23,7 +23,7 @@ import java.util.Locale;
  */
 public class DebtsActivity extends ListActivity  {
 
-    private ExpendDataSource datasource;
+    private DataSource datasource;
     ListView listView;
     ArrayAdapter<ExpendModel> adapter;
 
@@ -33,7 +33,7 @@ public class DebtsActivity extends ListActivity  {
         setContentView(R.layout.debts_layout);
         TextView ScreenDate = (TextView)findViewById(R.id.text_date_debts);
         ScreenDate.setText(currentDate);
-        datasource = new ExpendDataSource(this);
+        datasource = new DataSource(this);
         datasource.open();
 
 

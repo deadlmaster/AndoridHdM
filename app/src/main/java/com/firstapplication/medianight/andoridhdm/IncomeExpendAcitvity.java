@@ -26,13 +26,13 @@ public class IncomeExpendAcitvity extends Activity {
                 sendInputToDatabase();
             }
         });
-        dataSource = new ExpendDataSource(IncomeExpendAcitvity.this);
+        dataSource = new DataSource(IncomeExpendAcitvity.this);
         dataSource.open();
 
 
     }
 
-    ExpendDataSource dataSource;
+    DataSource dataSource;
 
 
     public void sendInputToDatabase() {
