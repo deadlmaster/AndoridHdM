@@ -3,7 +3,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@android:color/white"
+    android:background="@drawable/customborder"
+
 
 
     >
@@ -26,21 +27,23 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/popup_expend_title"
-                android:textSize="30dp"
+                android:textSize="40dp"
                 android:layout_marginTop="20dp"
                 android:id="@+id/TextViewExpend"
+                android:textColor="#ffd81b16"
                 />
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="20dp">
+               android:layout_marginTop="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/popup_expend_name"
-                    android:textSize="20dp"/>
+                    android:textSize="25dp"
+                    android:textColor="#ff000000"/>
 
                 <EditText
                     android:layout_width="fill_parent"
@@ -63,7 +66,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/popup_expend_amount"
-                    android:textSize="20dp"
+                    android:textSize="25dp"
+                    android:textColor="#ff000000"
                     android:inputType="numberDecimal" />
 
                 <EditText
@@ -71,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/editText_popup_expend_amount"
                     android:hint="200,50€"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="30dp"
                     android:inputType="number"
                     android:singleLine="true"
                     />
@@ -88,14 +92,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/popup_expend_date"
-                    android:textSize="20dp"/>
+                    android:textSize="25dp"
+                    android:textColor="#ff000000"/>
 
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/editText_popup_expend_date"
                     android:hint="20.11.14"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="30dp"
                     android:focusable="false"
                     android:singleLine="true"
                     />
@@ -115,6 +120,7 @@
             android:layout_height="wrap_content"
             android:text="@string/Popup_expend_button"
             android:id="@+id/popup_expend_submit"
+            android:background="@drawable/custombutton1"
             />
 
         <Button
@@ -122,6 +128,7 @@
             android:layout_height="wrap_content"
             android:text="@string/Popup_expend_button_dimiss"
             android:id="@+id/popup_expend_dimiss"
+            android:background="@drawable/custombutton2"
             />
 
         ></LinearLayout>

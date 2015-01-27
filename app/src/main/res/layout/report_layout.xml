@@ -41,7 +41,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,7 +50,7 @@
         android:text="@string/text_report_perexpense"
         android:id="@+id/text_report_perexpense"
         android:textSize="18sp"
-        android:layout_marginTop="20dp" />
+        android:textColor="#ffba1d18"/>
 
         <View
             android:layout_width="0dp"
@@ -61,8 +62,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:focusable="false"
-        android:ems="10"
-        android:id="@+id/edittext_report_preexpense_value"/>
+        android:id="@+id/edittext_report_preexpense_value"
+        android:hint="123123"
+        android:textSize="20sp"/>
 
      </LinearLayout>
 
@@ -70,7 +72,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
 
@@ -80,7 +82,7 @@
             android:text="@string/text_report_perincome"
             android:id="@+id/text_report_perincome"
             android:textSize="18sp"
-            android:layout_marginTop="20dp" />
+            android:textColor="#ff23be00"/>
 
         <View
             android:layout_width="0dp"
@@ -92,8 +94,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:focusable="false"
-            android:ems="10"
-            android:id="@+id/edittext_report_perincome_value" />
+            android:id="@+id/edittext_report_perincome_value"
+            android:hint="123123"
+            android:textSize="20sp"/>
 
 
     </LinearLayout>
@@ -102,7 +105,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         >
 
@@ -113,7 +116,7 @@
             android:text="@string/text_report_expense"
             android:id="@+id/text_report_expense"
             android:textSize="18sp"
-            android:layout_marginTop="20dp" />
+            android:textColor="#ffba1d18"/>
 
         <View
             android:layout_width="0dp"
@@ -125,8 +128,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:focusable="false"
-            android:ems="10"
-            android:id="@+id/edittext_report_expense_value" />
+            android:id="@+id/edittext_report_expense_value"
+            android:hint="123123"
+            android:textSize="20sp"/>
 
 
     </LinearLayout>
@@ -134,7 +138,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
 
@@ -144,7 +148,7 @@
             android:text="@string/text_report_income"
             android:id="@+id/text_report_income"
             android:textSize="18sp"
-            android:layout_marginTop="20dp" />
+            android:textColor="#ff23be00"/>
 
         <View
             android:layout_width="0dp"
@@ -152,13 +156,14 @@
             android:layout_weight="1"
             />
 
+
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:focusable="false"
-            android:ems="10"
             android:id="@+id/edittext_report_income_value"
-
+            android:hint="123123"
+            android:textSize="20sp"
             />
 
 
@@ -168,7 +173,7 @@
         android:layout_width="fill_parent"
         android:layout_height="2dp"
         android:background="@android:color/darker_gray"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="20dp"/>
 
     <View
         android:layout_width="fill_parent"
@@ -193,7 +198,7 @@
             android:text="@string/text_report_result"
             android:id="@+id/text_report_result"
             android:textSize="25sp"
-            android:layout_marginTop="20dp"
+            android:textColor="#ff0017be"
             />
 
         <View
@@ -206,8 +211,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:focusable="false"
-            android:ems="10"
-            android:id="@+id/edittext_report_result_value" />
+            android:id="@+id/edittext_report_result_value"
+            android:hint="123123"
+            android:textSize="30sp"/>
 
 
     </LinearLayout>
@@ -215,7 +221,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         >
 
@@ -226,7 +232,7 @@
             android:text="@string/text_report_dreamgoal"
             android:id="@+id/text_report_dreamgoal"
             android:textSize="20sp"
-            android:layout_marginTop="20dp"
+            android:textColor="#ffe78914"
             />
 
         <View
@@ -239,8 +245,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:focusable="false"
-            android:ems="10"
-            android:id="@+id/edittext_report_result_dreamgoal" />
+            android:id="@+id/edittext_report_result_dreamgoal"
+            android:hint="123123"
+            android:textSize="20sp"/>
 
 
     </LinearLayout>
@@ -248,7 +255,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         >
 
@@ -259,7 +266,7 @@
             android:text="@string/text_report_dreamgoal_months"
             android:id="@+id/text_report_dreamgoal_months"
             android:textSize="20sp"
-            android:layout_marginTop="20dp"
+            android:textColor="#ffe78914"
             />
 
         <View
@@ -272,8 +279,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:focusable="false"
-            android:ems="10"
-            android:id="@+id/edittext_report_result_dreamgoal_months" />
+            android:id="@+id/edittext_report_result_dreamgoal_months"
+            android:hint="123123"
+            android:textSize="20sp"/>
 
 
     </LinearLayout>

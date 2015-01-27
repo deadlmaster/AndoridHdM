@@ -21,7 +21,7 @@
 
 
     <ImageButton
-        android:layout_width="1500dp"
+        android:layout_width="150dp"
         android:layout_height="150dp"
         android:id="@+id/main_expenditure"
         android:layout_gravity="center|top"
@@ -59,9 +59,10 @@
         android:id="@+id/main_debts"
         android:layout_gravity="center"
         android:background="@drawable/ppschulden"
-        android:layout_centerVertical="true"
+        android:layout_alignTop="@+id/main_saving"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="107dp" />
 
     <ImageButton
         android:layout_width="150dp"
@@ -69,7 +70,7 @@
         android:id="@+id/main_saving"
         android:layout_gravity="center"
         android:background="@drawable/ppsparen"
-        android:layout_above="@+id/main_credit"
+        android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true" />
 
 

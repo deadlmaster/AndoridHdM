@@ -13,7 +13,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Peter Tan on 04.01.2015.
@@ -28,6 +31,8 @@ public class IncomeActivity extends ListActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.income_layout);
+        TextView ScreenDate = (TextView)findViewById(R.id.text_date_income);
+        ScreenDate.setText(currentDate);
         datasource = new DataSource(this);
         datasource.open();
 
@@ -46,7 +51,7 @@ public class IncomeActivity extends ListActivity  {
                 String incLike = incDel.substring(3,5);
                 Log.d("StringTest", incLike);
 
-                datasource.deleteIncome(incLike);
+                datasource.deleteExpend(incLike);
                 Intent intent = getIntent();
                 //datasource.testdeleteexpend(arg3);
                 try {populateExp();} catch (Exception e) {finish();
@@ -56,8 +61,15 @@ public class IncomeActivity extends ListActivity  {
         });
     }
 
+    private Calendar myCalender = Calendar.getInstance();
+    String myFormat = "dd.MM.yy";
+    SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
+    String currentDate = dateForm.format(myCalender.getTime());
 
-    private void populateExp (){
+
+
+
+    public void populateExp (){
 
         listView = (ListView)findViewById(android.R.id.list);
         listView.setLongClickable(true);

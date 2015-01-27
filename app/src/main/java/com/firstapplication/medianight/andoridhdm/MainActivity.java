@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
     DataSource dataSource;
 
 
-//test
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -158,6 +158,7 @@ public class MainActivity extends Activity {
                     ToastDatabase();
                     dataSource.close();
 
+
                 }
             });
 
@@ -226,6 +227,7 @@ public class MainActivity extends Activity {
                     incomeModel.setIncomeNameString(IncomeNameString);
                     incomeModel.setIncomeAmountString(IncomeAmountString);
                     incomeModel.setIncomeDateString(IncomeDateString);
+
 
                     dataSource.open();
                     dataSource.createIncome(incomeModel);

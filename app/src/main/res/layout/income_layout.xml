@@ -40,7 +40,8 @@
         android:textSize="20sp"
         android:layout_below="@+id/text_income"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#ff23be00"/>
 
 
 

@@ -18,6 +18,7 @@ import java.util.List;
 public class DataSource {
 
 
+
     private SQLiteOpenHelper dbHelper;
     private SQLiteDatabase database;
 
@@ -37,12 +38,12 @@ public class DataSource {
         database = dbHelper.getWritableDatabase();
     }
 
-    public void close() {
+    public void close(){
         dbHelper.close();
     }
 
 
-    public ExpendModel createExpend(ExpendModel expendmodel) {
+    public ExpendModel createExpend (ExpendModel expendmodel) {
         Log.d("DatabaseExp", expendmodel.toString());
 
         ContentValues values = new ContentValues();
@@ -56,7 +57,7 @@ public class DataSource {
 
     }
 
-    public CreditsModel createCredit(CreditsModel creditsmodel) {
+    public CreditsModel createCredit (CreditsModel creditsmodel) {
         Log.d("DatabaseCredit", creditsmodel.toString());
         ContentValues values = new ContentValues();
         values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, creditsmodel.getCreditsNameString());
@@ -69,7 +70,7 @@ public class DataSource {
 
     }
 
-    public DebtsModel createDebt(DebtsModel debtsmodel) {
+    public DebtsModel createDebt (DebtsModel debtsmodel) {
         Log.d("DatabaseDevt", debtsmodel.toString());
         ContentValues values = new ContentValues();
         values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, debtsmodel.getDebtsNameString());
@@ -81,8 +82,7 @@ public class DataSource {
         return debtsmodel;
 
     }
-
-    public IncomeModel createIncome(IncomeModel incomedmodel) {
+    public IncomeModel createIncome (IncomeModel incomedmodel) {
         Log.d("DatabaseInc", incomedmodel.toString());
         ContentValues values = new ContentValues();
         values.put(SQLiteHelper.COLUMN_INCOME_NAME, incomedmodel.getIncomeNameString());
@@ -94,8 +94,7 @@ public class DataSource {
         return incomedmodel;
 
     }
-
-    public SavingModel createSaving(SavingModel savingmodel) {
+    public SavingModel createSaving (SavingModel savingmodel) {
         Log.d("DatabaseSave", savingmodel.toString());
         ContentValues values = new ContentValues();
         values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, savingmodel.getSaveNameString());
@@ -108,7 +107,7 @@ public class DataSource {
 
     }
 
-    public PExpendModel createPExpend(PExpendModel pexpendgmodel) {
+    public PExpendModel createPExpend (PExpendModel pexpendgmodel) {
         Log.d("DatabasePExp", pexpendgmodel.toString());
         ContentValues values = new ContentValues();
         values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, pexpendgmodel.getPExpendNameString());
@@ -120,7 +119,7 @@ public class DataSource {
 
     }
 
-    public PIncomeModel createPIncome(PIncomeModel pincomegmodel) {
+    public PIncomeModel createPIncome (PIncomeModel pincomegmodel) {
         Log.d("DatabasePInc", pincomegmodel.toString());
         ContentValues values = new ContentValues();
         values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, pincomegmodel.getPIncomeNameString());
@@ -131,7 +130,6 @@ public class DataSource {
         return pincomegmodel;
 
     }
-
 
     public List<ExpendModel> getAllExpends() {
         List<ExpendModel> expendslist = new ArrayList<ExpendModel>();
@@ -163,11 +161,8 @@ public class DataSource {
 
     public List<IncomeModel> getAllIncome() {
         List<IncomeModel> incomelist = new ArrayList<IncomeModel>();
-
         String query = "SELECT  * FROM " + SQLiteHelper.TABLE_INCOME;
-
         Cursor cursor = database.rawQuery(query, null);
-
         // 3. go over each row, build book and add it to list
         IncomeModel income = null;
         if (cursor.moveToFirst()) {
@@ -177,44 +172,37 @@ public class DataSource {
                 income.setIncomeNameString(cursor.getString(1));
                 income.setIncomeAmountString(cursor.getString(2));
                 income.setIncomeDateString(cursor.getString(3));
-
                 // Add book to books
                 incomelist.add(income);
             } while (cursor.moveToNext());
+
         }
 
         Log.d("getAllBooks()", income.toString());
-
-
         return incomelist;
     }
 
-    /**
-     * public boolean testdeleteexpend (long expDel){
-     * String where = SQLiteHelper.COLUMN_EXPENDS_ID + "=" + expDel;
-     * return database.delete(SQLiteHelper.TABLE_EXPENDS, where, null) !=0;
-     * }
+    public boolean deleteIncome(String expLike){
+        Log.d("String", expLike.toString());
+        String where = SQLiteHelper.COLUMN_INCOME_ID + "=" + expLike;
+        return database.delete(SQLiteHelper.TABLE_INCOME, where, null) !=0;
+    }
+    /**public Cursor getSumExpend(){
+     *  Cursor cursorexp = database.rawQuery(
+     *  "SELECT SUM(expendsAmount) FROM expends", null);
+     *  if(cursorexp.moveToFirst()) {
+     *  return cursorexp;
+     *  }
      */
 
-    public boolean deleteExpend(String expLike) {
+   /** public boolean testdeleteexpend (long expDel){
+        String where = SQLiteHelper.COLUMN_EXPENDS_ID + "=" + expDel;
+        return database.delete(SQLiteHelper.TABLE_EXPENDS, where, null) !=0;
+    }*/
+
+    public boolean deleteExpend(String expLike){
         Log.d("String", expLike.toString());
         String where = SQLiteHelper.COLUMN_EXPENDS_ID + "=" + expLike;
-        return database.delete(SQLiteHelper.TABLE_EXPENDS, where, null) != 0;
-    }
-
-    public boolean deleteIncome(String incLike) {
-        Log.d("String", incLike.toString());
-        String where = SQLiteHelper.COLUMN_INCOME_ID + "=" + incLike;
-        return database.delete(SQLiteHelper.TABLE_INCOME, where, null) != 0;
+        return database.delete(SQLiteHelper.TABLE_EXPENDS, where, null) !=0;
     }
 }
-    /**public Cursor getSumExpend(){
-
-        Cursor cursorexp = database.rawQuery(
-                "SELECT SUM(expendsAmount) FROM expends", null);
-        if(cursorexp.moveToFirst()) {
-
-            return cursorexp;
-        }
-
-    }*/
