@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -17,6 +18,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -37,6 +39,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        TextView textview = (TextView)findViewById(R.id.textView_main);
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"fonts/silentreaction.ttf");
+        textview.setTypeface(typeface);
 
 
         ImageButton openbuttonexpend = (ImageButton)findViewById(R.id.main_expenditure);
@@ -83,7 +88,10 @@ public class MainActivity extends Activity {
      //   List<ExpendModel> values = dataSource.getAllExpends();
 
 
+
     }
+
+
 
     public void ToastDatabase(){
         Toast.makeText(getApplicationContext(), "Daten in Datenbank geschrieben", Toast.LENGTH_SHORT).show();

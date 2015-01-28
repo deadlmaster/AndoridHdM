@@ -49,7 +49,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/editText_popup_name_income"
-                    android:hint="Einkauf Edeka"
+                    android:hint="Lottogewinn"
                     android:layout_marginLeft="5dp"
                     android:singleLine="true"
                     />
@@ -74,7 +74,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/editText_popup_income_amount"
-                    android:hint="200,50€"
+                    android:hint="2000€"
                     android:layout_marginLeft="42dp"
                     android:singleLine="true"
                     android:inputType="numberDecimal"
