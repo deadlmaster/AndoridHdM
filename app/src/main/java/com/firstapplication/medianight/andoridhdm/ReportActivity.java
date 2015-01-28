@@ -19,6 +19,7 @@ import java.util.Locale;
 public class ReportActivity extends Activity {
 
 
+    private DataSource datasource;
 
 
     @Override
@@ -28,10 +29,57 @@ public class ReportActivity extends Activity {
         TextView ScreenDate = (TextView)findViewById(R.id.text_date_report);
         ScreenDate.setText(currentDate);
 
+        datasource = new DataSource(this);
+        datasource.open();
+        populateReport();
+        createSaldo();
     }
 
+    public void populateReport(){
+        TextView pexpendReport = (TextView)findViewById(R.id.edittext_pexpendreport);
+        TextView pincomeReport = (TextView)findViewById(R.id.edittext_pincomereport);
+        TextView incomeReport = (TextView)findViewById(R.id.edittext_incomereport);
+        TextView expendReport = (TextView)findViewById(R.id.edittext_expendreport) ;
 
 
+        String pexpendSumView = datasource.getPExpendSum().toStringPexpendSum();
+        pexpendReport.setText("- " + pexpendSumView + "€");
+
+        String pincomeSumView = datasource.getPincomeSum().toStringPincomeSum();
+        pincomeReport.setText("+ " + pincomeSumView + "€");
+
+        String incomeSumView = datasource.getIncomeSum().toStringIncomeSum();
+        incomeReport.setText("+ " + incomeSumView + "€");
+
+        String expendSumView = datasource.getExpendSum().toStringSum();
+        expendReport.setText("- " + expendSumView + "€");
+
+    }
+
+    public void createSaldo(){
+
+        TextView saldoReport = (TextView)findViewById(R.id.edittext_saldoreport);
+
+        String pexpendSaldo = datasource.getPExpendSum().toStringPexpendSum();
+        Double pexs = Double.parseDouble(pexpendSaldo);
+
+        String pincomeSaldo = datasource.getPincomeSum().toStringPincomeSum();
+        Double pins = Double.parseDouble(pincomeSaldo);
+
+        String incomeSaldo = datasource.getIncomeSum().toStringIncomeSum();
+        Double ins = Double.parseDouble(incomeSaldo);
+
+        String expendSaldo = datasource.getExpendSum().toStringSum();
+        Double exs = Double.parseDouble(expendSaldo);
+
+        Double saldoraw = ins + pins - pexs - exs;
+        Double saldofinal = Math.round(saldoraw*100)/100.0;
+
+        String saldo =  String.valueOf(saldofinal);
+        saldoReport.setText(""+ saldo + " €");
+
+
+    }
     private Calendar myCalender = Calendar.getInstance();
     String myFormat = "dd.MM.yy";
     SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
@@ -43,6 +91,8 @@ public class ReportActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+
         return true;
     }
 

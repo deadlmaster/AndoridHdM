@@ -62,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:focusable="false"
-        android:id="@+id/edittext_report_preexpense_value"
+        android:id="@+id/edittext_pexpendreport"
         android:hint="123123"
         android:textSize="20sp"/>
 
@@ -94,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:focusable="false"
-            android:id="@+id/edittext_report_perincome_value"
+            android:id="@+id/edittext_pincomereport"
             android:hint="123123"
             android:textSize="20sp"/>
 
@@ -128,7 +128,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:focusable="false"
-            android:id="@+id/edittext_report_expense_value"
+            android:id="@+id/edittext_expendreport"
             android:hint="123123"
             android:textSize="20sp"/>
 
@@ -161,7 +161,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:focusable="false"
-            android:id="@+id/edittext_report_income_value"
+            android:id="@+id/edittext_incomereport"
             android:hint="123123"
             android:textSize="20sp"
             />
@@ -211,7 +211,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:focusable="false"
-            android:id="@+id/edittext_report_result_value"
+            android:id="@+id/edittext_saldoreport"
             android:hint="123123"
             android:textSize="30sp"/>
 

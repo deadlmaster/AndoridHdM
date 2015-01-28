@@ -5,6 +5,7 @@ package com.firstapplication.medianight.andoridhdm;
  */
 public class PExpendModel {
 
+    private String pExpendSumString;
     private String pExpendNameString;
     private String pExpendAmountString;
     private long pExpID;
@@ -35,7 +36,20 @@ public class PExpendModel {
     }
 
 
+    public String getPexpendSumString (String pExpendSumString){
+        return pExpendSumString;
+    }
+
+    public void setPexpendSumString (String pExpendSumString){
+        this.pExpendSumString = pExpendSumString;
+    }
+    public String toStringPexpendSum(){
+        return pExpendSumString;
+    }
+
+    @Override
     public String toString() {
-        return pExpendNameString + " " + pExpendAmountString;
+
+        return "Nr." + pExpID + "    "+ pExpendNameString + "   |   " + pExpendAmountString +"€";
     }
 }

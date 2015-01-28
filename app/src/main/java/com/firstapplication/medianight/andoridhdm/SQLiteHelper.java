@@ -74,7 +74,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             "CREATE TABLE if not exists " + TABLE_EXPENDS + " ("
             + COLUMN_EXPENDS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_EXPENDS_NAME + " TEXT, "
-            + COLUMN_EXPENDS_AMOUNT + " TEXT, "
+            + COLUMN_EXPENDS_AMOUNT + " INTEGER, "
             + COLUMN_EXPENDS_DATE + " TEXT) ";
 
     // SQL statement of the dreamgoal table creation

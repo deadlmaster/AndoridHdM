@@ -37,7 +37,7 @@ public class IncomeActivity extends ListActivity  {
         datasource.open();
 
 
-        try { populateExp(); } catch (Exception e) {
+        try { populateList(); } catch (Exception e) {
             e.printStackTrace(); }
 
         listView.setOnItemLongClickListener(new OnItemLongClickListener() {
@@ -51,10 +51,11 @@ public class IncomeActivity extends ListActivity  {
                 String incLike = incDel.substring(3,5);
                 Log.d("StringTest", incLike);
 
-                datasource.deleteExpend(incLike);
+                datasource.deleteIncome(incLike);
                 Intent intent = getIntent();
                 //datasource.testdeleteexpend(arg3);
-                try {populateExp();} catch (Exception e) {finish();
+                try {
+                    populateList();} catch (Exception e) {finish();
                     startActivity(intent);}
                 return true;
             }
@@ -69,17 +70,18 @@ public class IncomeActivity extends ListActivity  {
 
 
 
-    public void populateExp (){
+    public void populateList(){
 
         listView = (ListView)findViewById(android.R.id.list);
         listView.setLongClickable(true);
 
         List<IncomeModel> values = datasource.getAllIncome();
-
         ArrayAdapter<IncomeModel> adapter = new ArrayAdapter<IncomeModel>(this, android.R.layout.simple_list_item_1, values);
-
-
         setListAdapter(adapter);
+
+        TextView textView = (TextView) findViewById(R.id.editText_income_amount);
+        String incomeSumView = datasource.getIncomeSum().toStringIncomeSum();
+        textView.setText("+ " + incomeSumView + "€");
     }
 
 

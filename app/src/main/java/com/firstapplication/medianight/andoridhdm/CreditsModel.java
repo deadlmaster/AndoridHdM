@@ -5,7 +5,7 @@ package com.firstapplication.medianight.andoridhdm;
  */
 public class CreditsModel {
 
-
+    private String creditSumString;
     private String creditsNameString;
     private String creditsDateString;
     private String creditsAmountString;
@@ -43,7 +43,19 @@ public class CreditsModel {
         this.creditsDateString = creditsDateString;
     }
 
+    public String getCreditSumString (String creditSumString){
+        return creditSumString;
+    }
+
+    public void setCreditSumString (String creditSumString){
+        this.creditSumString = creditSumString;
+    }
+    public String toStringCreditSum(){
+        return creditSumString;
+    }
+
+    @Override
     public String toString() {
-        return creditsNameString + " " + creditsAmountString +" "+ creditsDateString;
+        return "Nr." + creditID + "    "+ creditsNameString + "   |   " + creditsAmountString +"€   |   "+ creditsDateString;
     }
 }

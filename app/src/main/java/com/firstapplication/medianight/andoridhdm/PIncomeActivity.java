@@ -37,7 +37,7 @@ public class PIncomeActivity extends ListActivity  {
         datasource.open();
 
 
-        try { populateExp(); } catch (Exception e) {
+        try { populateList(); } catch (Exception e) {
             e.printStackTrace(); }
 
         listView.setOnItemLongClickListener(new OnItemLongClickListener() {
@@ -46,15 +46,16 @@ public class PIncomeActivity extends ListActivity  {
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
                                            int position, long arg3) {
 
-                String expDel = ((TextView) arg1.findViewById(android.R.id.text1)).getText().toString();
-                Log.d("StringTest1", expDel);
-                String expLike = expDel.substring(3,5);
-                Log.d("StringTest", expLike);
+                String pincDel = ((TextView) arg1.findViewById(android.R.id.text1)).getText().toString();
+                Log.d("StringTest1", pincDel);
+                String pincLike = pincDel.substring(3,5);
+                Log.d("StringTest", pincLike);
 
-                datasource.deleteExpend(expLike);
+                datasource.deletePincome(pincLike);
                 Intent intent = getIntent();
                 //datasource.testdeleteexpend(arg3);
-                try {populateExp();} catch (Exception e) {finish();
+                try {
+                    populateList();} catch (Exception e) {finish();
                     startActivity(intent);}
                 return true;
             }
@@ -68,17 +69,18 @@ public class PIncomeActivity extends ListActivity  {
 
 
 
-    public void populateExp (){
+    public void populateList(){
 
         listView = (ListView)findViewById(android.R.id.list);
         listView.setLongClickable(true);
 
-        List<ExpendModel> values = datasource.getAllExpends();
+        List<PIncomeModel> values = datasource.getAllPincome();
 
-        ArrayAdapter<ExpendModel> adapter = new ArrayAdapter<ExpendModel>(this, android.R.layout.simple_list_item_1, values);
-
-
+        ArrayAdapter<PIncomeModel> adapter = new ArrayAdapter<PIncomeModel>(this, android.R.layout.simple_list_item_1, values);
         setListAdapter(adapter);
+        TextView textView = (TextView) findViewById(R.id.editText_pincome_amount);
+        String pincomeSumView = datasource.getPincomeSum().toStringPincomeSum();
+        textView.setText("+ " + pincomeSumView + "€");
     }
 
 

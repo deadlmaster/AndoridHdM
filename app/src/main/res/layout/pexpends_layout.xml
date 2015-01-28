@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:hint="2000000€"
         android:textSize="25sp"
-        android:id="@+id/editText_pincome_amount"
+        android:id="@+id/editText_pexpend_amount"
         android:layout_alignTop="@+id/text_pexpense_list_total"
         android:layout_alignRight="@android:id/list"
         android:layout_alignEnd="@android:id/list"

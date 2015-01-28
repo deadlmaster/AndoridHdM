@@ -295,8 +295,17 @@ public class MainActivity extends Activity {
                     String DebtsNameString = DebtsName.getText().toString();
                     String DebtsAmountString = DebtsAmount.getText().toString();
                     String DebtsDateString = DebtsDate.getText().toString();
+                    DebtsModel debtsModel = new DebtsModel();
+                    debtsModel.setDebtsNameString(DebtsNameString);
+                    debtsModel.setDebtsAmountString(DebtsAmountString);
+                    debtsModel.setDebtsDateString(DebtsDateString);
+
+
+                    dataSource.open();
+                    dataSource.createDebt(debtsModel);
                     popupWin.dismiss();
                     ToastDatabase();
+                    dataSource.close();
                 }
             });
 
@@ -358,8 +367,18 @@ public class MainActivity extends Activity {
                     String CreditsNameString = CreditsName.getText().toString();
                     String CreditsAmountString = CreditsAmount.getText().toString();
                     String CreditsDateString = CreditsDate.getText().toString();
+
+                    CreditsModel creditModel = new CreditsModel();
+                    creditModel.setCreditsNameString(CreditsNameString);
+                    creditModel.setCreditsAmountString(CreditsAmountString);
+                    creditModel.setCreditsDateString(CreditsDateString);
+
+
+                    dataSource.open();
+                    dataSource.createCredit(creditModel);
                     popupWin.dismiss();
                     ToastDatabase();
+                    dataSource.close();
                 }
             });
 

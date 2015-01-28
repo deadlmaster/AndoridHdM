@@ -9,6 +9,7 @@ public class IncomeModel{
     private String incomeDateString;
     private String incomeAmountString;
     private long incID;
+    private String incomeSumString;
 
     public long getIncID(){
         return incID;
@@ -40,6 +41,18 @@ public class IncomeModel{
 
     public void setIncomeDateString(String incomeDateString){
         this.incomeDateString = incomeDateString;
+    }
+
+
+    public String getIncomeSumString (String incomeSumString){
+        return incomeSumString;
+    }
+
+    public void setIncomeSumString (String incomeSumString){
+        this.incomeSumString = incomeSumString;
+    }
+    public String toStringIncomeSum(){
+        return incomeSumString;
     }
 
     @Override

@@ -5,6 +5,7 @@ package com.firstapplication.medianight.andoridhdm;
  */
 public class PIncomeModel {
 
+    private String pIncomeSumString;
     private String pIncomeNameString;
     private String pIncomeAmountString;
     private long pIncID;
@@ -33,8 +34,20 @@ public class PIncomeModel {
         this.pIncomeAmountString = pincomeAmountString;
     }
 
+    public String getPincomeSumString (String pIncomeSumString){
+        return pIncomeSumString;
+    }
 
+    public void setPincomeSumString (String pIncomeSumString){
+        this.pIncomeSumString = pIncomeSumString;
+    }
+    public String toStringPincomeSum(){
+        return pIncomeSumString;
+    }
+
+    @Override
     public String toString() {
-        return pIncomeNameString + " " + pIncomeAmountString;
+
+        return "Nr." + pIncID + "    "+ pIncomeNameString + "   |   " + pIncomeAmountString +"€";
     }
 }

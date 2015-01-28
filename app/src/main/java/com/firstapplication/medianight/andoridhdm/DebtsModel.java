@@ -5,7 +5,7 @@ package com.firstapplication.medianight.andoridhdm;
  */
 public class DebtsModel {
 
-
+    private String debtsSumString;
     private String debtsNameString;
     private String debtsDateString;
     private String debtsAmountString;
@@ -43,7 +43,19 @@ public class DebtsModel {
         this.debtsDateString = debtsDateString;
     }
 
+    public String getDebtsSumString (String debtsSumString){
+        return debtsSumString;
+    }
+
+    public void setDebtsSumString (String debtsSumString){
+        this.debtsSumString = debtsSumString;
+    }
+    public String toStringDebtsSum(){
+        return debtsSumString;
+    }
+
+    @Override
     public String toString() {
-        return debtsNameString + " " + debtsAmountString +" "+ debtsDateString;
+        return "Nr." + debtID + "    "+ debtsNameString + "   |   " + debtsAmountString +"€   |   "+ debtsDateString;
     }
 }

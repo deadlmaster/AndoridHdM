@@ -6,6 +6,7 @@ package com.firstapplication.medianight.andoridhdm;
 
 public class ExpendModel {
 
+    private String expendSumString;
     private String expendNameString;
     private String expendDateString;
     private String expendAmountString;
@@ -41,6 +42,17 @@ public class ExpendModel {
 
     public void setExpendDateString(String ExpendDateString){
         this.expendDateString = ExpendDateString;
+    }
+
+    public String getExpendSumString (String ExpendSumString){
+        return expendSumString;
+    }
+
+    public void setExpendSumString (String expendSumString){
+        this.expendSumString = expendSumString;
+    }
+    public String toStringSum(){
+        return expendSumString;
     }
 
     @Override

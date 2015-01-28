@@ -25,7 +25,7 @@ public class ExpendsActivity extends ListActivity  {
 
     private DataSource datasource;
     ListView listView;
-    ArrayAdapter<ExpendModel> adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +35,9 @@ public class ExpendsActivity extends ListActivity  {
         ScreenDate.setText(currentDate);
         datasource = new DataSource(this);
         datasource.open();
-        TextView textView = (TextView) findViewById(R.id.editText_expends_amount);
 
-        try { populateExp(); } catch (Exception e) {
+
+        try { populateList(); } catch (Exception e) {
             e.printStackTrace(); }
 
         listView.setOnItemLongClickListener(new OnItemLongClickListener() {
@@ -54,7 +54,8 @@ public class ExpendsActivity extends ListActivity  {
                 datasource.deleteExpend(expLike);
                 Intent intent = getIntent();
                 //datasource.testdeleteexpend(arg3);
-                try {populateExp();} catch (Exception e) {finish();
+                try {
+                    populateList();} catch (Exception e) {finish();
                 startActivity(intent);}
                 return true;
             }
@@ -67,7 +68,7 @@ public class ExpendsActivity extends ListActivity  {
     String currentDate = dateForm.format(myCalender.getTime());
 
 
-    public void populateExp (){
+    public void populateList(){
 
         listView = (ListView)findViewById(android.R.id.list);
         listView.setLongClickable(true);
@@ -78,6 +79,10 @@ public class ExpendsActivity extends ListActivity  {
 
 
         setListAdapter(adapter);
+
+        TextView textView = (TextView) findViewById(R.id.editText_expends_amount);
+        String expendSumView = datasource.getExpendSum().toStringSum();
+        textView.setText("- " + expendSumView + "€");
     }
 
 
