@@ -9,8 +9,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Cpt Cranberry on 11/01/2015.
@@ -99,11 +102,11 @@ public class DataSource {
     public SavingModel createSaving (SavingModel savingmodel) {
         Log.d("DatabaseSave", savingmodel.toString());
         ContentValues values = new ContentValues();
-        values.put(SQLiteHelper.COLUMN_EXPENDS_NAME, savingmodel.getSaveNameString());
-        values.put(SQLiteHelper.COLUMN_EXPENDS_AMOUNT, savingmodel.getSaveAmountString());
-        values.put(SQLiteHelper.COLUMN_EXPENDS_DATE, savingmodel.getSaveDateString());
+        values.put(SQLiteHelper.COLUMN_DREAMGOAL_NAME, savingmodel.getSaveNameString());
+        values.put(SQLiteHelper.COLUMN_DREAMGOAL_AMOUNT, savingmodel.getSaveAmountString());
+        values.put(SQLiteHelper.COLUMN_DREAMGOAL_DATE, savingmodel.getSaveDateString());
 
-        long insertId = database.insert(SQLiteHelper.TABLE_EXPENDS, null, values);
+        long insertId = database.insert(SQLiteHelper.TABLE_DREAMGOAL, null, values);
         savingmodel.setSaveID(insertId);
         return savingmodel;
 
@@ -253,6 +256,33 @@ public class DataSource {
         return pincomelist;
     }
 
+    public List<SavingModel> getAllSavings() {
+        List<SavingModel> savingslist = new ArrayList<SavingModel>();
+
+        String query = "SELECT  * FROM " + SQLiteHelper.TABLE_DREAMGOAL;
+
+        Cursor cursor = database.rawQuery(query, null);
+
+        // 3. go over each row, build book and add it to list
+        SavingModel savings = null;
+        if (cursor.moveToFirst()) {
+            do {
+                savings = new SavingModel();
+                savings.setSaveID(Integer.parseInt(cursor.getString(0)));
+                savings.setSaveNameString(cursor.getString(1));
+                savings.setSaveAmountString(cursor.getString(2));
+                savings.setSaveDateString(cursor.getString(3));
+
+                // Add book to books
+                savingslist.add(savings);
+            } while (cursor.moveToNext());
+        }
+
+        Log.d("getAllSavings", savings.toString());
+
+
+        return savingslist;
+    }
 
     public List<PExpendModel> getAllPExpends() {
         List<PExpendModel> pexpendslist = new ArrayList<PExpendModel>();
@@ -270,8 +300,6 @@ public class DataSource {
                 pexpend.setPExpendNameString(cursor.getString(1));
                 pexpend.setPExpendAmountString(cursor.getString(2));
 
-
-
                 pexpendslist.add(pexpend);
             } while (cursor.moveToNext());
         }
@@ -286,6 +314,12 @@ public class DataSource {
         Log.d("String", debtLike.toString());
         String where = SQLiteHelper.COLUMN_DEBTS_ID + "=" + debtLike;
         return database.delete(SQLiteHelper.TABLE_DEBTS, where, null) !=0;
+    }
+
+    public boolean deleteSavings(String savLike){
+        Log.d("String", savLike.toString());
+        String where = SQLiteHelper.COLUMN_DREAMGOAL_ID + "=" + savLike;
+        return database.delete(SQLiteHelper.TABLE_DREAMGOAL, where, null) !=0;
     }
 
     public boolean deleteCredits(String creditLike){
@@ -396,4 +430,70 @@ public class DataSource {
         Log.d("test", creditsSum.toStringCreditSum());
         return creditsSum;
     }
+
+    public SavingModel getSavingsSum(){
+        Cursor cursor = database.rawQuery("SELECT sum(dreamgoal_amount) FROM dreamgoal", null);
+
+
+        if (cursor != null)
+            cursor.moveToFirst();
+        // 4. build book object
+        SavingModel savingsSum = new SavingModel();
+        savingsSum.setSaveSumString(cursor.getString(0));
+        Log.d("test", savingsSum.toStringSaveSum());
+        return savingsSum;
+    }
+
+
+    public Calendar myCalender = Calendar.getInstance();
+    String myFormat = "dd.MM.yy";
+    SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
+    String currentDate = dateForm.format(myCalender.getTime());
+    String datewhere = currentDate.substring(3,8);
+
+
+    public IncomeModel getIncomeSumDate(){
+        String query = "SELECT SUM(" + SQLiteHelper.COLUMN_INCOME_AMOUNT +   ") FROM " + SQLiteHelper.TABLE_INCOME + " WHERE " + SQLiteHelper.COLUMN_INCOME_DATE + " LIKE '%" + datewhere + "'";
+        Cursor cursor = database.rawQuery(query, null);
+
+
+        if (cursor != null)
+            cursor.moveToFirst();
+        // 4. build book object
+        IncomeModel incomeWhere = new IncomeModel();
+        incomeWhere.setIncomeWhere(cursor.getString(0));
+        Log.d("test", incomeWhere.toStringIncomeWhere());
+        return incomeWhere;
+    }
+
+    public ExpendModel getExpendSumDate(){
+        String query = "SELECT SUM(" + SQLiteHelper.COLUMN_EXPENDS_AMOUNT +   ") FROM " + SQLiteHelper.TABLE_EXPENDS + " WHERE " + SQLiteHelper.COLUMN_EXPENDS_DATE + " LIKE '%" + datewhere + "'";
+        Cursor cursor = database.rawQuery(query, null);
+
+
+        if (cursor != null)
+            cursor.moveToFirst();
+        // 4. build book object
+        ExpendModel expendWhere = new ExpendModel();
+        expendWhere.setExpendWhere(cursor.getString(0));
+        Log.d("test", expendWhere.toStringExpendWhere());
+        return expendWhere;
+    }
+
+    public SavingModel getNextSaving(){
+
+
+        String query = "SELECT " + SQLiteHelper.COLUMN_DREAMGOAL_AMOUNT + ", " + SQLiteHelper.COLUMN_DREAMGOAL_DATE +   " FROM " + SQLiteHelper.TABLE_DREAMGOAL + " ORDER BY " + SQLiteHelper.COLUMN_DREAMGOAL_DATE + " DESC";
+        Cursor cursor = database.rawQuery(query, null);
+
+        if (cursor != null)
+            cursor.moveToFirst();
+    // 4. build book object
+        SavingModel savingWhere = new SavingModel();
+        savingWhere.setSavingWhere(cursor.getString(0));
+        savingWhere.setSavingDateWhere(cursor.getString(1));
+     Log.d("sehr wichtig!", savingWhere.toStringSavingWhere());
+        return savingWhere;
+    }
+
 }

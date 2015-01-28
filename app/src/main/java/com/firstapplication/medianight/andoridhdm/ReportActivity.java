@@ -3,6 +3,7 @@ package com.firstapplication.medianight.andoridhdm;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -33,6 +34,7 @@ public class ReportActivity extends Activity {
         datasource.open();
         populateReport();
         createSaldo();
+        createDreamgoals();
     }
 
     public void populateReport(){
@@ -48,10 +50,10 @@ public class ReportActivity extends Activity {
         String pincomeSumView = datasource.getPincomeSum().toStringPincomeSum();
         pincomeReport.setText("+ " + pincomeSumView + "€");
 
-        String incomeSumView = datasource.getIncomeSum().toStringIncomeSum();
+        String incomeSumView = datasource.getIncomeSumDate().toStringIncomeWhere();
         incomeReport.setText("+ " + incomeSumView + "€");
 
-        String expendSumView = datasource.getExpendSum().toStringSum();
+        String expendSumView = datasource.getExpendSumDate().toStringExpendWhere();
         expendReport.setText("- " + expendSumView + "€");
 
     }
@@ -80,6 +82,35 @@ public class ReportActivity extends Activity {
 
 
     }
+
+    public void createDreamgoals (){
+        TextView savingNext = (TextView)findViewById(R.id.edittext_report_result_dreamgoal) ;
+        TextView savingMonth = (TextView)findViewById(R.id.edittext_report_result_dreamgoal_months) ;
+
+
+
+
+        String dreamView = datasource.getNextSaving().toStringSavingWhere();
+        savingNext.setText(dreamView);
+
+        String rawCurrentDate = currentDate.substring(3,5);
+        String rawDate = datasource.getNextSaving().toStringSavingWhere();
+        String compDate = rawDate.substring(3,5);
+        Log.d("comptest", compDate.toString());
+        String rawNum = datasource.getNextSaving().toStringSavingNumber();
+        Log.d("numtest", rawNum.toString());
+
+        Double compDateD = Double.parseDouble(compDate);
+        Double rawNumD = Double.parseDouble(rawNum);
+        Double rawCurrentDateD = Double.parseDouble(rawCurrentDate);
+
+        Double diffDate = compDateD - rawCurrentDateD;
+        Double monthlyRate = rawNumD/diffDate;
+
+        String finalRate = String.valueOf(monthlyRate);
+        savingMonth.setText("" + finalRate + "€");
+    }
+
     private Calendar myCalender = Calendar.getInstance();
     String myFormat = "dd.MM.yy";
     SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
@@ -95,7 +126,6 @@ public class ReportActivity extends Activity {
 
         return true;
     }
-
 
 
     @Override

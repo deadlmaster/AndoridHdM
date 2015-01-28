@@ -5,6 +5,7 @@ package com.firstapplication.medianight.andoridhdm;
  */
 public class IncomeModel{
 
+    private String incomeWhere;
     private String incomeNameString;
     private String incomeDateString;
     private String incomeAmountString;
@@ -51,6 +52,21 @@ public class IncomeModel{
     public void setIncomeSumString (String incomeSumString){
         this.incomeSumString = incomeSumString;
     }
+
+    public String toStringIncomeWhere(){
+
+        return incomeWhere;
+    }
+
+    public String getIncomeWhere (String incomeWhere){
+        return incomeWhere;
+    }
+
+    public void setIncomeWhere(String incomeWhere){
+        this.incomeWhere = incomeWhere;
+    }
+
+
     public String toStringIncomeSum(){
         return incomeSumString;
     }

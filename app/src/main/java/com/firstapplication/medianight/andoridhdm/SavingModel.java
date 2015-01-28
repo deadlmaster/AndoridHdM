@@ -5,7 +5,9 @@ package com.firstapplication.medianight.andoridhdm;
  */
 public class SavingModel {
 
-
+    private String savingDateWhere;
+    private String savingWhere;
+    private String saveSumString;
     private String savingNameString;
     private String savingDateString;
     private String savingAmountString;
@@ -15,7 +17,7 @@ public class SavingModel {
         return saveID;
     }
 
-    public void setSaveID(long incID){
+    public void setSaveID(long saveID){
         this.saveID = saveID;
     }
 
@@ -31,6 +33,13 @@ public class SavingModel {
         return savingAmountString;
     }
 
+    public String getSavingDateWhere() {return savingDateWhere;}
+
+    public void setSavingDateWhere(String savingDateWhere){
+        this.savingDateWhere = savingDateWhere;
+    }
+
+
     public void setSaveNameString(String savingNameString){
         this.savingNameString = savingNameString;
     }
@@ -43,7 +52,39 @@ public class SavingModel {
         this.savingDateString = savingDateString;
     }
 
+    public String toStringSavingNumber(){
+        return savingWhere;
+    }
+
+
+    public String toStringSavingWhere(){
+
+       return savingDateWhere + ": " + savingWhere + "€";
+    }
+
+    public String getSavingWhere (String savingWhere){
+        return savingWhere;
+    }
+
+    public void setSavingWhere(String savingWhere){
+        this.savingWhere = savingWhere;
+    }
+
+
+    public String getSaveSumString (String saveSumString){
+        return saveSumString;
+    }
+
+    public void setSaveSumString (String saveSumString){
+        this.saveSumString = saveSumString;
+    }
+
+    public String toStringSaveSum(){
+        return saveSumString;
+    }
+
+    @Override
     public String toString() {
-        return savingNameString + " " + savingAmountString +" "+ savingDateString;
+        return "Nr." + saveID + "    "+ savingNameString + "   |   " + savingAmountString +"€   |   "+ savingDateString;
     }
 }

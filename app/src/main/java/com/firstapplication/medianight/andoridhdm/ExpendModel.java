@@ -6,6 +6,7 @@ package com.firstapplication.medianight.andoridhdm;
 
 public class ExpendModel {
 
+    private String expendWhere;
     private String expendSumString;
     private String expendNameString;
     private String expendDateString;
@@ -53,6 +54,18 @@ public class ExpendModel {
     }
     public String toStringSum(){
         return expendSumString;
+    }
+
+    public String toStringExpendWhere(){
+        return expendWhere;
+    }
+
+    public String getExpendWhere (String expendWhere){
+        return expendWhere;
+    }
+
+    public void setExpendWhere(String expendWhere){
+        this.expendWhere = expendWhere;
     }
 
     @Override

@@ -438,8 +438,18 @@ public class MainActivity extends Activity {
                     String SavingNameString = SavingName.getText().toString();
                     String SavingAmountString = SavingAmount.getText().toString();
                     String SavingDateString = SavingDate.getText().toString();
+
+                    SavingModel savingModel = new SavingModel();
+                    savingModel.setSaveNameString(SavingNameString);
+                    savingModel.setSaveAmountString(SavingAmountString);
+                    savingModel.setSaveDateString(SavingDateString);
+
+
+                    dataSource.open();
+                    dataSource.createSaving(savingModel);
                     popupWin.dismiss();
                     ToastDatabase();
+                    dataSource.close();
                 }
             });
 
