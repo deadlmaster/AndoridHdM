@@ -2,6 +2,7 @@ package com.firstapplication.medianight.andoridhdm;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -35,6 +36,12 @@ public class ExpendsActivity extends ListActivity  {
         ScreenDate.setText(currentDate);
         datasource = new DataSource(this);
         datasource.open();
+
+        TextView textviewtotal = (TextView)findViewById(R.id.text_expense_list_total);
+        TextView textviewmain = (TextView)findViewById(R.id.text_expense);
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"fonts/silentreaction.ttf");
+        textviewtotal.setTypeface(typeface);
+        textviewmain.setTypeface(typeface);
 
 
         try { populateList(); } catch (Exception e) {

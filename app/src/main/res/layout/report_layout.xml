@@ -63,7 +63,6 @@
         android:layout_height="wrap_content"
         android:focusable="false"
         android:id="@+id/edittext_pexpendreport"
-        android:hint="123123"
         android:textSize="20sp"/>
 
      </LinearLayout>
@@ -95,7 +94,6 @@
             android:layout_height="wrap_content"
             android:focusable="false"
             android:id="@+id/edittext_pincomereport"
-            android:hint="123123"
             android:textSize="20sp"/>
 
 
@@ -129,7 +127,6 @@
             android:layout_height="wrap_content"
             android:focusable="false"
             android:id="@+id/edittext_expendreport"
-            android:hint="123123"
             android:textSize="20sp"/>
 
 
@@ -162,7 +159,6 @@
             android:layout_height="wrap_content"
             android:focusable="false"
             android:id="@+id/edittext_incomereport"
-            android:hint="123123"
             android:textSize="20sp"
             />
 
@@ -212,7 +208,6 @@
             android:layout_height="wrap_content"
             android:focusable="false"
             android:id="@+id/edittext_saldoreport"
-            android:hint="123123"
             android:textSize="30sp"/>
 
 
@@ -246,7 +241,6 @@
             android:layout_height="wrap_content"
             android:focusable="false"
             android:id="@+id/edittext_report_result_dreamgoal"
-            android:hint="123123"
             android:textSize="20sp"/>
 
 
@@ -280,7 +274,6 @@
             android:layout_height="wrap_content"
             android:focusable="false"
             android:id="@+id/edittext_report_result_dreamgoal_months"
-            android:hint="123123"
             android:textSize="20sp"/>
 
 

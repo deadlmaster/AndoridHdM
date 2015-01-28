@@ -2,6 +2,7 @@ package com.firstapplication.medianight.andoridhdm;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -35,6 +36,24 @@ public class ReportActivity extends Activity {
         populateReport();
         createSaldo();
         createDreamgoals();
+
+        TextView textviewmain = (TextView)findViewById(R.id.text_report);
+        TextView textviewpex = (TextView)findViewById(R.id.text_report_perexpense);
+        TextView textviewpin = (TextView)findViewById(R.id.text_report_perincome);
+        TextView textviewex = (TextView)findViewById(R.id.text_report_expense);
+        TextView textviewin = (TextView)findViewById(R.id.text_report_income);
+        TextView textviewgoal = (TextView)findViewById(R.id.edittext_report_result_dreamgoal);
+        TextView textviewgoalmonth = (TextView)findViewById(R.id.edittext_report_result_dreamgoal_months);
+        TextView textviewtotal = (TextView)findViewById(R.id.text_report_result);
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"fonts/silentreaction.ttf");
+        textviewmain.setTypeface(typeface);
+        textviewpex.setTypeface(typeface);
+        textviewpin.setTypeface(typeface);
+        textviewex.setTypeface(typeface);
+        textviewin.setTypeface(typeface);
+        textviewgoal.setTypeface(typeface);
+        textviewgoalmonth.setTypeface(typeface);
+        textviewtotal.setTypeface(typeface);
     }
 
     public void populateReport(){

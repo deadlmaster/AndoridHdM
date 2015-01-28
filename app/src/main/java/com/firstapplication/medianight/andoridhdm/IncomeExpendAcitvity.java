@@ -2,6 +2,7 @@ package com.firstapplication.medianight.andoridhdm;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -28,6 +30,11 @@ public class IncomeExpendAcitvity extends Activity {
         });
         dataSource = new DataSource(IncomeExpendAcitvity.this);
         dataSource.open();
+
+        TextView textview = (TextView)findViewById(R.id.textViewIncExp);
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"fonts/silentreaction.ttf");
+        textview.setTypeface(typeface);
+
 
 
     }
