@@ -13,10 +13,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView_main"
         android:layout_gravity="center"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textStyle="bold|italic"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+       />
 
 
 
@@ -70,7 +71,7 @@
         android:id="@+id/main_saving"
         android:layout_gravity="center"
         android:background="@drawable/ppsparen"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/textView_main"
         android:layout_centerHorizontal="true" />
 
 
