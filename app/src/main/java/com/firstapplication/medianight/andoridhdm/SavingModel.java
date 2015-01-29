@@ -1,8 +1,6 @@
 package com.firstapplication.medianight.andoridhdm;
 
-/**
- * Created by Peter Tan on 12.01.2015.
- */
+// Objektklasse für Sparziele. Beinhaltet Getter, Setter und toString-Variationen.
 public class SavingModel {
 
     private String savingNameWhere;

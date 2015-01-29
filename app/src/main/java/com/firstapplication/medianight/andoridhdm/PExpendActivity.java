@@ -19,15 +19,14 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Created by Peter Tan on 04.01.2015.
- */
+//Klasse für die Activity mit der Liste der periodischen Ausgaben.
 public class PExpendActivity extends ListActivity  {
 
     private DataSource datasource;
     ListView listView;
     ArrayAdapter<ExpendModel> adapter;
 
+    //Gibt an, was bei dem Öffnen der Activity aufgerufen wird.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,10 +42,11 @@ public class PExpendActivity extends ListActivity  {
         textviewtotal.setTypeface(typeface);
         textviewmain.setTypeface(typeface);
 
-
+        // Versucht die Liste zu befüllen: Sind keine Werte in der Datenvorhanden passiert nichts. Liste wird nicht befüllt.
         try { populateList(); } catch (Exception e) {
             e.printStackTrace(); }
 
+        // Bei Long-Click wird die Methode deletePexpends() aufgerufen. Anschließend wird die Liste erneut befüllt.
         listView.setOnItemLongClickListener(new OnItemLongClickListener() {
             // setting onItemLongClickListener and passing the position to the function
             @Override
@@ -60,7 +60,7 @@ public class PExpendActivity extends ListActivity  {
 
                 datasource.deletePexpends(pexpLike);
                 Intent intent = getIntent();
-                //datasource.testdeleteexpend(arg3);
+
                 try {
                     populateList();} catch (Exception e) {finish();
                     startActivity(intent);}
@@ -76,6 +76,7 @@ public class PExpendActivity extends ListActivity  {
 
 
 
+    // Befüllt die Liste mit den Daten durch Aufruf der Methode getAllPExpends().
     public void populateList(){
 
         listView = (ListView)findViewById(android.R.id.list);
@@ -93,19 +94,6 @@ public class PExpendActivity extends ListActivity  {
     }
 
 
-
-
-
-
-    /**listView.OnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-    @Override
-    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-    String ExpendNameString = ((TextView) view.findViewById(android.R.id.text1)).getText().toString();
-    datasource.deleteExpend(ExpendNameString);
-    new MyTask().execute();
-    return true;
-    }
-    }*/
 
 
     @Override

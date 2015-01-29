@@ -19,14 +19,13 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Created by Peter Tan on 04.01.2015.
- */
+//Klasse für die Activity mit der Liste der Gutschriften.
 public class CreditsActivity extends ListActivity  {
 
     private DataSource datasource;
     ListView listView;
 
+//Gibt an, was bei dem Öffnen der Activity aufgerufen wird.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +42,12 @@ public class CreditsActivity extends ListActivity  {
         textviewtotal.setTypeface(typeface);
         textviewmain.setTypeface(typeface);
 
+        // Versucht die Liste zu befüllen: Sind keine Werte in der Datenvorhanden passiert nichts. Liste wird nicht befüllt.
 
         try { populateList(); } catch (Exception e) {
             e.printStackTrace(); }
 
+        // Bei Long-Click wird die Methode deleteCredits() aufgerufen. Anschließend wird die Liste erneut befüllt.
         listView.setOnItemLongClickListener(new OnItemLongClickListener() {
             // setting onItemLongClickListener and passing the position to the function
             @Override
@@ -54,13 +55,12 @@ public class CreditsActivity extends ListActivity  {
                                            int position, long arg3) {
 
                 String creditDel = ((TextView) arg1.findViewById(android.R.id.text1)).getText().toString();
-                Log.d("StringTest1", creditDel);
                 String creditLike = creditDel.substring(3,5);
-                Log.d("StringTest", creditLike);
+
 
                 datasource.deleteCredits(creditLike);
                 Intent intent = getIntent();
-                //datasource.testdeleteexpend(arg3);
+
                 try {
                     populateList();} catch (Exception e) {finish();
                     startActivity(intent);}
@@ -70,6 +70,7 @@ public class CreditsActivity extends ListActivity  {
     }
 
 
+    // Befüllt die Liste mit den Daten durch Aufruf der Methode getAllCredits().
     public void populateList(){
 
         listView = (ListView)findViewById(android.R.id.list);
@@ -88,17 +89,6 @@ public class CreditsActivity extends ListActivity  {
 
 
 
-    /**listView.OnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-    @Override
-    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-    String ExpendNameString = ((TextView) view.findViewById(android.R.id.text1)).getText().toString();
-    datasource.deleteExpend(ExpendNameString);
-    new MyTask().execute();
-    return true;
-    }
-    }*/
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -114,12 +104,10 @@ public class CreditsActivity extends ListActivity  {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+
         if (id == R.id.action_main) {
             Intent MainScreenIntent = new Intent(this, MainActivity.class);
             final int result = 1;

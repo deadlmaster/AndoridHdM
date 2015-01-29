@@ -13,10 +13,10 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/**
- * Created by Peter Tan on 04.01.2015.
- */
+//Klasse für die Activity mit der Eingabemaske für periodische Einnahmen und Ausgaben.
 public class IncomeExpendAcitvity extends Activity {
+
+    //Gibt an, was bei dem Öffnen der Activity aufgerufen wird.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

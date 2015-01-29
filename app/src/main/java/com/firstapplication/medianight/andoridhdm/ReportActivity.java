@@ -14,9 +14,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 
-/**
- * Created by Peter Tan on 04.01.2015.
- */
+//Klasse für die Activity der Report-Seite.
 
 public class ReportActivity extends Activity {
 
@@ -24,6 +22,7 @@ public class ReportActivity extends Activity {
     private DataSource datasource;
 
 
+    //Gibt an was beim Öffnen der Seite durchgeführt werden soll. TextViews und Methoden.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +37,6 @@ public class ReportActivity extends Activity {
         createSaldo();
 
         createDreamgoals();
-
-
 
 
         TextView textviewmain = (TextView)findViewById(R.id.text_report);
@@ -61,7 +58,12 @@ public class ReportActivity extends Activity {
         textviewtotal.setTypeface(typeface);
     }
 
+    // Methode populateReport(). Befüllt die Textfelder der Report-Seite mit Werten durch den Aufruf der entsprechenden Methoden.
+    // Aus der Datenbank werden durch diese Methoden Werte für jede Kategorie abgefragt.
+    // Diese Werte werden in die entsprechenden TextFelder gesetzt.
+
     public void populateReport(){
+
         TextView pexpendReport = (TextView)findViewById(R.id.edittext_pexpendreport);
         TextView pincomeReport = (TextView)findViewById(R.id.edittext_pincomereport);
         TextView incomeReport = (TextView)findViewById(R.id.edittext_incomereport);
@@ -69,13 +71,7 @@ public class ReportActivity extends Activity {
 
 
         String pexpendSumView = datasource.getPExpendSum().toStringPexpendSum();
-
-
-        if (pexpendSumView != "Null"){
-            pexpendReport.setText("- " + pexpendSumView + "€");
-        }
-            else pexpendReport.setText(" 0 € ");
-
+        pexpendReport.setText("- " + pexpendSumView + "€");
 
         String pincomeSumView = datasource.getPincomeSum().toStringPincomeSum();
         pincomeReport.setText("+ " + pincomeSumView + "€");
@@ -87,6 +83,11 @@ public class ReportActivity extends Activity {
         expendReport.setText("- " + expendSumView + "€");
 
     }
+
+
+    // CreateSaldo() berechnet den Saldo indem durch Abfragen aus der Datenbank die benötigten Werte als String erhalten werden.
+    // Diese Strings werden zu double gecastet. Auf diesen Variablen werden Rechenoperationen durchgeführt.
+    // Das Ergebnis wird in der TextView als String gecastet angezeigt.
 
     public void createSaldo(){
 
@@ -117,11 +118,11 @@ public class ReportActivity extends Activity {
 
     }
 
+    // Berechnet die monatliche Sparziel-Rate. Die Differenz aus dem currentDate und dem Datum des nächsten Sparziels ist der Divident.
+
     public void createDreamgoals (){
         TextView savingNext = (TextView)findViewById(R.id.edittext_report_result_dreamgoal) ;
         TextView savingMonth = (TextView)findViewById(R.id.edittext_report_result_dreamgoal_months) ;
-
-
 
 
         String dreamView = datasource.getNextSaving().toStringSavingWhere();

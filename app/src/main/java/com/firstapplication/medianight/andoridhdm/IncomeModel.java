@@ -1,8 +1,6 @@
 package com.firstapplication.medianight.andoridhdm;
 
-/**
- * Created by Peter Tan on 12.01.2015.
- */
+// Objektklasse für Einnahmen. Beinhaltet Getter, Setter und toString-Variationen.
 public class IncomeModel{
 
     private String incomeWhere;

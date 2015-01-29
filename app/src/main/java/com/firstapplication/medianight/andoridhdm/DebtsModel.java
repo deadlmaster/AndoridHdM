@@ -1,8 +1,7 @@
 package com.firstapplication.medianight.andoridhdm;
 
-/**
- * Created by Peter Tan on 12.01.2015.
- */
+// Objektklasse für Schulden. Beinhaltet Getter, Setter und toString-Variationen.
+
 public class DebtsModel {
 
     private String debtsSumString;

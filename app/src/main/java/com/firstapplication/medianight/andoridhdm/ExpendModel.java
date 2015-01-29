@@ -1,9 +1,6 @@
 package com.firstapplication.medianight.andoridhdm;
 
-/**
- * Created by Cpt Cranberry on 11/01/2015.
- */
-
+// Objektklasse für Ausgaben. Beinhaltet Getter, Setter und toString-Variationen.
 public class ExpendModel {
 
     private String expendWhere;

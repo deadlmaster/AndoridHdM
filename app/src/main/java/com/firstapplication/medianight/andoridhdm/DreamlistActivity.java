@@ -19,14 +19,13 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Created by Peter Tan on 04.01.2015.
- */
+//Klasse für die Activity mit der Liste der Sparziele.
 public class DreamlistActivity extends ListActivity {
 
     private DataSource datasource;
     ListView listView;
 
+    //Gibt an, was bei dem Öffnen der Activity aufgerufen wird.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,10 +41,11 @@ public class DreamlistActivity extends ListActivity {
         textviewtotal.setTypeface(typeface);
         textviewmain.setTypeface(typeface);
 
-
+        // Versucht die Liste zu befüllen: Sind keine Werte in der Datenvorhanden passiert nichts. Liste wird nicht befüllt.
         try { populateList(); } catch (Exception e) {
             e.printStackTrace(); }
 
+        // Bei Long-Click wird die Methode deleteSavings() aufgerufen. Anschließend wird die Liste erneut befüllt.
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             // setting onItemLongClickListener and passing the position to the function
             @Override
@@ -59,7 +59,7 @@ public class DreamlistActivity extends ListActivity {
 
                 datasource.deleteSavings(savLike);
                 Intent intent = getIntent();
-                //datasource.testdeleteexpend(arg3);
+
                 try {
                     populateList();} catch (Exception e) {finish();
                     startActivity(intent);}
@@ -68,6 +68,8 @@ public class DreamlistActivity extends ListActivity {
         });
     }
 
+
+    // Befüllt die Liste mit den Daten durch Aufruf der Methode getAllSavings().
     public void populateList(){
 
         listView = (ListView)findViewById(android.R.id.list);

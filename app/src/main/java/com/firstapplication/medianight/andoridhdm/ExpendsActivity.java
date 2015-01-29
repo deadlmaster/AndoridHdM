@@ -19,15 +19,13 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Created by Peter Tan on 04.01.2015. blabla
- */
+//Klasse für die Activity mit der Liste der Ausgaben.
 public class ExpendsActivity extends ListActivity  {
 
     private DataSource datasource;
     ListView listView;
 
-
+    //Gibt an, was bei dem Öffnen der Activity aufgerufen wird.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,10 +41,11 @@ public class ExpendsActivity extends ListActivity  {
         textviewtotal.setTypeface(typeface);
         textviewmain.setTypeface(typeface);
 
-
+        // Versucht die Liste zu befüllen: Sind keine Werte in der Datenvorhanden passiert nichts. Liste wird nicht befüllt.
         try { populateList(); } catch (Exception e) {
             e.printStackTrace(); }
 
+        // Bei Long-Click wird die Methode deleteExpend() aufgerufen. Anschließend wird die Liste erneut befüllt.
         listView.setOnItemLongClickListener(new OnItemLongClickListener() {
             // setting onItemLongClickListener and passing the position to the function
             @Override
@@ -60,7 +59,7 @@ public class ExpendsActivity extends ListActivity  {
 
                 datasource.deleteExpend(expLike);
                 Intent intent = getIntent();
-                //datasource.testdeleteexpend(arg3);
+
                 try {
                     populateList();} catch (Exception e) {finish();
                 startActivity(intent);}
@@ -75,6 +74,7 @@ public class ExpendsActivity extends ListActivity  {
     String currentDate = dateForm.format(myCalender.getTime());
 
 
+    // Befüllt die Liste mit den Daten durch Aufruf der Methode getAllExpends().
     public void populateList(){
 
         listView = (ListView)findViewById(android.R.id.list);
@@ -91,21 +91,6 @@ public class ExpendsActivity extends ListActivity  {
         String expendSumView = datasource.getExpendSum().toStringSum();
         textView.setText("- " + expendSumView + "€");
     }
-
-
-
-
-
-
-    /**listView.OnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-        @Override
-        public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-            String ExpendNameString = ((TextView) view.findViewById(android.R.id.text1)).getText().toString();
-            datasource.deleteExpend(ExpendNameString);
-            new MyTask().execute();
-            return true;
-        }
-    }*/
 
 
     @Override
