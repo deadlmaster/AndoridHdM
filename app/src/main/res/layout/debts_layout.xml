@@ -37,11 +37,13 @@
         android:text="@string/text_debts_list_amount"
         android:id="@+id/text_debts_list_total"
         android:layout_marginTop="40dp"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:layout_below="@+id/text_debts"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="#ffba1d18"/>
+        android:textColor="#ffba1d18"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="20dp" />
 
 
 

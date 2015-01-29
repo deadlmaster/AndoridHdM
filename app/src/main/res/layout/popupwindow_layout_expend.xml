@@ -76,9 +76,8 @@
                     android:id="@+id/editText_popup_expend_amount"
                     android:hint="200,50€"
                     android:layout_marginLeft="30dp"
-                    android:inputType="number"
                     android:singleLine="true"
-                    />
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 

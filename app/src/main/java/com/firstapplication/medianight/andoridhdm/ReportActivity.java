@@ -34,8 +34,13 @@ public class ReportActivity extends Activity {
         datasource = new DataSource(this);
         datasource.open();
         populateReport();
+
         createSaldo();
+
         createDreamgoals();
+
+
+
 
         TextView textviewmain = (TextView)findViewById(R.id.text_report);
         TextView textviewpex = (TextView)findViewById(R.id.text_report_perexpense);
@@ -64,7 +69,13 @@ public class ReportActivity extends Activity {
 
 
         String pexpendSumView = datasource.getPExpendSum().toStringPexpendSum();
-        pexpendReport.setText("- " + pexpendSumView + "€");
+
+
+        if (pexpendSumView != "Null"){
+            pexpendReport.setText("- " + pexpendSumView + "€");
+        }
+            else pexpendReport.setText(" 0 € ");
+
 
         String pincomeSumView = datasource.getPincomeSum().toStringPincomeSum();
         pincomeReport.setText("+ " + pincomeSumView + "€");
@@ -79,10 +90,14 @@ public class ReportActivity extends Activity {
 
     public void createSaldo(){
 
+        Double pexs;
         TextView saldoReport = (TextView)findViewById(R.id.edittext_saldoreport);
 
         String pexpendSaldo = datasource.getPExpendSum().toStringPexpendSum();
-        Double pexs = Double.parseDouble(pexpendSaldo);
+        if (pexpendSaldo != "Null"){
+            pexs = Double.parseDouble(pexpendSaldo);
+        }
+        else { pexs = 0.0;}
 
         String pincomeSaldo = datasource.getPincomeSum().toStringPincomeSum();
         Double pins = Double.parseDouble(pincomeSaldo);

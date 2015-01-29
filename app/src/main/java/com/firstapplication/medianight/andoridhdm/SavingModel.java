@@ -5,6 +5,7 @@ package com.firstapplication.medianight.andoridhdm;
  */
 public class SavingModel {
 
+    private String savingNameWhere;
     private String savingDateWhere;
     private String savingWhere;
     private String saveSumString;
@@ -59,7 +60,7 @@ public class SavingModel {
 
     public String toStringSavingWhere(){
 
-       return savingDateWhere + ": " + savingWhere + "€";
+       return savingDateWhere + ": " + savingNameWhere + "  " + savingWhere + "€";
     }
 
     public String getSavingWhere (String savingWhere){
@@ -77,6 +78,14 @@ public class SavingModel {
 
     public void setSaveSumString (String saveSumString){
         this.saveSumString = saveSumString;
+    }
+
+    public String getSavingNameWhere (String savingNameWhere){
+        return savingNameWhere;
+    }
+
+    public void setSavingNameWhere (String savingNameWhere){
+        this.savingNameWhere = savingNameWhere;
     }
 
     public String toStringSaveSum(){

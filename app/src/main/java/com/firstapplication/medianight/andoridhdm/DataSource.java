@@ -394,11 +394,9 @@ public class DataSource {
 
     public PExpendModel getPExpendSum(){
         Cursor cursor = database.rawQuery("SELECT sum(pexpends_amount) FROM pexpends_income", null);
-
-        // 3. if we got results get the first one
         if (cursor != null)
             cursor.moveToFirst();
-        // 4. build book object
+
         PExpendModel pexpendSum = new PExpendModel();
         pexpendSum.setPexpendSumString(cursor.getString(0));
         Log.d("test", pexpendSum.toStringPexpendSum());
@@ -483,7 +481,7 @@ public class DataSource {
     public SavingModel getNextSaving(){
 
 
-        String query = "SELECT " + SQLiteHelper.COLUMN_DREAMGOAL_AMOUNT + ", " + SQLiteHelper.COLUMN_DREAMGOAL_DATE +   " FROM " + SQLiteHelper.TABLE_DREAMGOAL + " ORDER BY " + SQLiteHelper.COLUMN_DREAMGOAL_DATE + " DESC";
+        String query = "SELECT " + SQLiteHelper.COLUMN_DREAMGOAL_AMOUNT + ", " + SQLiteHelper.COLUMN_DREAMGOAL_DATE + ", "+ SQLiteHelper.COLUMN_DREAMGOAL_NAME + " FROM " + SQLiteHelper.TABLE_DREAMGOAL + " ORDER BY " + SQLiteHelper.COLUMN_DREAMGOAL_DATE + " DESC";
         Cursor cursor = database.rawQuery(query, null);
 
         if (cursor != null)
@@ -492,6 +490,7 @@ public class DataSource {
         SavingModel savingWhere = new SavingModel();
         savingWhere.setSavingWhere(cursor.getString(0));
         savingWhere.setSavingDateWhere(cursor.getString(1));
+        savingWhere.setSavingNameWhere(cursor.getString(2));
      Log.d("sehr wichtig!", savingWhere.toStringSavingWhere());
         return savingWhere;
     }

@@ -11,17 +11,17 @@
         android:layout_height="wrap_content"
         android:text="@string/revenue_and_expenditure"
         android:id="@+id/textViewIncExp"
-        android:layout_gravity="center"
-        android:textSize="35sp"
+        android:textSize="30sp"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
-        />
+        android:gravity="center"
+        android:layout_marginRight="20dp" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/easName"
-        android:text="@string/RevExp_Name"
+        android:hint="@string/RevExp_Name"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp" />
@@ -33,7 +33,7 @@
         android:ems="10"
         android:id="@+id/easAmount"
         android:layout_weight="0.12"
-        android:text="@string/RevExp_Amount"
+        android:hint="@string/RevExp_Amount"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
