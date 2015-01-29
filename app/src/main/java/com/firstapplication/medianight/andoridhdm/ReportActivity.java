@@ -42,8 +42,8 @@ public class ReportActivity extends Activity {
         TextView textviewpin = (TextView)findViewById(R.id.text_report_perincome);
         TextView textviewex = (TextView)findViewById(R.id.text_report_expense);
         TextView textviewin = (TextView)findViewById(R.id.text_report_income);
-        TextView textviewgoal = (TextView)findViewById(R.id.edittext_report_result_dreamgoal);
-        TextView textviewgoalmonth = (TextView)findViewById(R.id.edittext_report_result_dreamgoal_months);
+        TextView textviewgoal = (TextView)findViewById(R.id.text_report_dreamgoal);
+        TextView textviewgoalmonth = (TextView)findViewById(R.id.text_report_dreamgoal_months);
         TextView textviewtotal = (TextView)findViewById(R.id.text_report_result);
         Typeface typeface = Typeface.createFromAsset(getAssets(),"fonts/silentreaction.ttf");
         textviewmain.setTypeface(typeface);
