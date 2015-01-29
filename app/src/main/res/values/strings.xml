@@ -36,12 +36,12 @@
     <string name="popup_debts_date">Datum:</string>
     <string name="popup_debts_amount">Betrag:</string>
     <string name="popup_debts_name">Person:</string>
-    <string name="popup_debts_title">Schulden:</string>
+    <string name="popup_debts_title">Schulden</string>
     <string name="Popup_credits_button">Submit</string>
     <string name="popup_credits_date">Datum:</string>
     <string name="popup_credits_amount">Betrag:</string>
     <string name="popup_credits_name">Person:</string>
-    <string name="popup_credits_title">Gutschrift:</string>
+    <string name="popup_credits_title">Gutschrift</string>
     <string name="action_main">Hauptmenü</string>
     <string name="action_exit">Exit</string>
     <string name="action_balance">Bilanz</string>

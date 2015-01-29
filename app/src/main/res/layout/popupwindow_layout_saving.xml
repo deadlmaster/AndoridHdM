@@ -28,7 +28,7 @@
                 android:text="@string/popup_saving_title"
                 android:textSize="40dp"
                 android:layout_marginTop="20dp"
-                android:textColor="#fff5f122"
+                android:textColor="#ffecd900"
                 />
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -49,7 +49,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/editText_popup_name_saving"
-                    android:hint="BMW x6"
+                    android:hint="Auto"
                     android:layout_marginLeft="5dp"
                     android:singleLine="true"
                     />

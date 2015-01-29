@@ -30,7 +30,7 @@
                 android:textSize="40dp"
                 android:layout_marginTop="20dp"
                 android:id="@+id/TextViewExpend"
-                android:textColor="#ffd81b16"
+                android:textColor="#c0ff1d18"
                 />
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -49,7 +49,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/editText_popup_name_expend"
-                    android:hint="Einkauf im Edeka"
+                    android:hint="Einkauf"
                     android:layout_marginLeft="5dp"
                     android:singleLine="true"
                     />
