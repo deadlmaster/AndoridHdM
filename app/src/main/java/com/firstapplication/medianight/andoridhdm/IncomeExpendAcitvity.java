@@ -19,6 +19,15 @@ public class IncomeExpendAcitvity extends Activity {
     //Gibt an, was bei dem Öffnen der Activity aufgerufen wird.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+          /*
+        Beim Aufruf wird die incomeExpend Layout Datei als View genommen.
+        Die Datenbankverbindung wird zudem noch aufgebaut.
+        Um den Textfont zu ändern, werden alle Texte erst initialisiert und dann mit Typeface das Font angepasst
+        Es wird zudem der SbMitbutton initialisiert und bestimmt, das bei Knopfdruck die Methode sendToDatabase gestartet
+        werden soll
+
+         */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eas);
         Button submitButton = (Button)findViewById(R.id.buttonIncomeExpenditure);
@@ -97,7 +106,10 @@ public class IncomeExpendAcitvity extends Activity {
 
 
 
-
+    /*
+      Jedes Item des Menüs wird mit einer Logik versehen. Die Logik besteht darin, den Bildschirm zu welchseln,
+      sobald der Nutzer darauf klickt.
+       */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

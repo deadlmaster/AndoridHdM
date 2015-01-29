@@ -29,6 +29,14 @@ public class PIncomeActivity extends ListActivity  {
     //Gibt an, was bei dem Öffnen der Activity aufgerufen wird.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+          /*
+        Beim Aufruf wird die Pincome Layout Datei als View genommen.
+        Weiterhin wird das Datumstextfeld initialisiert und mit dem jetztigen Datum gefüllt
+        Die Datenbankverbindung wird zudem noch aufgebaut.
+        Um den Textfont zu ändern, werden alle Texte erst initialisiert und dann mit Typeface das Font angepasst
+
+         */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pincome_layout);
         TextView ScreenDate = (TextView)findViewById(R.id.text_date_pincome);
@@ -70,6 +78,10 @@ public class PIncomeActivity extends ListActivity  {
         });
     }
 
+    /*
+    speichert eine Kalenderinstanz ab, formatiert die Datumsanzeige und speichert das aktuelle Datum
+    in die Variable currentDate mit dem vorher definierten Format
+     */
     private Calendar myCalender = Calendar.getInstance();
     String myFormat = "dd.MM.yy";
     SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
@@ -100,7 +112,10 @@ public class PIncomeActivity extends ListActivity  {
         return true;
     }
 
-
+    /*
+      Jedes Item des Menüs wird mit einer Logik versehen. Die Logik besteht darin, den Bildschirm zu welchseln,
+      sobald der Nutzer darauf klickt.
+       */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

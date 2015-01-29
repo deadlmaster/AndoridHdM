@@ -25,6 +25,15 @@ public class ReportActivity extends Activity {
     //Gibt an was beim Öffnen der Seite durchgeführt werden soll. TextViews und Methoden.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+          /*
+        Beim Aufruf wird die Report Layout Datei als View genommen.
+        Weiterhin wird das Datumstextfeld initialisiert und mit dem jetztigen Datum gefüllt
+        Die Datenbankverbindung wird zudem noch aufgebaut.
+        Um den Textfont zu ändern, werden alle Texte erst initialisiert und dann mit Typeface das Font angepasst
+        Beun erscheinen, sollen in den Textfeldern auch schon Daten angezeigt werden. Daher werden die Methoden
+        dafür hier ebenso initialisiert.
+         */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.report_layout);
         TextView ScreenDate = (TextView)findViewById(R.id.text_date_report);
@@ -146,6 +155,10 @@ public class ReportActivity extends Activity {
         savingMonth.setText("" + finalRate + "€");
     }
 
+    /*
+    speichert eine Kalenderinstanz ab, formatiert die Datumsanzeige und speichert das aktuelle Datum
+    in die Variable currentDate mit dem vorher definierten Format
+     */
     private Calendar myCalender = Calendar.getInstance();
     String myFormat = "dd.MM.yy";
     SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
@@ -162,7 +175,10 @@ public class ReportActivity extends Activity {
         return true;
     }
 
-
+    /*
+      Jedes Item des Menüs wird mit einer Logik versehen. Die Logik besteht darin, den Bildschirm zu welchseln,
+      sobald der Nutzer darauf klickt.
+       */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

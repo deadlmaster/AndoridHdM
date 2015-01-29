@@ -36,6 +36,16 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+          /*
+        Beim Aufruf wird die Main Layout Datei als View genommen.
+        Die Datenbankverbindung wird zudem noch aufgebaut.
+        Um den Textfont zu ändern, werden alle Texte erst initialisiert und dann mit Typeface das Font angepasst
+        ES werdem weiterhin alle BImagebuttons initialisiert und mit einer On Click Methode versehen.
+        Je nachdem welcher Button gedrückt wird, wird eine andere Pop Up Methode ausgefürt
+
+
+         */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -93,11 +103,23 @@ public class MainActivity extends Activity {
 
 
 
+    // Eine Notification soll angezeigt werden, beim Aufruf dieser Methode.
     public void ToastDatabase(){
         Toast.makeText(getApplicationContext(), "Daten in Datenbank geschrieben", Toast.LENGTH_SHORT).show();
     }
 
+    /*
+    Diese Methode erstellt einen Popup für die Eingabe der Ausgaben. Darin wird zunächst die Popup java Klasse genutzt um einen popup
+    bauen zu können. Dieser wird dann mit einem Layout zugeordnet.
+    Als nächstes werden die Elemente im Popup initilisiert, in diesem Fall 3 Edit Felder.
+    Für das Datumsfeld soll ein Kalender auftacuhen, bei dem das Datum ausgewählt werden kann. Dies wird mit dem Datepicker
+    erstellt. Dort wird ein OnListener hinzugefügt damit die Eingabe verwertet werden kann.
+    Dann wird beim Datumseingabefeld ein OnClickListener drangesetzt. Beim Klick poppt dann ein Kalender auf.
+    Am Ende werden 2 Button initialisiert. Einer dient zum schließen des pop Ups, der andere verwertet, beim klick, die Eingaben und
+    schickt sie der Datenbank. Die Datenbank erhält ein Ausgabeobjekt.
+    Danach wird auch hier das pop Up geschlossen und eine Notification erscheint, das die Eingabe erfolgreich war.
 
+     */
     private void initiatePopupWindowExpend(){
 
         try{
@@ -181,6 +203,18 @@ public class MainActivity extends Activity {
 
 
 
+    /*
+    Diese Methode erstellt einen Popup für die Eingabe der Einnahmen. Darin wird zunächst die Popup java Klasse genutzt um einen popup
+    bauen zu können. Dieser wird dann mit einem Layout zugeordnet.
+    Als nächstes werden die Elemente im Popup initilisiert, in diesem Fall 3 Edit Felder.
+    Für das Datumsfeld soll ein Kalender auftacuhen, bei dem das Datum ausgewählt werden kann. Dies wird mit dem Datepicker
+    erstellt. Dort wird ein OnListener hinzugefügt damit die Eingabe verwertet werden kann.
+    Dann wird beim Datumseingabefeld ein OnClickListener drangesetzt. Beim Klick poppt dann ein Kalender auf.
+    Am Ende werden 2 Button initialisiert. Einer dient zum schließen des pop Ups, der andere verwertet, beim klick, die Eingaben und
+    schickt sie der Datenbank. Die Datenbank erhält ein Einnahmeobjekt.
+    Danach wird auch hier das pop Up geschlossen und eine Notification erscheint, das die Eingabe erfolgreich war.
+
+     */
     private void initiatePopupWindowIncome(){
 
         try{
@@ -253,7 +287,18 @@ public class MainActivity extends Activity {
 
     }
 
+    /*
+      Diese Methode erstellt einen Popup für die Eingabe der Schulden. Darin wird zunächst die Popup java Klasse genutzt um einen popup
+      bauen zu können. Dieser wird dann mit einem Layout zugeordnet.
+      Als nächstes werden die Elemente im Popup initilisiert, in diesem Fall 3 Edit Felder.
+      Für das Datumsfeld soll ein Kalender auftacuhen, bei dem das Datum ausgewählt werden kann. Dies wird mit dem Datepicker
+      erstellt. Dort wird ein OnListener hinzugefügt damit die Eingabe verwertet werden kann.
+      Dann wird beim Datumseingabefeld ein OnClickListener drangesetzt. Beim Klick poppt dann ein Kalender auf.
+      Am Ende werden 2 Button initialisiert. Einer dient zum schließen des pop Ups, der andere verwertet, beim klick, die Eingaben und
+      schickt sie der Datenbank. Die Datenbank erhält ein Schuldenobjekt.
+      Danach wird auch hier das pop Up geschlossen und eine Notification erscheint, das die Eingabe erfolgreich war.
 
+       */
     private void initiatePopupWindowDebts(){
 
         try{
@@ -326,6 +371,18 @@ public class MainActivity extends Activity {
 
 
 
+    /*
+  Diese Methode erstellt einen Popup für die Eingabe der gutschriften. Darin wird zunächst die Popup java Klasse genutzt um einen popup
+  bauen zu können. Dieser wird dann mit einem Layout zugeordnet.
+  Als nächstes werden die Elemente im Popup initilisiert, in diesem Fall 3 Edit Felder.
+  Für das Datumsfeld soll ein Kalender auftacuhen, bei dem das Datum ausgewählt werden kann. Dies wird mit dem Datepicker
+  erstellt. Dort wird ein OnListener hinzugefügt damit die Eingabe verwertet werden kann.
+  Dann wird beim Datumseingabefeld ein OnClickListener drangesetzt. Beim Klick poppt dann ein Kalender auf.
+  Am Ende werden 2 Button initialisiert. Einer dient zum schließen des pop Ups, der andere verwertet, beim klick, die Eingaben und
+  schickt sie der Datenbank. Die Datenbank erhält ein Gutschriftobjekt.
+  Danach wird auch hier das pop Up geschlossen und eine Notification erscheint, das die Eingabe erfolgreich war.
+
+   */
     private void initiatePopupWindowCredit(){
 
         try{
@@ -397,6 +454,18 @@ public class MainActivity extends Activity {
 
     }
 
+    /*
+  Diese Methode erstellt einen Popup für die Eingabe der Sparziele. Darin wird zunächst die Popup java Klasse genutzt um einen popup
+  bauen zu können. Dieser wird dann mit einem Layout zugeordnet.
+  Als nächstes werden die Elemente im Popup initilisiert, in diesem Fall 3 Edit Felder.
+  Für das Datumsfeld soll ein Kalender auftacuhen, bei dem das Datum ausgewählt werden kann. Dies wird mit dem Datepicker
+  erstellt. Dort wird ein OnListener hinzugefügt damit die Eingabe verwertet werden kann.
+  Dann wird beim Datumseingabefeld ein OnClickListener drangesetzt. Beim Klick poppt dann ein Kalender auf.
+  Am Ende werden 2 Button initialisiert. Einer dient zum schließen des pop Ups, der andere verwertet, beim klick, die Eingaben und
+  schickt sie der Datenbank. Die Datenbank erhält ein Sparzielobjekt.
+  Danach wird auch hier das pop Up geschlossen und eine Notification erscheint, das die Eingabe erfolgreich war.
+
+   */
     private void initiatePopupWindowSaving(){
 
         try{
@@ -468,7 +537,7 @@ public class MainActivity extends Activity {
 
     }
 
-
+    // Erstelle die Menüleiste
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -476,7 +545,10 @@ public class MainActivity extends Activity {
         return true;
     }
 
-
+    /*
+      Jedes Item des Menüs wird mit einer Logik versehen. Die Logik besteht darin, den Bildschirm zu welchseln,
+      sobald der Nutzer darauf klickt.
+       */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

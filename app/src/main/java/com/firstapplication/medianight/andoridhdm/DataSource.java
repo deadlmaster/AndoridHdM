@@ -489,7 +489,7 @@ public class DataSource {
     public SavingModel getNextSaving(){
 
 
-        String query = "SELECT " + SQLiteHelper.COLUMN_DREAMGOAL_AMOUNT + ", " + SQLiteHelper.COLUMN_DREAMGOAL_DATE + ", "+ SQLiteHelper.COLUMN_DREAMGOAL_NAME + " FROM " + SQLiteHelper.TABLE_DREAMGOAL + " ORDER BY " + SQLiteHelper.COLUMN_DREAMGOAL_DATE + " DESC";
+        String query = "SELECT " + SQLiteHelper.COLUMN_DREAMGOAL_AMOUNT + ", " + SQLiteHelper.COLUMN_DREAMGOAL_DATE + ", "+ SQLiteHelper.COLUMN_DREAMGOAL_NAME + " FROM " + SQLiteHelper.TABLE_DREAMGOAL + " ORDER BY " + SQLiteHelper.COLUMN_DREAMGOAL_DATE + " ASC";
         Cursor cursor = database.rawQuery(query, null);
 
         if (cursor != null)

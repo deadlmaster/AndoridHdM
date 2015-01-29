@@ -29,6 +29,14 @@ public class CreditsActivity extends ListActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        /*
+        Beim Aufruf wird die Credits Layout Datei als View genommen.
+        Weiterhin wird das Datumstextfeld initialisiert und mit dem jetztigen Datum gefüllt
+        Die Datenbankverbindung wird zudem noch aufgebaut.
+        Um den Textfont zu ändern, werden alle Texte erst initialisiert und dann mit Typeface das Font angepasst
+
+         */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.credits_layout);
         TextView ScreenDate = (TextView)findViewById(R.id.text_date_credits);
@@ -88,7 +96,7 @@ public class CreditsActivity extends ListActivity  {
     }
 
 
-
+    // Erstelle die Menüleiste
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -96,12 +104,20 @@ public class CreditsActivity extends ListActivity  {
         return true;
     }
 
-
+    /*
+     speichert eine Kalenderinstanz ab, formatiert die Datumsanzeige und speichert das aktuelle Datum
+     in die Variable currentDate mit dem vorher definierten Format
+      */
     private Calendar myCalender = Calendar.getInstance();
     String myFormat = "dd.MM.yy";
     SimpleDateFormat dateForm = new SimpleDateFormat(myFormat, Locale.GERMANY);
     String currentDate = dateForm.format(myCalender.getTime());
 
+
+    /*
+    Jedes Item des Menüs wird mit einer Logik versehen. Die Logik besteht darin, den Bildschirm zu welchseln,
+    sobald der Nutzer darauf klickt.
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
